@@ -6,8 +6,8 @@ modes = shared static test-driver
 $CFLAGS_SHARED = -cpp -c -fpic
 $CFLAGS_STATIC = -cpp -c
 $LFLAGS_SHARED = -shared
-$DEBUG         = -O0 -debug all -check all -warn all -traceback
-$OPTIMIZE      = -O3
+$DEBUG         = -O0 -debug all -check all -warn all -traceback -std03
+$OPTIMIZE      = -O1
 
 # main modes
 [shared]
