@@ -161,6 +161,8 @@
       
       <a class="list-group-item" href="../proc/b64_encode_r8_a.html">b64_encode_R8_a</a>
       
+      <a class="list-group-item" href="../proc/b64_init.html">b64_init</a>
+      
       <a class="list-group-item" href="../proc/bctoi_i1p.html">bctoi_I1P</a>
       
       <a class="list-group-item" href="../proc/bctoi_i2p.html">bctoi_I2P</a>
@@ -421,7 +423,7 @@ private pure subroutine encode_bits(bits, padd, code)
 <tr>
   
   <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(out)</td>
+  <td>intent(inout)</td>
   <td></td>
   
   <td></td><td>::</td>
@@ -436,8 +438,8 @@ private pure subroutine encode_bits(bits, padd, code)
     
     
     <h3>Description</h3>
-    <p>Subroutine for encoding bits (must be multiple of 24 bits) into base64 charcaters code (of length multiple of 4).</p>
-<p><div class="alert alert-info" role="alert"><h4>Note</h4>The bits stream are encoded in chunks of 24 bits as the following example (in little endian order):</div></p>
+    <p>Procedure for encoding a bits stream (must be multiple of 24 bits) into base64 charcaters code (of length multiple of 4).</p>
+<p>The bits stream are encoded in chunks of 24 bits as the following example (in little endian order)</p>
 <div class="codehilite"><pre> +--first octet--+-second octet--+--third octet--+
  |7 6 5 4 3 2 1 0|7 6 5 4 3 2 1 0|7 6 5 4 3 2 1 0|
  +-----------+---+-------+-------+---+-----------+
@@ -446,7 +448,8 @@ private pure subroutine encode_bits(bits, padd, code)
 </pre></div>
 
 
-<p>The 4 indexes are stored into 4 elements 8 bits array, thus 2 bits of each array element are not used.</p>
+<p><div class="alert alert-info" role="alert"><h4>Note</h4>The 4 indexes are stored into 4 elements 8 bits array, thus 2 bits of each array element are not used.
+ <div class="alert alert-info" role="alert"><h4>Note</h4>The number of paddings must be computed outside this procedure, into the calling scope.</div></div></p>
     
     <br>
     

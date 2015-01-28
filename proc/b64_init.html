@@ -10,7 +10,7 @@
     <meta name="author" content="Chris MacMackin" >
     <link rel="icon" href="../favicon.png">
 
-    <title>pack_data_I4_I2 &ndash; BeFoR64</title>
+    <title>b64_init &ndash; BeFoR64</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
@@ -78,7 +78,7 @@
     
   
   <div class="row">
-    <h1>pack_data_I4_I2
+    <h1>b64_init
     <small>Subroutine</small>
     
     </h1>
@@ -93,7 +93,7 @@
      
     
     
-    <li><i class="fa fa-code"></i><a href="../src/Lib_Pack_Data.f90"> Source File</a></li>
+    <li><i class="fa fa-code"></i><a href="../src/Lib_Base64.f90"> Source File</a></li>
      
   </ul>
   </div>
@@ -101,11 +101,11 @@
   <div class="col-lg-5">
   <ol class="breadcrumb hierarchy text-right">
   
-     <li><a href='../sourcefile/lib_pack_data.f90.html'>Lib_Pack_Data.f90</a></li>
+     <li><a href='../sourcefile/lib_base64.f90.html'>Lib_Base64.f90</a></li>
   
-     <li><a href='../module/lib_pack_data.html'>Lib_Pack_Data</a></li>
+     <li><a href='../module/lib_base64.html'>Lib_Base64</a></li>
   
-     <li class="active">pack_data_I4_I2</li>
+     <li class="active">b64_init</li>
   </ol>
   </div>
 </div>
@@ -115,19 +115,6 @@
   <div class="row">
     <div class="col-lg-3">
     
-  
-  <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title">Variables</h3></div>
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../proc/pack_data_i4_i2.html#var-p1">p1</a>
-      
-      <a class="list-group-item" href="../proc/pack_data_i4_i2.html#var-p2">p2</a>
-      
-      <a class="list-group-item" href="../proc/pack_data_i4_i2.html#var-np">np</a>
-      
-    </div>
-  </div>
   
   
   
@@ -367,7 +354,7 @@
     
     <div class="col-lg-9" id='text'>
     <h2>
-private pure subroutine pack_data_I4_I2(a1, a2, packed)
+private  subroutine b64_init()
 </h2>
     
   
@@ -376,130 +363,14 @@ private pure subroutine pack_data_I4_I2(a1, a2, packed)
 
     <h3>Arguments</h3>
     
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
-<tbody>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><a class="anchor" name="var-a1"></a>integer(kind=I4P),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>a1</strong>(1:)</td><td><p>First data stream.</p></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><a class="anchor" name="var-a2"></a>integer(kind=I2P),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>a2</strong>(1:)</td><td><p>Second data stream.</p></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><a class="anchor" name="var-packed"></a>integer(kind=I1P),</td>
-  <td>intent(inout),</td>
-  <td></td>
-  
-  <td>allocatable</td><td>::</td>
-  <td><strong>packed</strong>(:)</td><td><p>Packed data into I1P array.</p></td>
-  
-</tr>
-
-</tbody>
-</table>
-
+      <em>None</em>
     
     
     
     <h3>Description</h3>
-    <p>Procedure for packing different kinds of data into single I1P array.</p>
+    <p>Procedure for initializing the BeFoR64 library.</p>
+<p><div class="alert alert-info" role="alert"><h4>Note</h4>This procedure <strong>must</strong> be called before encoding/decoding anything!</div></p>
     
-    <br>
-    
-    <section>
-    <h2>Variables</h2>
-    
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Visibility</th>
-
-<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
-
-
-
-<tbody>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><a class="anchor" name="var-p1"></a>integer(kind=I1P),</td>
-  
-  <td>public,</td>
-  <td>allocatable</td><td>::</td>
-  <td><strong>p1</strong>(:)</td><td></td><td></td><td><p>Temporary packed data of first stream.</p></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><a class="anchor" name="var-p2"></a>integer(kind=I1P),</td>
-  
-  <td>public,</td>
-  <td>allocatable</td><td>::</td>
-  <td><strong>p2</strong>(:)</td><td></td><td></td><td><p>Temporary packed data of second stream.</p></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><a class="anchor" name="var-np"></a>integer(kind=I4P),</td>
-  
-  <td>public</td>
-  <td></td><td>::</td>
-  <td><strong>np</strong></td><td></td><td></td><td><p>Size of temporary packed data.</p></td>
-  
-</tr>
-
-</tbody>
-</table>
-
-    </section>
     <br>
     
     

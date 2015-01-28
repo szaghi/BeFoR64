@@ -36,11 +36,26 @@ interface b64_encode
 endinterface
 !-----------------------------------------------------------------------------------------------------------------------------------
 contains
+  subroutine b64_init()
+  !---------------------------------------------------------------------------------------------------------------------------------
+  !< Procedure for initializing the BeFoR64 library.
+  !<
+  !< @note This procedure **must** be called before encoding/decoding anything!
+  !---------------------------------------------------------------------------------------------------------------------------------
+  implicit none
+  !---------------------------------------------------------------------------------------------------------------------------------
+
+  !---------------------------------------------------------------------------------------------------------------------------------
+  call IR_Init
+  return
+  !---------------------------------------------------------------------------------------------------------------------------------
+  endsubroutine b64_init
+
   pure subroutine encode_bits(bits,padd,code)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Subroutine for encoding bits (must be multiple of 24 bits) into base64 charcaters code (of length multiple of 4).
+  !< Procedure for encoding a bits stream (must be multiple of 24 bits) into base64 charcaters code (of length multiple of 4).
   !<
-  !< @note The bits stream are encoded in chunks of 24 bits as the following example (in little endian order):
+  !< The bits stream are encoded in chunks of 24 bits as the following example (in little endian order)
   !<```
   !< +--first octet--+-second octet--+--third octet--+
   !< |7 6 5 4 3 2 1 0|7 6 5 4 3 2 1 0|7 6 5 4 3 2 1 0|
@@ -48,15 +63,16 @@ contains
   !< |5 4 3 2 1 0|5 4 3 2 1 0|5 4 3 2 1 0|5 4 3 2 1 0|
   !< +--1.index--+--2.index--+--3.index--+--4.index--+
   !<```
-  !< The 4 indexes are stored into 4 elements 8 bits array, thus 2 bits of each array element are not used.
+  !< @note The 4 indexes are stored into 4 elements 8 bits array, thus 2 bits of each array element are not used.
+  !< @note The number of paddings must be computed outside this procedure, into the calling scope.
   !---------------------------------------------------------------------------------------------------------------------------------
   implicit none
-  integer(I1P), intent(IN)::  bits(1:)  !< Bits to be encoded.
-  integer(I4P), intent(IN)::  padd      !< Number of padding characters ('=').
-  character(1), intent(OUT):: code(1:)  !< Characters code.
-  integer(I1P)::              sixb(1:4) !< 6 bits slices (stored into 8 bits integer) of 24 bits input.
-  integer(I8P)::              c         !< Counter.
-  integer(I8P)::              e         !< Counter.
+  integer(I1P), intent(IN)::    bits(1:)  !< Bits to be encoded.
+  integer(I4P), intent(IN)::    padd      !< Number of padding characters ('=').
+  character(1), intent(INOUT):: code(1:)  !< Characters code.
+  integer(I1P)::                sixb(1:4) !< 6 bits slices (stored into 8 bits integer) of 24 bits input.
+  integer(I8P)::                c         !< Counter.
+  integer(I8P)::                e         !< Counter.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -79,128 +95,140 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine encode_bits
 
-  pure subroutine b64_encode_R8_a(nB,n,code)
+  pure subroutine b64_encode_R8_a(n,code)
   !---------------------------------------------------------------------------------------------------------------------------------
   !< Procedure for encoding array numbers to base64 (R8P).
   !---------------------------------------------------------------------------------------------------------------------------------
   implicit none
-  integer(I4P),              intent(IN)::  nB                                 !< Number of bytes of single element of n.
-  real(R8P),                 intent(IN)::  n(1:)                              !< Array of numbers to be encoded.
-  character(1), allocatable, intent(OUT):: code(:)                            !< Encoded array.
-  integer(I1P)::                           nI1P(1:((size(n,dim=1)*nB+2)/3)*3) !< One byte integer array containing n.
-  integer(I4P)::                           padd                               !< Number of padding characters ('=').
+  real(R8P),                 intent(IN)::    n(1:)   !< Array of numbers to be encoded.
+  character(1), allocatable, intent(INOUT):: code(:) !< Encoded array.
+  integer(I1P), allocatable::                nI1P(:) !< One byte integer array containing n.
+  integer(I4P)::                             padd    !< Number of padding characters ('=').
+  integer(I8P)::                             ns      !< Size of n.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
-  if (allocated(code)) deallocate(code) ; allocate(code(1:((size(n,dim=1)*nB+2)/3)*4)) ! allocating code chars
-  nI1P = transfer(n,nI1P)                                                              ! casting n to integer array of 1 byte elem
-  padd = mod((size(n,dim=1)*nB),3_I4P) ; if (padd>0_I4P) padd = 3_I4P - padd           ! computing the number of padding characters
-  call encode_bits(bits=nI1P,padd=padd,code=code)                                      ! encoding bits
+  ns = size(n,dim=1)
+  allocate(nI1P(1:((ns*BYR8P+2)/3)*3)) ; nI1P = 0_I1P
+  if (allocated(code)) deallocate(code) ; allocate(code(1:((ns*BYR8P+2)/3)*4))
+  nI1P = transfer(n,nI1P)
+  padd = mod((ns*BYR8P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
+  call encode_bits(bits=nI1P,padd=padd,code=code)
   return
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_R8_a
 
-  pure subroutine b64_encode_R4_a(nB,n,code)
+  pure subroutine b64_encode_R4_a(n,code)
   !---------------------------------------------------------------------------------------------------------------------------------
   !< Procedure for encoding array numbers to base64 (R4P).
   !---------------------------------------------------------------------------------------------------------------------------------
   implicit none
-  integer(I4P),              intent(IN)::  nB                                 !< Number of bytes of single element of n.
-  real(R4P),                 intent(IN)::  n(1:)                              !< Array of numbers to be encoded.
-  character(1), allocatable, intent(OUT):: code(:)                            !< Encoded array.
-  integer(I1P)::                           nI1P(1:((size(n,dim=1)*nB+2)/3)*3) !< One byte integer array containing n.
-  integer(I4P)::                           padd                               !< Number of padding characters ('=').
+  real(R4P),                 intent(IN)::    n(1:)   !< Array of numbers to be encoded.
+  character(1), allocatable, intent(INOUT):: code(:) !< Encoded array.
+  integer(I1P), allocatable::                nI1P(:) !< One byte integer array containing n.
+  integer(I4P)::                             padd    !< Number of padding characters ('=').
+  integer(I8P)::                             ns      !< Size of n.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
-  if (allocated(code)) deallocate(code) ; allocate(code(1:((size(n,dim=1)*nB+2)/3)*4)) ! allocating code chars
-  nI1P = transfer(n,nI1P)                                                              ! casting n to integer array of 1 byte elem
-  padd = mod((size(n,dim=1)*nB),3_I4P) ; if (padd>0_I4P) padd = 3_I4P - padd           ! computing the number of padding characters
-  call encode_bits(bits=nI1P,padd=padd,code=code)                                      ! encoding bits
+  ns = size(n,dim=1)
+  allocate(nI1P(1:((ns*BYR4P+2)/3)*3)) ; nI1P = 0_I1P
+  if (allocated(code)) deallocate(code) ; allocate(code(1:((ns*BYR4P+2)/3)*4))
+  nI1P = transfer(n,nI1P)
+  padd = mod((ns*BYR4P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
+  call encode_bits(bits=nI1P,padd=padd,code=code)
   return
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_R4_a
 
-  pure subroutine b64_encode_I8_a(nB,n,code)
+  pure subroutine b64_encode_I8_a(n,code)
   !---------------------------------------------------------------------------------------------------------------------------------
   !< Procedure for encoding array numbers to base64 (I8P).
   !---------------------------------------------------------------------------------------------------------------------------------
   implicit none
-  integer(I4P),              intent(IN)::  nB                                 !< Number of bytes of single element of n.
-  integer(I8P),              intent(IN)::  n(1:)                              !< Array of numbers to be encoded.
-  character(1), allocatable, intent(OUT):: code(:)                            !< Encoded array.
-  integer(I1P)::                           nI1P(1:((size(n,dim=1)*nB+2)/3)*3) !< One byte integer array containing n.
-  integer(I4P)::                           padd                               !< Number of padding characters ('=').
+  integer(I8P),              intent(IN)::    n(1:)   !< Array of numbers to be encoded.
+  character(1), allocatable, intent(INOUT):: code(:) !< Encoded array.
+  integer(I1P), allocatable::                nI1P(:) !< One byte integer array containing n.
+  integer(I4P)::                             padd    !< Number of padding characters ('=').
+  integer(I8P)::                             ns      !< Size of n.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
-  if (allocated(code)) deallocate(code) ; allocate(code(1:((size(n,dim=1)*nB+2)/3)*4)) ! allocating code chars
-  nI1P = transfer(n,nI1P)                                                              ! casting n to integer array of 1 byte elem
-  padd = mod((size(n,dim=1)*nB),3_I4P) ; if (padd>0_I4P) padd = 3_I4P - padd           ! computing the number of padding characters
-  call encode_bits(bits=nI1P,padd=padd,code=code)                                      ! encoding bits
+  ns = size(n,dim=1)
+  allocate(nI1P(1:((ns*BYI8P+2)/3)*3)) ; nI1P = 0_I1P
+  if (allocated(code)) deallocate(code) ; allocate(code(1:((ns*BYI8P+2)/3)*4))
+  nI1P = transfer(n,nI1P)
+  padd = mod((ns*BYI8P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
+  call encode_bits(bits=nI1P,padd=padd,code=code)
   return
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_I8_a
 
-  pure subroutine b64_encode_I4_a(nB,n,code)
+  pure subroutine b64_encode_I4_a(n,code)
   !---------------------------------------------------------------------------------------------------------------------------------
   !< Procedure for encoding array numbers to base64 (I4P).
   !---------------------------------------------------------------------------------------------------------------------------------
   implicit none
-  integer(I4P),              intent(IN)::  nB                                 !< Number of bytes of single element of n.
-  integer(I4P),              intent(IN)::  n(1:)                              !< Array of numbers to be encoded.
-  character(1), allocatable, intent(OUT):: code(:)                            !< Encoded array.
-  integer(I1P)::                           nI1P(1:((size(n,dim=1)*nB+2)/3)*3) !< One byte integer array containing n.
-  integer(I4P)::                           padd                               !< Number of padding characters ('=').
+  integer(I4P),              intent(IN)::    n(1:)   !< Array of numbers to be encoded.
+  character(1), allocatable, intent(INOUT):: code(:) !< Encoded array.
+  integer(I1P), allocatable::                nI1P(:) !< One byte integer array containing n.
+  integer(I4P)::                             padd    !< Number of padding characters ('=').
+  integer(I8P)::                             ns      !< Size of n.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
-  if (allocated(code)) deallocate(code) ; allocate(code(1:((size(n,dim=1)*nB+2)/3)*4)) ! allocating code chars
-  nI1P = transfer(n,nI1P)                                                              ! casting n to integer array of 1 byte elem
-  padd = mod((size(n,dim=1)*nB),3_I4P) ; if (padd>0_I4P) padd = 3_I4P - padd           ! computing the number of padding characters
-  call encode_bits(bits=nI1P,padd=padd,code=code)                                      ! encoding bits
+  ns = size(n,dim=1)
+  allocate(nI1P(1:((ns*BYI4P+2)/3)*3)) ; nI1P = 0_I1P
+  if (allocated(code)) deallocate(code) ; allocate(code(1:((ns*BYI4P+2)/3)*4))
+  nI1P = transfer(n,nI1P)
+  padd = mod((ns*BYI4P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
+  call encode_bits(bits=nI1P,padd=padd,code=code)
   return
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_I4_a
 
-  pure subroutine b64_encode_I2_a(nB,n,code)
+  pure subroutine b64_encode_I2_a(n,code)
   !---------------------------------------------------------------------------------------------------------------------------------
   !< Procedure for encoding array numbers to base64 (I2P).
   !---------------------------------------------------------------------------------------------------------------------------------
   implicit none
-  integer(I4P),              intent(IN)::  nB                                 !< Number of bytes of single element of n.
-  integer(I2P),              intent(IN)::  n(1:)                              !< Array of numbers to be encoded.
-  character(1), allocatable, intent(OUT):: code(:)                            !< Encoded array.
-  integer(I1P)::                           nI1P(1:((size(n,dim=1)*nB+2)/3)*3) !< One byte integer array containing n.
-  integer(I4P)::                           padd                               !< Number of padding characters ('=').
+  integer(I2P),              intent(IN)::    n(1:)   !< Array of numbers to be encoded.
+  character(1), allocatable, intent(INOUT):: code(:) !< Encoded array.
+  integer(I1P), allocatable::                nI1P(:) !< One byte integer array containing n.
+  integer(I4P)::                             padd    !< Number of padding characters ('=').
+  integer(I8P)::                             ns      !< Size of n.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
-  if (allocated(code)) deallocate(code) ; allocate(code(1:((size(n,dim=1)*nB+2)/3)*4)) ! allocating code chars
-  nI1P = transfer(n,nI1P)                                                              ! casting n to integer array of 1 byte elem
-  padd = mod((size(n,dim=1)*nB),3_I4P) ; if (padd>0_I4P) padd = 3_I4P - padd           ! computing the number of padding characters
-  call encode_bits(bits=nI1P,padd=padd,code=code)                                      ! encoding bits
+  ns = size(n,dim=1)
+  allocate(nI1P(1:((ns*BYI2P+2)/3)*3)) ; nI1P = 0_I1P
+  if (allocated(code)) deallocate(code) ; allocate(code(1:((ns*BYI2P+2)/3)*4))
+  nI1P = transfer(n,nI1P)
+  padd = mod((ns*BYI2P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
+  call encode_bits(bits=nI1P,padd=padd,code=code)
   return
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_I2_a
 
-  pure subroutine b64_encode_I1_a(nB,n,code)
+  pure subroutine b64_encode_I1_a(n,code)
   !---------------------------------------------------------------------------------------------------------------------------------
   !< Procedure for encoding array numbers to base64 (I1P).
   !---------------------------------------------------------------------------------------------------------------------------------
   implicit none
-  integer(I4P),              intent(IN)::  nB                                 !< Number of bytes of single element of n.
-  integer(I1P),              intent(IN)::  n(1:)                              !< Array of numbers to be encoded.
-  character(1), allocatable, intent(OUT):: code(:)                            !< Encoded array.
-  integer(I1P)::                           nI1P(1:((size(n,dim=1)*nB+2)/3)*3) !< One byte integer array containing n.
-  integer(I4P)::                           padd                               !< Number of padding characters ('=').
+  integer(I1P),              intent(IN)::    n(1:)   !< Array of numbers to be encoded.
+  character(1), allocatable, intent(INOUT):: code(:) !< Encoded array.
+  integer(I1P), allocatable::                nI1P(:) !< One byte integer array containing n.
+  integer(I4P)::                             padd    !< Number of padding characters ('=').
+  integer(I8P)::                             ns      !< Size of n.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
-  if (allocated(code)) deallocate(code) ; allocate(code(1:((size(n,dim=1)*nB+2)/3)*4)) ! allocating code chars
-  nI1P = transfer(n,nI1P)                                                              ! casting n to integer array of 1 byte elem
-  padd = mod((size(n,dim=1)*nB),3_I4P) ; if (padd>0_I4P) padd = 3_I4P - padd           ! computing the number of padding characters
-  call encode_bits(bits=nI1P,padd=padd,code=code)                                      ! encoding bits
+  ns = size(n,dim=1)
+  allocate(nI1P(1:((ns*BYI1P+2)/3)*3)) ; nI1P = 0_I1P
+  if (allocated(code)) deallocate(code) ; allocate(code(1:((ns*BYI1P+2)/3)*4))
+  nI1P = transfer(n,nI1P)
+  padd = mod((ns*BYI1P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
+  call encode_bits(bits=nI1P,padd=padd,code=code)
   return
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_I1_a
@@ -209,8 +237,8 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   !< Procedure for autotesting the library functionalities.
   !<
-  !< @warning The auto-testing capability fails if the -O2+ (Intel Fortran Compiler) optimizations are enabled. It seems due to the
-  !< *inlining* of encoding/decoding procedures.
+  !< @warning The auto-testing capability fails with the Intel Fortran Compiler if the -O2 (or higher) optimizations are enabled.
+  !< It seems due to the *stringify* procedure.
   !<
   !< @note Into the *src* directory there is a small python script (*validation.py) that can be used to validate the library
   !< correctness by a comparison with other widely used tools such as the python builtin module *struct*.
@@ -222,35 +250,35 @@ contains
   integer(I4P)::              array_I4(1:1) = [2023_I4P] !< Integer input to be encoded.
   integer(I2P)::              array_I2(1:1) = [-203_I2P] !< Integer input to be encoded.
   integer(I1P)::              array_I1(1:1) = [120_I1P]  !< Integer input to be encoded.
-  character(1), allocatable:: code(:)                    !< Base64 encoded array.
+  character(1), allocatable:: code64(:)                  !< Base64 encoded array.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
-  call IR_Init
+  call b64_Init
 
-  call b64_encode(nB=int(BYR8P,I4P),n=array_R8,code=code)
-  print "(A,1X,L1)", '+ Code of '//trim(str(n=array_R8(1)))//': "'//stringify(code)//&
-    '", Is it correct?',trim(stringify(code))=='AAAAAAAA8D8='
+  call b64_encode(n=array_R8,code=code64)
+  print "(A,1X,L1)", '+ Code of '//trim(str(n=array_R8(1)))//': "'//stringify(code64)//&
+    '", Is it correct?',trim(stringify(code64))=='AAAAAAAA8D8='
 
-  call b64_encode(nB=int(BYR4P,I4P),n=array_R4,code=code)
-  print "(A,1X,L1)", '+ Code of '//trim(str(n=array_R4(1)))//': "'//stringify(code)//&
-    '", Is it correct?',trim(stringify(code))=='AAAAAA=='
+  call b64_encode(n=array_R4,code=code64)
+  print "(A,1X,L1)", '+ Code of '//trim(str(n=array_R4(1)))//': "'//stringify(code64)//&
+    '", Is it correct?',trim(stringify(code64))=='AAAAAA=='
 
-  call b64_encode(nB=int(BYI8P,I4P),n=array_I8,code=code)
-  print "(A,1X,L1)", '+ Code of '//trim(str(n=array_I8(1)))//': "'//stringify(code)//&
-    '", Is it correct?',trim(stringify(code))=='FwAAAAAAAAA='
+  call b64_encode(n=array_I8,code=code64)
+  print "(A,1X,L1)", '+ Code of '//trim(str(n=array_I8(1)))//': "'//stringify(code64)//&
+    '", Is it correct?',trim(stringify(code64))=='FwAAAAAAAAA='
 
-  call b64_encode(nB=int(BYI4P,I4P),n=array_I4,code=code)
-  print "(A,1X,L1)", '+ Code of '//trim(str(n=array_I4(1)))//': "'//stringify(code)//&
-    '", Is it correct?',trim(stringify(code))=='5wcAAA=='
+  call b64_encode(n=array_I4,code=code64)
+  print "(A,1X,L1)", '+ Code of '//trim(str(n=array_I4(1)))//': "'//stringify(code64)//&
+    '", Is it correct?',trim(stringify(code64))=='5wcAAA=='
 
-  call b64_encode(nB=int(BYI2P,I4P),n=array_I2,code=code)
-  print "(A,1X,L1)", '+ Code of '//trim(str(n=array_I2(1)))//': "'//stringify(code)//&
-    '", Is it correct?',trim(stringify(code))=='Nf8='
+  call b64_encode(n=array_I2,code=code64)
+  print "(A,1X,L1)", '+ Code of '//trim(str(n=array_I2(1)))//': "'//stringify(code64)//&
+    '", Is it correct?',trim(stringify(code64))=='Nf8='
 
-  call b64_encode(nB=int(BYI1P,I4P),n=array_I1,code=code)
-  print "(A,1X,L1)", '+ Code of '//trim(str(n=array_I1(1)))//': "'//stringify(code)//&
-    '", Is it correct?',trim(stringify(code))=='eA=='
+  call b64_encode(n=array_I1,code=code64)
+  print "(A,1X,L1)", '+ Code of '//trim(str(n=array_I1(1)))//': "'//stringify(code64)//&
+    '", Is it correct?',trim(stringify(code64))=='eA=='
   return
   !---------------------------------------------------------------------------------------------------------------------------------
   contains
@@ -267,9 +295,9 @@ contains
     !-------------------------------------------------------------------------------------------------------------------------------
 
     !-------------------------------------------------------------------------------------------------------------------------------
-    forall(i = 1:size(string,dim=1))
+    do i=1,size(string,dim=1)
        char_string(i:i) = string(i)
-    endforall
+    enddo
     return
     !-------------------------------------------------------------------------------------------------------------------------------
     endfunction stringify

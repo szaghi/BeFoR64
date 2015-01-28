@@ -143,6 +143,8 @@
     <div class="panel-heading text-left"><h3 class="panel-title">Subroutines</h3></div>
     <div class="list-group">
       
+      <a class="list-group-item" href="../module/lib_base64.html#proc-b64_init">b64_init</a>
+      
       <a class="list-group-item" href="../module/lib_base64.html#proc-encode_bits">encode_bits</a>
       
       <a class="list-group-item" href="../module/lib_base64.html#proc-b64_encode_R8_a">b64_encode_R8_a</a>
@@ -311,7 +313,7 @@
     
     
     <h3>
-private pure subroutine <a href='../proc/b64_encode_r8_a.html'>b64_encode_R8_a</a>(nB, n, code)
+private pure subroutine <a href='../proc/b64_encode_r8_a.html'>b64_encode_R8_a</a>(n, code)
 </h3>
     
     <h4>Arguments</h4>
@@ -326,21 +328,6 @@ private pure subroutine <a href='../proc/b64_encode_r8_a.html'>b64_encode_R8_a</
 
 
 <tbody>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><a class="anchor" name="var-nB"></a>integer(kind=I4P),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>nB</strong></td><td><p>Number of bytes of single element of n.</p></td>
-  
-</tr>
 
   
   
@@ -364,7 +351,7 @@ private pure subroutine <a href='../proc/b64_encode_r8_a.html'>b64_encode_R8_a</
 <tr>
   
   <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(out),</td>
+  <td>intent(inout),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
@@ -392,7 +379,7 @@ private pure subroutine <a href='../proc/b64_encode_r8_a.html'>b64_encode_R8_a</
     
     
     <h3>
-private pure subroutine <a href='../proc/b64_encode_r4_a.html'>b64_encode_R4_a</a>(nB, n, code)
+private pure subroutine <a href='../proc/b64_encode_r4_a.html'>b64_encode_R4_a</a>(n, code)
 </h3>
     
     <h4>Arguments</h4>
@@ -407,21 +394,6 @@ private pure subroutine <a href='../proc/b64_encode_r4_a.html'>b64_encode_R4_a</
 
 
 <tbody>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><a class="anchor" name="var-nB"></a>integer(kind=I4P),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>nB</strong></td><td><p>Number of bytes of single element of n.</p></td>
-  
-</tr>
 
   
   
@@ -445,7 +417,7 @@ private pure subroutine <a href='../proc/b64_encode_r4_a.html'>b64_encode_R4_a</
 <tr>
   
   <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(out),</td>
+  <td>intent(inout),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
@@ -473,7 +445,7 @@ private pure subroutine <a href='../proc/b64_encode_r4_a.html'>b64_encode_R4_a</
     
     
     <h3>
-private pure subroutine <a href='../proc/b64_encode_i8_a.html'>b64_encode_I8_a</a>(nB, n, code)
+private pure subroutine <a href='../proc/b64_encode_i8_a.html'>b64_encode_I8_a</a>(n, code)
 </h3>
     
     <h4>Arguments</h4>
@@ -488,21 +460,6 @@ private pure subroutine <a href='../proc/b64_encode_i8_a.html'>b64_encode_I8_a</
 
 
 <tbody>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><a class="anchor" name="var-nB"></a>integer(kind=I4P),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>nB</strong></td><td><p>Number of bytes of single element of n.</p></td>
-  
-</tr>
 
   
   
@@ -526,7 +483,7 @@ private pure subroutine <a href='../proc/b64_encode_i8_a.html'>b64_encode_I8_a</
 <tr>
   
   <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(out),</td>
+  <td>intent(inout),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
@@ -554,7 +511,7 @@ private pure subroutine <a href='../proc/b64_encode_i8_a.html'>b64_encode_I8_a</
     
     
     <h3>
-private pure subroutine <a href='../proc/b64_encode_i4_a.html'>b64_encode_I4_a</a>(nB, n, code)
+private pure subroutine <a href='../proc/b64_encode_i4_a.html'>b64_encode_I4_a</a>(n, code)
 </h3>
     
     <h4>Arguments</h4>
@@ -569,21 +526,6 @@ private pure subroutine <a href='../proc/b64_encode_i4_a.html'>b64_encode_I4_a</
 
 
 <tbody>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><a class="anchor" name="var-nB"></a>integer(kind=I4P),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>nB</strong></td><td><p>Number of bytes of single element of n.</p></td>
-  
-</tr>
 
   
   
@@ -607,7 +549,7 @@ private pure subroutine <a href='../proc/b64_encode_i4_a.html'>b64_encode_I4_a</
 <tr>
   
   <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(out),</td>
+  <td>intent(inout),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
@@ -635,7 +577,7 @@ private pure subroutine <a href='../proc/b64_encode_i4_a.html'>b64_encode_I4_a</
     
     
     <h3>
-private pure subroutine <a href='../proc/b64_encode_i2_a.html'>b64_encode_I2_a</a>(nB, n, code)
+private pure subroutine <a href='../proc/b64_encode_i2_a.html'>b64_encode_I2_a</a>(n, code)
 </h3>
     
     <h4>Arguments</h4>
@@ -650,21 +592,6 @@ private pure subroutine <a href='../proc/b64_encode_i2_a.html'>b64_encode_I2_a</
 
 
 <tbody>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><a class="anchor" name="var-nB"></a>integer(kind=I4P),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>nB</strong></td><td><p>Number of bytes of single element of n.</p></td>
-  
-</tr>
 
   
   
@@ -688,7 +615,7 @@ private pure subroutine <a href='../proc/b64_encode_i2_a.html'>b64_encode_I2_a</
 <tr>
   
   <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(out),</td>
+  <td>intent(inout),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
@@ -716,7 +643,7 @@ private pure subroutine <a href='../proc/b64_encode_i2_a.html'>b64_encode_I2_a</
     
     
     <h3>
-private pure subroutine <a href='../proc/b64_encode_i1_a.html'>b64_encode_I1_a</a>(nB, n, code)
+private pure subroutine <a href='../proc/b64_encode_i1_a.html'>b64_encode_I1_a</a>(n, code)
 </h3>
     
     <h4>Arguments</h4>
@@ -731,21 +658,6 @@ private pure subroutine <a href='../proc/b64_encode_i1_a.html'>b64_encode_I1_a</
 
 
 <tbody>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><a class="anchor" name="var-nB"></a>integer(kind=I4P),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>nB</strong></td><td><p>Number of bytes of single element of n.</p></td>
-  
-</tr>
 
   
   
@@ -769,7 +681,7 @@ private pure subroutine <a href='../proc/b64_encode_i1_a.html'>b64_encode_I1_a</
 <tr>
   
   <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(out),</td>
+  <td>intent(inout),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
@@ -809,6 +721,31 @@ private pure subroutine <a href='../proc/b64_encode_i1_a.html'>b64_encode_I1_a</
     
     <section>
     <h2>Subroutines</h2>
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><a class="anchor" name="proc-b64_init"></a><h3>
+private  subroutine <a href='../proc/b64_init.html'>b64_init</a>()
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      <em>None</em>
+    
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for initializing the BeFoR64 library.</p>
+        
+
+  </div>
+  </div>
+
     
     
   <div class="panel panel-default">
@@ -868,7 +805,7 @@ private pure subroutine <a href='../proc/encode_bits.html'>encode_bits</a>(bits,
 <tr>
   
   <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(out)</td>
+  <td>intent(inout)</td>
   <td></td>
   
   <td></td><td>::</td>
@@ -887,7 +824,7 @@ private pure subroutine <a href='../proc/encode_bits.html'>encode_bits</a>(bits,
        
 
 
-       <p>Subroutine for encoding bits (must be multiple of 24 bits) into base64 charcaters code (of length multiple of 4).</p>
+       <p>Procedure for encoding a bits stream (must be multiple of 24 bits) into base64 charcaters code (of length multiple of 4).</p>
         
 
   </div>
@@ -897,7 +834,7 @@ private pure subroutine <a href='../proc/encode_bits.html'>encode_bits</a>(bits,
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_encode_R8_a"></a><h3>
-private pure subroutine <a href='../proc/b64_encode_r8_a.html'>b64_encode_R8_a</a>(nB, n, code)
+private pure subroutine <a href='../proc/b64_encode_r8_a.html'>b64_encode_R8_a</a>(n, code)
 </h3></div>
   <div class="panel-body">
        
@@ -921,21 +858,6 @@ private pure subroutine <a href='../proc/b64_encode_r8_a.html'>b64_encode_R8_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-nB"></a>integer(kind=I4P),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>nB</strong></td><td><p>Number of bytes of single element of n.</p></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
   <td><a class="anchor" name="var-n"></a>real(kind=R8P),</td>
   <td>intent(in)</td>
   <td></td>
@@ -952,7 +874,7 @@ private pure subroutine <a href='../proc/b64_encode_r8_a.html'>b64_encode_R8_a</
 <tr>
   
   <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(out),</td>
+  <td>intent(inout),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
@@ -981,7 +903,7 @@ private pure subroutine <a href='../proc/b64_encode_r8_a.html'>b64_encode_R8_a</
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_encode_R4_a"></a><h3>
-private pure subroutine <a href='../proc/b64_encode_r4_a.html'>b64_encode_R4_a</a>(nB, n, code)
+private pure subroutine <a href='../proc/b64_encode_r4_a.html'>b64_encode_R4_a</a>(n, code)
 </h3></div>
   <div class="panel-body">
        
@@ -1005,21 +927,6 @@ private pure subroutine <a href='../proc/b64_encode_r4_a.html'>b64_encode_R4_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-nB"></a>integer(kind=I4P),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>nB</strong></td><td><p>Number of bytes of single element of n.</p></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
   <td><a class="anchor" name="var-n"></a>real(kind=R4P),</td>
   <td>intent(in)</td>
   <td></td>
@@ -1036,7 +943,7 @@ private pure subroutine <a href='../proc/b64_encode_r4_a.html'>b64_encode_R4_a</
 <tr>
   
   <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(out),</td>
+  <td>intent(inout),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
@@ -1065,7 +972,7 @@ private pure subroutine <a href='../proc/b64_encode_r4_a.html'>b64_encode_R4_a</
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_encode_I8_a"></a><h3>
-private pure subroutine <a href='../proc/b64_encode_i8_a.html'>b64_encode_I8_a</a>(nB, n, code)
+private pure subroutine <a href='../proc/b64_encode_i8_a.html'>b64_encode_I8_a</a>(n, code)
 </h3></div>
   <div class="panel-body">
        
@@ -1089,21 +996,6 @@ private pure subroutine <a href='../proc/b64_encode_i8_a.html'>b64_encode_I8_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-nB"></a>integer(kind=I4P),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>nB</strong></td><td><p>Number of bytes of single element of n.</p></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
   <td><a class="anchor" name="var-n"></a>integer(kind=I8P),</td>
   <td>intent(in)</td>
   <td></td>
@@ -1120,7 +1012,7 @@ private pure subroutine <a href='../proc/b64_encode_i8_a.html'>b64_encode_I8_a</
 <tr>
   
   <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(out),</td>
+  <td>intent(inout),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
@@ -1149,7 +1041,7 @@ private pure subroutine <a href='../proc/b64_encode_i8_a.html'>b64_encode_I8_a</
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_encode_I4_a"></a><h3>
-private pure subroutine <a href='../proc/b64_encode_i4_a.html'>b64_encode_I4_a</a>(nB, n, code)
+private pure subroutine <a href='../proc/b64_encode_i4_a.html'>b64_encode_I4_a</a>(n, code)
 </h3></div>
   <div class="panel-body">
        
@@ -1173,21 +1065,6 @@ private pure subroutine <a href='../proc/b64_encode_i4_a.html'>b64_encode_I4_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-nB"></a>integer(kind=I4P),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>nB</strong></td><td><p>Number of bytes of single element of n.</p></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
   <td><a class="anchor" name="var-n"></a>integer(kind=I4P),</td>
   <td>intent(in)</td>
   <td></td>
@@ -1204,7 +1081,7 @@ private pure subroutine <a href='../proc/b64_encode_i4_a.html'>b64_encode_I4_a</
 <tr>
   
   <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(out),</td>
+  <td>intent(inout),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
@@ -1233,7 +1110,7 @@ private pure subroutine <a href='../proc/b64_encode_i4_a.html'>b64_encode_I4_a</
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_encode_I2_a"></a><h3>
-private pure subroutine <a href='../proc/b64_encode_i2_a.html'>b64_encode_I2_a</a>(nB, n, code)
+private pure subroutine <a href='../proc/b64_encode_i2_a.html'>b64_encode_I2_a</a>(n, code)
 </h3></div>
   <div class="panel-body">
        
@@ -1257,21 +1134,6 @@ private pure subroutine <a href='../proc/b64_encode_i2_a.html'>b64_encode_I2_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-nB"></a>integer(kind=I4P),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>nB</strong></td><td><p>Number of bytes of single element of n.</p></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
   <td><a class="anchor" name="var-n"></a>integer(kind=I2P),</td>
   <td>intent(in)</td>
   <td></td>
@@ -1288,7 +1150,7 @@ private pure subroutine <a href='../proc/b64_encode_i2_a.html'>b64_encode_I2_a</
 <tr>
   
   <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(out),</td>
+  <td>intent(inout),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
@@ -1317,7 +1179,7 @@ private pure subroutine <a href='../proc/b64_encode_i2_a.html'>b64_encode_I2_a</
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_encode_I1_a"></a><h3>
-private pure subroutine <a href='../proc/b64_encode_i1_a.html'>b64_encode_I1_a</a>(nB, n, code)
+private pure subroutine <a href='../proc/b64_encode_i1_a.html'>b64_encode_I1_a</a>(n, code)
 </h3></div>
   <div class="panel-body">
        
@@ -1341,21 +1203,6 @@ private pure subroutine <a href='../proc/b64_encode_i1_a.html'>b64_encode_I1_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-nB"></a>integer(kind=I4P),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>nB</strong></td><td><p>Number of bytes of single element of n.</p></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
   <td><a class="anchor" name="var-n"></a>integer(kind=I1P),</td>
   <td>intent(in)</td>
   <td></td>
@@ -1372,7 +1219,7 @@ private pure subroutine <a href='../proc/b64_encode_i1_a.html'>b64_encode_I1_a</
 <tr>
   
   <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(out),</td>
+  <td>intent(inout),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>

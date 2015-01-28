@@ -132,7 +132,7 @@
       
       <a class="list-group-item" href="../proc/autotest.html#var-array_I1">array_I1</a>
       
-      <a class="list-group-item" href="../proc/autotest.html#var-code">code</a>
+      <a class="list-group-item" href="../proc/autotest.html#var-code64">code64</a>
       
     </div>
   </div>
@@ -177,6 +177,8 @@
       <a class="list-group-item" href="../proc/b64_encode_r4_a.html">b64_encode_R4_a</a>
       
       <a class="list-group-item" href="../proc/b64_encode_r8_a.html">b64_encode_R8_a</a>
+      
+      <a class="list-group-item" href="../proc/b64_init.html">b64_init</a>
       
       <a class="list-group-item" href="../proc/bctoi_i1p.html">bctoi_I1P</a>
       
@@ -397,8 +399,8 @@ public  subroutine autotest()
     
     <h3>Description</h3>
     <p>Procedure for autotesting the library functionalities.</p>
-<p><div class="alert alert-warning" role="alert"><h4>Warning</h4>The auto-testing capability fails if the -O2+ (Intel Fortran Compiler) optimizations are enabled. It seems due to the
- <em>inlining</em> of encoding/decoding procedures.</div></p>
+<p><div class="alert alert-warning" role="alert"><h4>Warning</h4>The auto-testing capability fails with the Intel Fortran Compiler if the -O2 (or higher) optimizations are enabled.
+ It seems due to the <em>stringify</em> procedure.</div></p>
 <p><div class="alert alert-info" role="alert"><h4>Note</h4>Into the <em>src</em> directory there is a small python script (<em>validation.py) that can be used to validate the library
  correctness by a comparison with other widely used tools such as the python builtin module </em>struct*.</div></p>
     
@@ -506,11 +508,11 @@ public  subroutine autotest()
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=1),</td>
+  <td><a class="anchor" name="var-code64"></a>character(len=1),</td>
   
   <td>public,</td>
   <td>allocatable</td><td>::</td>
-  <td><strong>code</strong>(:)</td><td></td><td></td><td><p>Base64 encoded array.</p></td>
+  <td><strong>code64</strong>(:)</td><td></td><td></td><td><p>Base64 encoded array.</p></td>
   
 </tr>
 
