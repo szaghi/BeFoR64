@@ -3,8 +3,8 @@ modes = shared static test-driver
         shared-debug static-debug test-driver-debug
 
 [common-variables]
-$CFLAGS_SHARED = -cpp -c -fpic
-$CFLAGS_STATIC = -cpp -c
+$CFLAGS_SHARED = -cpp -c -assume realloc_lhs -fpic
+$CFLAGS_STATIC = -cpp -c -assume realloc_lhs
 $LFLAGS_SHARED = -shared
 $DEBUG         = -O0 -debug all -check all -warn all -traceback -std03
 $OPTIMIZE      = -O2
