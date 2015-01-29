@@ -147,6 +147,18 @@
       
       <a class="list-group-item" href="../module/lib_base64.html#proc-encode_bits">encode_bits</a>
       
+      <a class="list-group-item" href="../module/lib_base64.html#proc-b64_encode_R8">b64_encode_R8</a>
+      
+      <a class="list-group-item" href="../module/lib_base64.html#proc-b64_encode_R4">b64_encode_R4</a>
+      
+      <a class="list-group-item" href="../module/lib_base64.html#proc-b64_encode_I8">b64_encode_I8</a>
+      
+      <a class="list-group-item" href="../module/lib_base64.html#proc-b64_encode_I4">b64_encode_I4</a>
+      
+      <a class="list-group-item" href="../module/lib_base64.html#proc-b64_encode_I2">b64_encode_I2</a>
+      
+      <a class="list-group-item" href="../module/lib_base64.html#proc-b64_encode_I1">b64_encode_I1</a>
+      
       <a class="list-group-item" href="../module/lib_base64.html#proc-b64_encode_R8_a">b64_encode_R8_a</a>
       
       <a class="list-group-item" href="../module/lib_base64.html#proc-b64_encode_R4_a">b64_encode_R4_a</a>
@@ -313,6 +325,72 @@
     
     
     <h3>
+private pure subroutine <a href='../proc/b64_encode_r8.html'>b64_encode_R8</a>(n, code)
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>real(kind=R8P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong></td><td><p>Number to be encoded.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for encoding scalar number to base64 (R8P).</p>
+        
+
+    </li>
+  
+    <li class="list-group-item">
+    
+    
+    <h3>
 private pure subroutine <a href='../proc/b64_encode_r8_a.html'>b64_encode_R8_a</a>(n, code)
 </h3>
     
@@ -350,12 +428,12 @@ private pure subroutine <a href='../proc/b64_encode_r8_a.html'>b64_encode_R8_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(inout),</td>
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
-  <td><strong>code</strong>(:)</td><td><p>Encoded array.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
   
 </tr>
 
@@ -371,6 +449,72 @@ private pure subroutine <a href='../proc/b64_encode_r8_a.html'>b64_encode_R8_a</
 
 
        <p>Procedure for encoding array numbers to base64 (R8P).</p>
+        
+
+    </li>
+  
+    <li class="list-group-item">
+    
+    
+    <h3>
+private pure subroutine <a href='../proc/b64_encode_r4.html'>b64_encode_R4</a>(n, code)
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>real(kind=R4P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong></td><td><p>Number to be encoded.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for encoding scalar number to base64 (R4P).</p>
         
 
     </li>
@@ -416,12 +560,12 @@ private pure subroutine <a href='../proc/b64_encode_r4_a.html'>b64_encode_R4_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(inout),</td>
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
-  <td><strong>code</strong>(:)</td><td><p>Encoded array.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
   
 </tr>
 
@@ -437,6 +581,72 @@ private pure subroutine <a href='../proc/b64_encode_r4_a.html'>b64_encode_R4_a</
 
 
        <p>Procedure for encoding array numbers to base64 (R4P).</p>
+        
+
+    </li>
+  
+    <li class="list-group-item">
+    
+    
+    <h3>
+private pure subroutine <a href='../proc/b64_encode_i8.html'>b64_encode_I8</a>(n, code)
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>integer(kind=I8P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong></td><td><p>Number to be encoded.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for encoding scalar number to base64 (I8P).</p>
         
 
     </li>
@@ -482,12 +692,12 @@ private pure subroutine <a href='../proc/b64_encode_i8_a.html'>b64_encode_I8_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(inout),</td>
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
-  <td><strong>code</strong>(:)</td><td><p>Encoded array.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
   
 </tr>
 
@@ -503,6 +713,72 @@ private pure subroutine <a href='../proc/b64_encode_i8_a.html'>b64_encode_I8_a</
 
 
        <p>Procedure for encoding array numbers to base64 (I8P).</p>
+        
+
+    </li>
+  
+    <li class="list-group-item">
+    
+    
+    <h3>
+private pure subroutine <a href='../proc/b64_encode_i4.html'>b64_encode_I4</a>(n, code)
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>integer(kind=I4P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong></td><td><p>Number to be encoded.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for encoding scalar number to base64 (I4P).</p>
         
 
     </li>
@@ -548,12 +824,12 @@ private pure subroutine <a href='../proc/b64_encode_i4_a.html'>b64_encode_I4_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(inout),</td>
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
-  <td><strong>code</strong>(:)</td><td><p>Encoded array.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
   
 </tr>
 
@@ -569,6 +845,72 @@ private pure subroutine <a href='../proc/b64_encode_i4_a.html'>b64_encode_I4_a</
 
 
        <p>Procedure for encoding array numbers to base64 (I4P).</p>
+        
+
+    </li>
+  
+    <li class="list-group-item">
+    
+    
+    <h3>
+private pure subroutine <a href='../proc/b64_encode_i2.html'>b64_encode_I2</a>(n, code)
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>integer(kind=I2P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong></td><td><p>Number to be encoded.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for encoding scalar number to base64 (I2P).</p>
         
 
     </li>
@@ -614,12 +956,12 @@ private pure subroutine <a href='../proc/b64_encode_i2_a.html'>b64_encode_I2_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(inout),</td>
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
-  <td><strong>code</strong>(:)</td><td><p>Encoded array.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
   
 </tr>
 
@@ -635,6 +977,72 @@ private pure subroutine <a href='../proc/b64_encode_i2_a.html'>b64_encode_I2_a</
 
 
        <p>Procedure for encoding array numbers to base64 (I2P).</p>
+        
+
+    </li>
+  
+    <li class="list-group-item">
+    
+    
+    <h3>
+private pure subroutine <a href='../proc/b64_encode_i1.html'>b64_encode_I1</a>(n, code)
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>integer(kind=I1P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong></td><td><p>Number to be encoded.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for encoding scalar number to base64 (I1P).</p>
         
 
     </li>
@@ -680,12 +1088,12 @@ private pure subroutine <a href='../proc/b64_encode_i1_a.html'>b64_encode_I1_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(inout),</td>
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
-  <td><strong>code</strong>(:)</td><td><p>Encoded array.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
   
 </tr>
 
@@ -804,12 +1212,12 @@ private pure subroutine <a href='../proc/encode_bits.html'>encode_bits</a>(bits,
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(inout)</td>
+  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
+  <td>intent(out)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>code</strong>(1:)</td><td><p>Characters code.</p></td>
+  <td><strong>code</strong></td><td><p>Characters code.</p></td>
   
 </tr>
 
@@ -825,6 +1233,420 @@ private pure subroutine <a href='../proc/encode_bits.html'>encode_bits</a>(bits,
 
 
        <p>Procedure for encoding a bits stream (must be multiple of 24 bits) into base64 charcaters code (of length multiple of 4).</p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><a class="anchor" name="proc-b64_encode_R8"></a><h3>
+private pure subroutine <a href='../proc/b64_encode_r8.html'>b64_encode_R8</a>(n, code)
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>real(kind=R8P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong></td><td><p>Number to be encoded.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for encoding scalar number to base64 (R8P).</p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><a class="anchor" name="proc-b64_encode_R4"></a><h3>
+private pure subroutine <a href='../proc/b64_encode_r4.html'>b64_encode_R4</a>(n, code)
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>real(kind=R4P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong></td><td><p>Number to be encoded.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for encoding scalar number to base64 (R4P).</p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><a class="anchor" name="proc-b64_encode_I8"></a><h3>
+private pure subroutine <a href='../proc/b64_encode_i8.html'>b64_encode_I8</a>(n, code)
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>integer(kind=I8P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong></td><td><p>Number to be encoded.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for encoding scalar number to base64 (I8P).</p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><a class="anchor" name="proc-b64_encode_I4"></a><h3>
+private pure subroutine <a href='../proc/b64_encode_i4.html'>b64_encode_I4</a>(n, code)
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>integer(kind=I4P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong></td><td><p>Number to be encoded.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for encoding scalar number to base64 (I4P).</p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><a class="anchor" name="proc-b64_encode_I2"></a><h3>
+private pure subroutine <a href='../proc/b64_encode_i2.html'>b64_encode_I2</a>(n, code)
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>integer(kind=I2P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong></td><td><p>Number to be encoded.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for encoding scalar number to base64 (I2P).</p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><a class="anchor" name="proc-b64_encode_I1"></a><h3>
+private pure subroutine <a href='../proc/b64_encode_i1.html'>b64_encode_I1</a>(n, code)
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>integer(kind=I1P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong></td><td><p>Number to be encoded.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for encoding scalar number to base64 (I1P).</p>
         
 
   </div>
@@ -873,12 +1695,12 @@ private pure subroutine <a href='../proc/b64_encode_r8_a.html'>b64_encode_R8_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(inout),</td>
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
-  <td><strong>code</strong>(:)</td><td><p>Encoded array.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
   
 </tr>
 
@@ -942,12 +1764,12 @@ private pure subroutine <a href='../proc/b64_encode_r4_a.html'>b64_encode_R4_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(inout),</td>
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
-  <td><strong>code</strong>(:)</td><td><p>Encoded array.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
   
 </tr>
 
@@ -1011,12 +1833,12 @@ private pure subroutine <a href='../proc/b64_encode_i8_a.html'>b64_encode_I8_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(inout),</td>
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
-  <td><strong>code</strong>(:)</td><td><p>Encoded array.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
   
 </tr>
 
@@ -1080,12 +1902,12 @@ private pure subroutine <a href='../proc/b64_encode_i4_a.html'>b64_encode_I4_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(inout),</td>
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
-  <td><strong>code</strong>(:)</td><td><p>Encoded array.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
   
 </tr>
 
@@ -1149,12 +1971,12 @@ private pure subroutine <a href='../proc/b64_encode_i2_a.html'>b64_encode_I2_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(inout),</td>
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
-  <td><strong>code</strong>(:)</td><td><p>Encoded array.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
   
 </tr>
 
@@ -1218,12 +2040,12 @@ private pure subroutine <a href='../proc/b64_encode_i1_a.html'>b64_encode_I1_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=1),</td>
-  <td>intent(inout),</td>
+  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
+  <td>intent(out),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
-  <td><strong>code</strong>(:)</td><td><p>Encoded array.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
   
 </tr>
 
