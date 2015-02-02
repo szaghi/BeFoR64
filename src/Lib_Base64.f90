@@ -27,7 +27,33 @@ character(64):: base64="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123
 
 !-----------------------------------------------------------------------------------------------------------------------------------
 interface b64_encode
-!< Procedure for encoding numbers (integer and real) to base64.
+  !< Procedure for encoding numbers (integer and real) to base64.
+  !<
+  !< This is an interface for encoding integer and real numbers of any kinds into a base64 string. This interface can encode both
+  !< scalar and array.
+  !<
+  !< @warning The encoded string is returned as varying length character string, `character(len=:), allocatable:: string`, thus the
+  !< compiler must support such a Fortran (2003) feature.
+  !<
+  !<### Usage
+  !< For a practical example see the `autotest` procedure.
+  !<
+  !<#### Scalar encoding
+  !<```fortran
+  !<character(len=:), allocatable:: code64 ! base64 encoded string
+  !<...
+  !<call b64_encode(n=12._R8P,code=code64)
+  !<```
+  !<
+  !<#### Array encoding
+  !<```fortran
+  !<character(len=:), allocatable:: code64 ! base64 encoded string
+  !<...
+  !<call b64_encode(n=[12_I4P,1_I4P],code=code64)
+  !<```
+  !<
+  !< @note If you want to encode heterogenous data (e.g. integer and real numbers), you must use the auxiliary `pack_data`
+  !< procedure.
   module procedure &
 #ifdef r16p
                    b64_encode_R16,b64_encode_R16_a, &
@@ -40,7 +66,30 @@ interface b64_encode
                    b64_encode_I1, b64_encode_I1_a
 endinterface
 interface b64_decode
-!< Procedure for decoding numbers (integer and real) from base64.
+  !< Procedure for decoding numbers (integer and real) from base64.
+  !<
+  !< This is an interface for decoding integer and real numbers of any kinds from a base64 string. This interface can decode both
+  !< scalar and array.
+  !<
+  !<### Usage
+  !< For a practical example see the `autotest` procedure.
+  !<
+  !<#### Scalar decoding
+  !<```fortran
+  !<real(R8P):: decoded ! scalar to be decoded
+  !<...
+  !<call b64_decode(code='AAAAAAAA8D8=',n=decoded)
+  !<```
+  !<
+  !<#### Array decoding
+  !<```fortran
+  !<integer(I8P):: decoded(1:4) ! array to be decoded
+  !<...
+  !<call b64_decode(code='FwAAAAAAAABEAQAAAAAAABBwhAEAAAAAAgAAAAAAAAA=',n=decoded)
+  !<```
+  !<
+  !< @note If you want to decode heterogenous data (e.g. integer and real numbers), you must use the auxiliary `pack_data`
+  !< procedure.
   module procedure &
 #ifdef r16p
                    b64_decode_R16,b64_decode_R16_a, &
@@ -82,7 +131,10 @@ contains
   !< +--1.index--+--2.index--+--3.index--+--4.index--+
   !<```
   !< @note The 4 indexes are stored into 4 elements 8 bits array, thus 2 bits of each array element are not used.
+  !<
   !< @note The number of paddings must be computed outside this procedure, into the calling scope.
+  !<
+  !< @warning This procedure is the backend of encoding, thus it must be never called outside the module.
   !---------------------------------------------------------------------------------------------------------------------------------
   implicit none
   integer(I1P), intent(IN)::  bits(1:)  !< Bits to be encoded.
@@ -131,6 +183,8 @@ contains
   !< +-----8 bits----+-----8 bits----+-----8 bits----+
   !<```
   !< @note The bits pattern is returned as a 1-byte element array, the dimension of witch must be computed outside this procedure.
+  !<
+  !< @warning This procedure is the backend of decoding, thus it must be never called outside the module.
   !---------------------------------------------------------------------------------------------------------------------------------
   implicit none
   character(*), intent(IN)::  code      !< Characters code.
