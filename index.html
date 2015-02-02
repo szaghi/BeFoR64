@@ -110,9 +110,9 @@
 <ul class="checklist">
 <li><input type="checkbox" disabled> User-friendly methods for encoding/decoding in base64:<ul class="checklist">
 <li><input type="checkbox" disabled checked> encode real/integer scalar variables;</li>
-<li><input type="checkbox" disabled> decode real/integer scalar variables;</li>
+<li><input type="checkbox" disabled checked> decode real/integer scalar variables;</li>
 <li><input type="checkbox" disabled checked> encode real/integer array variables;</li>
-<li><input type="checkbox" disabled> decode real/integer array variables;</li>
+<li><input type="checkbox" disabled checked> decode real/integer array variables;</li>
 <li><input type="checkbox" disabled> encode character scalar variables;</li>
 <li><input type="checkbox" disabled> decode character scalar variables;</li>
 <li><input type="checkbox" disabled> encode character array variables;</li>
@@ -146,11 +146,22 @@
 <p>Go to <a href="#top">Top</a></p>
 <h2>Version History</h2>
 <p>In the following the changelog of most important releases is reported.</p>
+<h3>v1.0.0</h3>
+<h5>Download <a href="https://github.com/szaghi/BeFoR64/archive/v1.0.0.zip">ZIP</a> ball or <a href="https://github.com/szaghi/BeFoR64/archive/v1.0.0.tar.gz">TAR</a> one</h5>
+<p>Stable Release. Fully backward compatible.</p>
 <h3>v0.0.1</h3>
 <h5>Download <a href="https://github.com/szaghi/BeFoR64/archive/v0.0.1.zip">ZIP</a> ball or <a href="https://github.com/szaghi/BeFoR64/archive/v0.0.1.tar.gz">TAR</a> one</h5>
 <p>First Stable Release.</p>
 <p>Go to <a href="#top">Top</a></p>
 <h3>ChangeLog</h3>
+<h3>Version v1.0.0</h3>
+<p>Stable release. Fully backward compatible:</p>
+<ul>
+<li>add scalar encoders for numbers;</li>
+<li>add scalar/array decoders for numbers;</li>
+<li>add initializing procedure;</li>
+<li>add autotest procedure.</li>
+</ul>
 <h3>Version v0.0.1</h3>
 <p>First stable release.</p>
         </div>
@@ -239,43 +250,79 @@
                   
                 
                   
-                    <li><a href='./interface/b64_encode.html'>b64_encode</a></li>
+                    <li><a href='./interface/b64_decode.html'>b64_decode</a></li>
                   
                 
                   
-                    <li><a href='./proc/b64_encode_i1.html'>b64_encode_I1</a></li>
+                    <li><a href='./proc/b64_decode_i1.html'>b64_decode_I1</a></li>
                   
                 
                   
-                    <li><a href='./proc/b64_encode_i1_a.html'>b64_encode_I1_a</a></li>
+                    <li><a href='./proc/b64_decode_i1_a.html'>b64_decode_I1_a</a></li>
                   
                 
                   
-                    <li><a href='./proc/b64_encode_i2.html'>b64_encode_I2</a></li>
+                    <li><a href='./proc/b64_decode_i2.html'>b64_decode_I2</a></li>
                   
                 
                   
-                    <li><a href='./proc/b64_encode_i2_a.html'>b64_encode_I2_a</a></li>
+                    <li><a href='./proc/b64_decode_i2_a.html'>b64_decode_I2_a</a></li>
                   
                 
                   
-                    <li><a href='./proc/b64_encode_i4.html'>b64_encode_I4</a></li>
+                    <li><a href='./proc/b64_decode_i4.html'>b64_decode_I4</a></li>
                   
                 
                   
-                    <li><a href='./proc/b64_encode_i4_a.html'>b64_encode_I4_a</a></li>
+                    <li><a href='./proc/b64_decode_i4_a.html'>b64_decode_I4_a</a></li>
                   
                 
                   
-                    <li><a href='./proc/b64_encode_i8.html'>b64_encode_I8</a></li>
+                    <li><a href='./proc/b64_decode_i8.html'>b64_decode_I8</a></li>
                   
                 
                   
-                    <li><a href='./proc/b64_encode_i8_a.html'>b64_encode_I8_a</a></li>
+                    <li><a href='./proc/b64_decode_i8_a.html'>b64_decode_I8_a</a></li>
                   
                 
                   
                     <li><a href="./lists/procedures.html"><em>All procedures&hellip;</em></a></li>
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
                   
                 
                   

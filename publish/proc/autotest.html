@@ -120,6 +120,8 @@
     <div class="panel-heading text-left"><h3 class="panel-title">Variables</h3></div>
     <div class="list-group">
       
+      <a class="list-group-item" href="../proc/autotest.html#var-scalar_R16">scalar_R16</a>
+      
       <a class="list-group-item" href="../proc/autotest.html#var-scalar_R8">scalar_R8</a>
       
       <a class="list-group-item" href="../proc/autotest.html#var-scalar_R4">scalar_R4</a>
@@ -131,6 +133,8 @@
       <a class="list-group-item" href="../proc/autotest.html#var-scalar_I2">scalar_I2</a>
       
       <a class="list-group-item" href="../proc/autotest.html#var-scalar_I1">scalar_I1</a>
+      
+      <a class="list-group-item" href="../proc/autotest.html#var-array_R16">array_R16</a>
       
       <a class="list-group-item" href="../proc/autotest.html#var-array_R8">array_R8</a>
       
@@ -167,6 +171,36 @@
       
       <a class="list-group-item" href="../proc/autotest.html">autotest</a>
       
+      <a class="list-group-item" href="../interface/b64_decode.html">b64_decode</a>
+      
+      <a class="list-group-item" href="../proc/b64_decode_i1.html">b64_decode_I1</a>
+      
+      <a class="list-group-item" href="../proc/b64_decode_i1_a.html">b64_decode_I1_a</a>
+      
+      <a class="list-group-item" href="../proc/b64_decode_i2.html">b64_decode_I2</a>
+      
+      <a class="list-group-item" href="../proc/b64_decode_i2_a.html">b64_decode_I2_a</a>
+      
+      <a class="list-group-item" href="../proc/b64_decode_i4.html">b64_decode_I4</a>
+      
+      <a class="list-group-item" href="../proc/b64_decode_i4_a.html">b64_decode_I4_a</a>
+      
+      <a class="list-group-item" href="../proc/b64_decode_i8.html">b64_decode_I8</a>
+      
+      <a class="list-group-item" href="../proc/b64_decode_i8_a.html">b64_decode_I8_a</a>
+      
+      <a class="list-group-item" href="../proc/b64_decode_r16.html">b64_decode_R16</a>
+      
+      <a class="list-group-item" href="../proc/b64_decode_r16_a.html">b64_decode_R16_a</a>
+      
+      <a class="list-group-item" href="../proc/b64_decode_r4.html">b64_decode_R4</a>
+      
+      <a class="list-group-item" href="../proc/b64_decode_r4_a.html">b64_decode_R4_a</a>
+      
+      <a class="list-group-item" href="../proc/b64_decode_r8.html">b64_decode_R8</a>
+      
+      <a class="list-group-item" href="../proc/b64_decode_r8_a.html">b64_decode_R8_a</a>
+      
       <a class="list-group-item" href="../interface/b64_encode.html">b64_encode</a>
       
       <a class="list-group-item" href="../proc/b64_encode_i1.html">b64_encode_I1</a>
@@ -184,6 +218,10 @@
       <a class="list-group-item" href="../proc/b64_encode_i8.html">b64_encode_I8</a>
       
       <a class="list-group-item" href="../proc/b64_encode_i8_a.html">b64_encode_I8_a</a>
+      
+      <a class="list-group-item" href="../proc/b64_encode_r16.html">b64_encode_R16</a>
+      
+      <a class="list-group-item" href="../proc/b64_encode_r16_a.html">b64_encode_R16_a</a>
       
       <a class="list-group-item" href="../proc/b64_encode_r4.html">b64_encode_R4</a>
       
@@ -270,6 +308,8 @@
       <a class="list-group-item" href="../proc/ctor_r4p.html">ctor_R4P</a>
       
       <a class="list-group-item" href="../proc/ctor_r8p.html">ctor_R8P</a>
+      
+      <a class="list-group-item" href="../proc/decode_bits.html">decode_bits</a>
       
       <a class="list-group-item" href="../interface/digit.html">digit</a>
       
@@ -437,6 +477,20 @@ public  subroutine autotest()
   
 <tr>
   
+  <td><a class="anchor" name="var-scalar_R16"></a>real(kind=R16P),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>scalar_R16</strong></td><td> =</td><td>134.231_R16P</td><td><p>Real input to be encoded.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
   <td><a class="anchor" name="var-scalar_R8"></a>real(kind=R8P),</td>
   
   <td>public</td>
@@ -521,11 +575,25 @@ public  subroutine autotest()
   
 <tr>
   
+  <td><a class="anchor" name="var-array_R16"></a>real(kind=R16P),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>array_R16</strong>(1:2)</td><td> =</td><td>[121._R16P,2.32_R16P]</td><td><p>Real input to be encoded.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
   <td><a class="anchor" name="var-array_R8"></a>real(kind=R8P),</td>
   
   <td>public</td>
   <td></td><td>::</td>
-  <td><strong>array_R8</strong>(1:2)</td><td> =</td><td>[1.0,2.0]</td><td><p>Real input to be encoded.</p></td>
+  <td><strong>array_R8</strong>(1:2)</td><td> =</td><td>[1._R8P,2._R8P]</td><td><p>Real input to be encoded.</p></td>
   
 </tr>
 
@@ -539,7 +607,7 @@ public  subroutine autotest()
   
   <td>public</td>
   <td></td><td>::</td>
-  <td><strong>array_R4</strong>(1:2)</td><td> =</td><td>[0.0,-32.12]</td><td><p>Real input to be encoded.</p></td>
+  <td><strong>array_R4</strong>(1:2)</td><td> =</td><td>[0._R4P,-32.12_R4P]</td><td><p>Real input to be encoded.</p></td>
   
 </tr>
 
