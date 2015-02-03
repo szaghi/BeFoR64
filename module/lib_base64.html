@@ -118,6 +118,8 @@
     <div class="panel-heading text-left"><h3 class="panel-title">Variables</h3></div>
     <div class="list-group">
       
+      <a class="list-group-item" href="../module/lib_base64.html#var-b64_initialized">b64_initialized</a>
+      
       <a class="list-group-item" href="../module/lib_base64.html#var-base64">base64</a>
       
     </div>
@@ -281,7 +283,7 @@
 <li><input type="checkbox" disabled checked> pack integer/real arrays;</li>
 </ul>
 </li>
-<li><input type="checkbox" disabled checked> errors trapping mechanism.</li>
+<li><input type="checkbox" disabled> errors trapping mechanism.</li>
 </ul>
 <p>Any feature request is welcome.</p>
 <p>Go to <a href="#top">Top</a></p>
@@ -327,6 +329,20 @@
 
 
 <tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-b64_initialized"></a>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>b64_initialized</strong></td><td> =</td><td>.false.</td><td><p>Flag for chcecking the initialization of the library.</p></td>
+  
+</tr>
 
   
   
@@ -2256,7 +2272,7 @@ private pure subroutine <a href='../proc/b64_decode_i1_a.html'>b64_decode_I1_a</
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_init"></a><h3>
-private  subroutine <a href='../proc/b64_init.html'>b64_init</a>()
+public  subroutine <a href='../proc/b64_init.html'>b64_init</a>()
 </h3></div>
   <div class="panel-body">
        

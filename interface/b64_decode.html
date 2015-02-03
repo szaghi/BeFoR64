@@ -440,6 +440,8 @@
 	 <p>Procedure for decoding numbers (integer and real) from base64.</p>
 <p>This is an interface for decoding integer and real numbers of any kinds from a base64 string. This interface can decode both
  scalar and array.</p>
+<p><div class="alert alert-info" role="alert"><h4>Note</h4>Before start to decode anything the library must be initialized. The procedure <code>b64_init</code> must be called at first. The
+ global variable <code>b64_initialized</code> can be used to check the status of the initialization.</div></p>
 <h3>Usage</h3>
 <p>For a practical example see the <code>autotest</code> procedure.</p>
 <h4>Scalar decoding</h4>

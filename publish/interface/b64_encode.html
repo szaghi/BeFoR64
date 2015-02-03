@@ -442,6 +442,8 @@
  scalar and array.</p>
 <p><div class="alert alert-warning" role="alert"><h4>Warning</h4>The encoded string is returned as varying length character string, <code>character(len=:), allocatable:: string</code>, thus the
  compiler must support such a Fortran (2003) feature.</div></p>
+<p><div class="alert alert-info" role="alert"><h4>Note</h4>Before start to encode anything the library must be initialized. The procedure <code>b64_init</code> must be called at first. The
+ global variable <code>b64_initialized</code> can be used to check the status of the initialization.</div></p>
 <h3>Usage</h3>
 <p>For a practical example see the <code>autotest</code> procedure.</p>
 <h4>Scalar encoding</h4>

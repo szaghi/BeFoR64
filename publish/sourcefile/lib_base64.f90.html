@@ -172,10 +172,12 @@
 <span class="k">public</span><span class="kd">::</span> <span class="n">b64_encode</span>
 <span class="k">public</span><span class="kd">::</span> <span class="n">b64_decode</span>
 <span class="k">public</span><span class="kd">::</span> <span class="n">pack_data</span>
+<span class="k">public</span><span class="kd">::</span> <span class="n">b64_initialized</span><span class="p">,</span><span class="n">b64_init</span>
 <span class="k">public</span><span class="kd">::</span> <span class="n">autotest</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="kt">logical</span><span class="kd">::</span>       <span class="n">b64_initialized</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span> <span class="c">!&lt; Flag for chcecking the initialization of the library.</span>
 <span class="kt">character</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span><span class="kd">::</span> <span class="n">base64</span><span class="o">=</span><span class="s2">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;</span> <span class="c">!&lt; Base64 alphabet.</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 
@@ -188,6 +190,9 @@
   <span class="c">!&lt;</span>
   <span class="c">!&lt; @warning The encoded string is returned as varying length character string, `character(len=:), allocatable:: string`, thus the</span>
   <span class="c">!&lt; compiler must support such a Fortran (2003) feature.</span>
+  <span class="c">!&lt;</span>
+  <span class="c">!&lt; @note Before start to encode anything the library must be initialized. The procedure `b64_init` must be called at first. The</span>
+  <span class="c">!&lt; global variable `b64_initialized` can be used to check the status of the initialization.</span>
   <span class="c">!&lt;</span>
   <span class="c">!&lt;### Usage</span>
   <span class="c">!&lt; For a practical example see the `autotest` procedure.</span>
@@ -224,6 +229,9 @@
   <span class="c">!&lt;</span>
   <span class="c">!&lt; This is an interface for decoding integer and real numbers of any kinds from a base64 string. This interface can decode both</span>
   <span class="c">!&lt; scalar and array.</span>
+  <span class="c">!&lt;</span>
+  <span class="c">!&lt; @note Before start to decode anything the library must be initialized. The procedure `b64_init` must be called at first. The</span>
+  <span class="c">!&lt; global variable `b64_initialized` can be used to check the status of the initialization.</span>
   <span class="c">!&lt;</span>
   <span class="c">!&lt;### Usage</span>
   <span class="c">!&lt; For a practical example see the `autotest` procedure.</span>
@@ -267,7 +275,8 @@
   <span class="c">!---------------------------------------------------------------------------------------------------------------------------------</span>
 
   <span class="c">!---------------------------------------------------------------------------------------------------------------------------------</span>
-  <span class="k">call </span><span class="n">IR_Init</span>
+  <span class="k">if</span> <span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="n">ir_initialized</span><span class="p">)</span> <span class="k">call </span><span class="n">IR_Init</span>
+  <span class="n">b64_initialized</span> <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>
   <span class="k">return</span>
   <span class="c">!---------------------------------------------------------------------------------------------------------------------------------</span>
   <span class="n">endsubroutine</span> <span class="n">b64_init</span>
