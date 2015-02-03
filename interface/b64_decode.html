@@ -158,6 +158,10 @@
       
       <a class="list-group-item" href="../interface/b64_decode.html#proc-b64_decode_I1_a">b64_decode_I1_a</a>
       
+      <a class="list-group-item" href="../interface/b64_decode.html#proc-b64_decode_string">b64_decode_string</a>
+      
+      <a class="list-group-item" href="../interface/b64_decode.html#proc-b64_decode_string_a">b64_decode_string_a</a>
+      
     </div>
   </div>
   
@@ -199,6 +203,16 @@
       
       <a class="list-group-item" href="../proc/b64_decode_r8_a.html">b64_decode_R8_a</a>
       
+      <a class="list-group-item" href="../proc/b64_decode_string.html">b64_decode_string</a>
+      
+      <a class="list-group-item" href="../proc/b64_decode_string_a.html">b64_decode_string_a</a>
+      
+      <a class="list-group-item" href="../proc/b64_decode_up.html">b64_decode_up</a>
+      
+      <a class="list-group-item" href="../interface/b64_decode_up.html">b64_decode_up</a>
+      
+      <a class="list-group-item" href="../proc/b64_decode_up_a.html">b64_decode_up_a</a>
+      
       <a class="list-group-item" href="../interface/b64_encode.html">b64_encode</a>
       
       <a class="list-group-item" href="../proc/b64_encode_i1.html">b64_encode_I1</a>
@@ -228,6 +242,16 @@
       <a class="list-group-item" href="../proc/b64_encode_r8.html">b64_encode_R8</a>
       
       <a class="list-group-item" href="../proc/b64_encode_r8_a.html">b64_encode_R8_a</a>
+      
+      <a class="list-group-item" href="../proc/b64_encode_string.html">b64_encode_string</a>
+      
+      <a class="list-group-item" href="../proc/b64_encode_string_a.html">b64_encode_string_a</a>
+      
+      <a class="list-group-item" href="../proc/b64_encode_up.html">b64_encode_up</a>
+      
+      <a class="list-group-item" href="../interface/b64_encode_up.html">b64_encode_up</a>
+      
+      <a class="list-group-item" href="../proc/b64_encode_up_a.html">b64_encode_up_a</a>
       
       <a class="list-group-item" href="../proc/b64_init.html">b64_init</a>
       
@@ -460,6 +484,7 @@
 
 <p><div class="alert alert-info" role="alert"><h4>Note</h4>If you want to decode heterogenous data (e.g. integer and real numbers), you must use the auxiliary <code>pack_data</code>
  procedure.</div></p>
+<p><div class="alert alert-warning" role="alert"><h4>Warning</h4>The decoding of array of strings is admitted only if each string of the array has the same length.</div></p>
     <br>
 	
 	
@@ -472,7 +497,7 @@
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_R16"></a><h3>
-private  subroutine <a href='../proc/b64_decode_r16.html'>b64_decode_R16</a>(n, code)
+private  subroutine <a href='../proc/b64_decode_r16.html'>b64_decode_R16</a>(code, n)
 </h3></div>
   <div class="panel-body">
        
@@ -496,12 +521,12 @@ private  subroutine <a href='../proc/b64_decode_r16.html'>b64_decode_R16</a>(n, 
   
 <tr>
   
-  <td><a class="anchor" name="var-n"></a>real(kind=R16P),</td>
-  <td>intent(out)</td>
+  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
+  <td>intent(in)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>n</strong></td><td><p>Number to be decoded.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded scalar.</p></td>
   
 </tr>
 
@@ -511,12 +536,12 @@ private  subroutine <a href='../proc/b64_decode_r16.html'>b64_decode_R16</a>(n, 
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
-  <td>intent(in)</td>
+  <td><a class="anchor" name="var-n"></a>real(kind=R16P),</td>
+  <td>intent(out)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>code</strong></td><td><p>Encoded scalar.</p></td>
+  <td><strong>n</strong></td><td><p>Number to be decoded.</p></td>
   
 </tr>
 
@@ -541,7 +566,7 @@ private  subroutine <a href='../proc/b64_decode_r16.html'>b64_decode_R16</a>(n, 
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_R16_a"></a><h3>
-private pure subroutine <a href='../proc/b64_decode_r16_a.html'>b64_decode_R16_a</a>(n, code)
+private pure subroutine <a href='../proc/b64_decode_r16_a.html'>b64_decode_R16_a</a>(code, n)
 </h3></div>
   <div class="panel-body">
        
@@ -565,12 +590,12 @@ private pure subroutine <a href='../proc/b64_decode_r16_a.html'>b64_decode_R16_a
   
 <tr>
   
-  <td><a class="anchor" name="var-n"></a>real(kind=R16P),</td>
-  <td>intent(out)</td>
+  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
+  <td>intent(in)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>n</strong>(1:)</td><td><p>Array of numbers to be decoded.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
   
 </tr>
 
@@ -580,12 +605,12 @@ private pure subroutine <a href='../proc/b64_decode_r16_a.html'>b64_decode_R16_a
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
-  <td>intent(in),</td>
+  <td><a class="anchor" name="var-n"></a>real(kind=R16P),</td>
+  <td>intent(out)</td>
   <td></td>
   
-  <td>allocatable</td><td>::</td>
-  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
+  <td></td><td>::</td>
+  <td><strong>n</strong>(1:)</td><td><p>Array of numbers to be decoded.</p></td>
   
 </tr>
 
@@ -610,7 +635,7 @@ private pure subroutine <a href='../proc/b64_decode_r16_a.html'>b64_decode_R16_a
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_R8"></a><h3>
-private  subroutine <a href='../proc/b64_decode_r8.html'>b64_decode_R8</a>(n, code)
+private  subroutine <a href='../proc/b64_decode_r8.html'>b64_decode_R8</a>(code, n)
 </h3></div>
   <div class="panel-body">
        
@@ -634,12 +659,12 @@ private  subroutine <a href='../proc/b64_decode_r8.html'>b64_decode_R8</a>(n, co
   
 <tr>
   
-  <td><a class="anchor" name="var-n"></a>real(kind=R8P),</td>
-  <td>intent(out)</td>
+  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
+  <td>intent(in)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>n</strong></td><td><p>Number to be decoded.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded scalar.</p></td>
   
 </tr>
 
@@ -649,12 +674,12 @@ private  subroutine <a href='../proc/b64_decode_r8.html'>b64_decode_R8</a>(n, co
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
-  <td>intent(in)</td>
+  <td><a class="anchor" name="var-n"></a>real(kind=R8P),</td>
+  <td>intent(out)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>code</strong></td><td><p>Encoded scalar.</p></td>
+  <td><strong>n</strong></td><td><p>Number to be decoded.</p></td>
   
 </tr>
 
@@ -679,7 +704,7 @@ private  subroutine <a href='../proc/b64_decode_r8.html'>b64_decode_R8</a>(n, co
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_R8_a"></a><h3>
-private pure subroutine <a href='../proc/b64_decode_r8_a.html'>b64_decode_R8_a</a>(n, code)
+private pure subroutine <a href='../proc/b64_decode_r8_a.html'>b64_decode_R8_a</a>(code, n)
 </h3></div>
   <div class="panel-body">
        
@@ -703,12 +728,12 @@ private pure subroutine <a href='../proc/b64_decode_r8_a.html'>b64_decode_R8_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-n"></a>real(kind=R8P),</td>
-  <td>intent(out)</td>
+  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
+  <td>intent(in)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>n</strong>(1:)</td><td><p>Array of numbers to be decoded.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
   
 </tr>
 
@@ -718,12 +743,12 @@ private pure subroutine <a href='../proc/b64_decode_r8_a.html'>b64_decode_R8_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
-  <td>intent(in),</td>
+  <td><a class="anchor" name="var-n"></a>real(kind=R8P),</td>
+  <td>intent(out)</td>
   <td></td>
   
-  <td>allocatable</td><td>::</td>
-  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
+  <td></td><td>::</td>
+  <td><strong>n</strong>(1:)</td><td><p>Array of numbers to be decoded.</p></td>
   
 </tr>
 
@@ -748,7 +773,7 @@ private pure subroutine <a href='../proc/b64_decode_r8_a.html'>b64_decode_R8_a</
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_R4"></a><h3>
-private  subroutine <a href='../proc/b64_decode_r4.html'>b64_decode_R4</a>(n, code)
+private  subroutine <a href='../proc/b64_decode_r4.html'>b64_decode_R4</a>(code, n)
 </h3></div>
   <div class="panel-body">
        
@@ -772,12 +797,12 @@ private  subroutine <a href='../proc/b64_decode_r4.html'>b64_decode_R4</a>(n, co
   
 <tr>
   
-  <td><a class="anchor" name="var-n"></a>real(kind=R4P),</td>
-  <td>intent(out)</td>
+  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
+  <td>intent(in)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>n</strong></td><td><p>Number to be decoded.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded scalar.</p></td>
   
 </tr>
 
@@ -787,12 +812,12 @@ private  subroutine <a href='../proc/b64_decode_r4.html'>b64_decode_R4</a>(n, co
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
-  <td>intent(in)</td>
+  <td><a class="anchor" name="var-n"></a>real(kind=R4P),</td>
+  <td>intent(out)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>code</strong></td><td><p>Encoded scalar.</p></td>
+  <td><strong>n</strong></td><td><p>Number to be decoded.</p></td>
   
 </tr>
 
@@ -817,7 +842,7 @@ private  subroutine <a href='../proc/b64_decode_r4.html'>b64_decode_R4</a>(n, co
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_R4_a"></a><h3>
-private pure subroutine <a href='../proc/b64_decode_r4_a.html'>b64_decode_R4_a</a>(n, code)
+private pure subroutine <a href='../proc/b64_decode_r4_a.html'>b64_decode_R4_a</a>(code, n)
 </h3></div>
   <div class="panel-body">
        
@@ -841,12 +866,12 @@ private pure subroutine <a href='../proc/b64_decode_r4_a.html'>b64_decode_R4_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-n"></a>real(kind=R4P),</td>
-  <td>intent(out)</td>
+  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
+  <td>intent(in)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>n</strong>(1:)</td><td><p>Array of numbers to be decoded.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
   
 </tr>
 
@@ -856,12 +881,12 @@ private pure subroutine <a href='../proc/b64_decode_r4_a.html'>b64_decode_R4_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
-  <td>intent(in),</td>
+  <td><a class="anchor" name="var-n"></a>real(kind=R4P),</td>
+  <td>intent(out)</td>
   <td></td>
   
-  <td>allocatable</td><td>::</td>
-  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
+  <td></td><td>::</td>
+  <td><strong>n</strong>(1:)</td><td><p>Array of numbers to be decoded.</p></td>
   
 </tr>
 
@@ -886,7 +911,7 @@ private pure subroutine <a href='../proc/b64_decode_r4_a.html'>b64_decode_R4_a</
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_I8"></a><h3>
-private  subroutine <a href='../proc/b64_decode_i8.html'>b64_decode_I8</a>(n, code)
+private  subroutine <a href='../proc/b64_decode_i8.html'>b64_decode_I8</a>(code, n)
 </h3></div>
   <div class="panel-body">
        
@@ -910,12 +935,12 @@ private  subroutine <a href='../proc/b64_decode_i8.html'>b64_decode_I8</a>(n, co
   
 <tr>
   
-  <td><a class="anchor" name="var-n"></a>integer(kind=I8P),</td>
-  <td>intent(out)</td>
+  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
+  <td>intent(in)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>n</strong></td><td><p>Number to be decoded.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded scalar.</p></td>
   
 </tr>
 
@@ -925,12 +950,12 @@ private  subroutine <a href='../proc/b64_decode_i8.html'>b64_decode_I8</a>(n, co
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
-  <td>intent(in)</td>
+  <td><a class="anchor" name="var-n"></a>integer(kind=I8P),</td>
+  <td>intent(out)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>code</strong></td><td><p>Encoded scalar.</p></td>
+  <td><strong>n</strong></td><td><p>Number to be decoded.</p></td>
   
 </tr>
 
@@ -955,7 +980,7 @@ private  subroutine <a href='../proc/b64_decode_i8.html'>b64_decode_I8</a>(n, co
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_I8_a"></a><h3>
-private pure subroutine <a href='../proc/b64_decode_i8_a.html'>b64_decode_I8_a</a>(n, code)
+private pure subroutine <a href='../proc/b64_decode_i8_a.html'>b64_decode_I8_a</a>(code, n)
 </h3></div>
   <div class="panel-body">
        
@@ -979,12 +1004,12 @@ private pure subroutine <a href='../proc/b64_decode_i8_a.html'>b64_decode_I8_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-n"></a>integer(kind=I8P),</td>
-  <td>intent(out)</td>
+  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
+  <td>intent(in)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>n</strong>(1:)</td><td><p>Array of numbers to be decoded.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
   
 </tr>
 
@@ -994,12 +1019,12 @@ private pure subroutine <a href='../proc/b64_decode_i8_a.html'>b64_decode_I8_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
-  <td>intent(in),</td>
+  <td><a class="anchor" name="var-n"></a>integer(kind=I8P),</td>
+  <td>intent(out)</td>
   <td></td>
   
-  <td>allocatable</td><td>::</td>
-  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
+  <td></td><td>::</td>
+  <td><strong>n</strong>(1:)</td><td><p>Array of numbers to be decoded.</p></td>
   
 </tr>
 
@@ -1024,7 +1049,7 @@ private pure subroutine <a href='../proc/b64_decode_i8_a.html'>b64_decode_I8_a</
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_I4"></a><h3>
-private  subroutine <a href='../proc/b64_decode_i4.html'>b64_decode_I4</a>(n, code)
+private  subroutine <a href='../proc/b64_decode_i4.html'>b64_decode_I4</a>(code, n)
 </h3></div>
   <div class="panel-body">
        
@@ -1048,12 +1073,12 @@ private  subroutine <a href='../proc/b64_decode_i4.html'>b64_decode_I4</a>(n, co
   
 <tr>
   
-  <td><a class="anchor" name="var-n"></a>integer(kind=I4P),</td>
-  <td>intent(out)</td>
+  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
+  <td>intent(in)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>n</strong></td><td><p>Number to be decoded.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded scalar.</p></td>
   
 </tr>
 
@@ -1063,12 +1088,12 @@ private  subroutine <a href='../proc/b64_decode_i4.html'>b64_decode_I4</a>(n, co
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
-  <td>intent(in)</td>
+  <td><a class="anchor" name="var-n"></a>integer(kind=I4P),</td>
+  <td>intent(out)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>code</strong></td><td><p>Encoded scalar.</p></td>
+  <td><strong>n</strong></td><td><p>Number to be decoded.</p></td>
   
 </tr>
 
@@ -1093,7 +1118,7 @@ private  subroutine <a href='../proc/b64_decode_i4.html'>b64_decode_I4</a>(n, co
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_I4_a"></a><h3>
-private pure subroutine <a href='../proc/b64_decode_i4_a.html'>b64_decode_I4_a</a>(n, code)
+private pure subroutine <a href='../proc/b64_decode_i4_a.html'>b64_decode_I4_a</a>(code, n)
 </h3></div>
   <div class="panel-body">
        
@@ -1117,12 +1142,12 @@ private pure subroutine <a href='../proc/b64_decode_i4_a.html'>b64_decode_I4_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-n"></a>integer(kind=I4P),</td>
-  <td>intent(out)</td>
+  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
+  <td>intent(in)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>n</strong>(1:)</td><td><p>Array of numbers to be decoded.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
   
 </tr>
 
@@ -1132,12 +1157,12 @@ private pure subroutine <a href='../proc/b64_decode_i4_a.html'>b64_decode_I4_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
-  <td>intent(in),</td>
+  <td><a class="anchor" name="var-n"></a>integer(kind=I4P),</td>
+  <td>intent(out)</td>
   <td></td>
   
-  <td>allocatable</td><td>::</td>
-  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
+  <td></td><td>::</td>
+  <td><strong>n</strong>(1:)</td><td><p>Array of numbers to be decoded.</p></td>
   
 </tr>
 
@@ -1162,7 +1187,7 @@ private pure subroutine <a href='../proc/b64_decode_i4_a.html'>b64_decode_I4_a</
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_I2"></a><h3>
-private  subroutine <a href='../proc/b64_decode_i2.html'>b64_decode_I2</a>(n, code)
+private  subroutine <a href='../proc/b64_decode_i2.html'>b64_decode_I2</a>(code, n)
 </h3></div>
   <div class="panel-body">
        
@@ -1186,12 +1211,12 @@ private  subroutine <a href='../proc/b64_decode_i2.html'>b64_decode_I2</a>(n, co
   
 <tr>
   
-  <td><a class="anchor" name="var-n"></a>integer(kind=I2P),</td>
-  <td>intent(out)</td>
+  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
+  <td>intent(in)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>n</strong></td><td><p>Number to be decoded.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded scalar.</p></td>
   
 </tr>
 
@@ -1201,12 +1226,12 @@ private  subroutine <a href='../proc/b64_decode_i2.html'>b64_decode_I2</a>(n, co
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
-  <td>intent(in)</td>
+  <td><a class="anchor" name="var-n"></a>integer(kind=I2P),</td>
+  <td>intent(out)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>code</strong></td><td><p>Encoded scalar.</p></td>
+  <td><strong>n</strong></td><td><p>Number to be decoded.</p></td>
   
 </tr>
 
@@ -1231,7 +1256,7 @@ private  subroutine <a href='../proc/b64_decode_i2.html'>b64_decode_I2</a>(n, co
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_I2_a"></a><h3>
-private pure subroutine <a href='../proc/b64_decode_i2_a.html'>b64_decode_I2_a</a>(n, code)
+private pure subroutine <a href='../proc/b64_decode_i2_a.html'>b64_decode_I2_a</a>(code, n)
 </h3></div>
   <div class="panel-body">
        
@@ -1255,12 +1280,12 @@ private pure subroutine <a href='../proc/b64_decode_i2_a.html'>b64_decode_I2_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-n"></a>integer(kind=I2P),</td>
-  <td>intent(out)</td>
+  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
+  <td>intent(in)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>n</strong>(1:)</td><td><p>Array of numbers to be decoded.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
   
 </tr>
 
@@ -1270,12 +1295,12 @@ private pure subroutine <a href='../proc/b64_decode_i2_a.html'>b64_decode_I2_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
-  <td>intent(in),</td>
+  <td><a class="anchor" name="var-n"></a>integer(kind=I2P),</td>
+  <td>intent(out)</td>
   <td></td>
   
-  <td>allocatable</td><td>::</td>
-  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
+  <td></td><td>::</td>
+  <td><strong>n</strong>(1:)</td><td><p>Array of numbers to be decoded.</p></td>
   
 </tr>
 
@@ -1300,7 +1325,7 @@ private pure subroutine <a href='../proc/b64_decode_i2_a.html'>b64_decode_I2_a</
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_I1"></a><h3>
-private  subroutine <a href='../proc/b64_decode_i1.html'>b64_decode_I1</a>(n, code)
+private  subroutine <a href='../proc/b64_decode_i1.html'>b64_decode_I1</a>(code, n)
 </h3></div>
   <div class="panel-body">
        
@@ -1324,12 +1349,12 @@ private  subroutine <a href='../proc/b64_decode_i1.html'>b64_decode_I1</a>(n, co
   
 <tr>
   
-  <td><a class="anchor" name="var-n"></a>integer(kind=I1P),</td>
-  <td>intent(out)</td>
+  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
+  <td>intent(in)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>n</strong></td><td><p>Number to be decoded.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded scalar.</p></td>
   
 </tr>
 
@@ -1339,12 +1364,12 @@ private  subroutine <a href='../proc/b64_decode_i1.html'>b64_decode_I1</a>(n, co
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
-  <td>intent(in)</td>
+  <td><a class="anchor" name="var-n"></a>integer(kind=I1P),</td>
+  <td>intent(out)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>code</strong></td><td><p>Encoded scalar.</p></td>
+  <td><strong>n</strong></td><td><p>Number to be decoded.</p></td>
   
 </tr>
 
@@ -1369,7 +1394,7 @@ private  subroutine <a href='../proc/b64_decode_i1.html'>b64_decode_I1</a>(n, co
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_I1_a"></a><h3>
-private pure subroutine <a href='../proc/b64_decode_i1_a.html'>b64_decode_I1_a</a>(n, code)
+private pure subroutine <a href='../proc/b64_decode_i1_a.html'>b64_decode_I1_a</a>(code, n)
 </h3></div>
   <div class="panel-body">
        
@@ -1393,12 +1418,12 @@ private pure subroutine <a href='../proc/b64_decode_i1_a.html'>b64_decode_I1_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-n"></a>integer(kind=I1P),</td>
-  <td>intent(out)</td>
+  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
+  <td>intent(in)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>n</strong>(1:)</td><td><p>Array of numbers to be decoded.</p></td>
+  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
   
 </tr>
 
@@ -1408,12 +1433,12 @@ private pure subroutine <a href='../proc/b64_decode_i1_a.html'>b64_decode_I1_a</
   
 <tr>
   
-  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
-  <td>intent(in),</td>
+  <td><a class="anchor" name="var-n"></a>integer(kind=I1P),</td>
+  <td>intent(out)</td>
   <td></td>
   
-  <td>allocatable</td><td>::</td>
-  <td><strong>code</strong></td><td><p>Encoded array.</p></td>
+  <td></td><td>::</td>
+  <td><strong>n</strong>(1:)</td><td><p>Array of numbers to be decoded.</p></td>
   
 </tr>
 
@@ -1429,6 +1454,144 @@ private pure subroutine <a href='../proc/b64_decode_i1_a.html'>b64_decode_I1_a</
 
 
        <p>Procedure for decoding a base64 code into an array numbers (I1P).</p>
+        
+
+  </div>
+  </div>
+
+ 	 
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_string"></a><h3>
+private  subroutine <a href='../proc/b64_decode_string.html'>b64_decode_string</a>(code, s)
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>code</strong></td><td><p>Encoded scalar.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-s"></a>character(len=*),</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>s</strong></td><td><p>String to be decoded.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for decoding a base64 code into a scalar string.</p>
+        
+
+  </div>
+  </div>
+
+ 	 
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_string_a"></a><h3>
+private pure subroutine <a href='../proc/b64_decode_string_a.html'>b64_decode_string_a</a>(code, s)
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-code"></a>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>code</strong></td><td><p>Encoded scalar.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-s"></a>character(len=*),</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>s</strong>(1:)</td><td><p>String to be decoded.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for decoding a base64 code into an array of strings.</p>
         
 
   </div>
