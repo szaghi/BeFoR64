@@ -34,7 +34,7 @@ Go to [Top](#top)
     * [x] pack real/real (different kinds) arrays;
     * [ ] pack integer/real scalars;
     * [x] pack integer/real arrays;
-* [x] errors trapping mechanism.
+* [ ] errors trapping mechanism.
 
 Any feature request is welcome.
 

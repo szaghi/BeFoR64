@@ -18,10 +18,12 @@ private
 public:: b64_encode
 public:: b64_decode
 public:: pack_data
+public:: b64_initialized,b64_init
 public:: autotest
 !-----------------------------------------------------------------------------------------------------------------------------------
 
 !-----------------------------------------------------------------------------------------------------------------------------------
+logical::       b64_initialized = .false. !< Flag for chcecking the initialization of the library.
 character(64):: base64="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/" !< Base64 alphabet.
 !-----------------------------------------------------------------------------------------------------------------------------------
 
@@ -34,6 +36,9 @@ interface b64_encode
   !<
   !< @warning The encoded string is returned as varying length character string, `character(len=:), allocatable:: string`, thus the
   !< compiler must support such a Fortran (2003) feature.
+  !<
+  !< @note Before start to encode anything the library must be initialized. The procedure `b64_init` must be called at first. The
+  !< global variable `b64_initialized` can be used to check the status of the initialization.
   !<
   !<### Usage
   !< For a practical example see the `autotest` procedure.
@@ -70,6 +75,9 @@ interface b64_decode
   !<
   !< This is an interface for decoding integer and real numbers of any kinds from a base64 string. This interface can decode both
   !< scalar and array.
+  !<
+  !< @note Before start to decode anything the library must be initialized. The procedure `b64_init` must be called at first. The
+  !< global variable `b64_initialized` can be used to check the status of the initialization.
   !<
   !<### Usage
   !< For a practical example see the `autotest` procedure.
@@ -113,7 +121,8 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
-  call IR_Init
+  if (.not.ir_initialized) call IR_Init
+  b64_initialized = .true.
   return
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_init
