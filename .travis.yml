@@ -1,0 +1,14 @@
+language: python
+
+python:
+  - 2.7
+
+before_install:
+  - sudo apt-get install gfortran
+  - pip install FoBiS.py
+
+before_script:
+  - FoBiS.py build -mode test-driver-gnu
+
+script:
+  - ./Test_Driver/Test_Driver
