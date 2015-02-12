@@ -1,6 +1,8 @@
 ### <a name="top"></a>BeFoR64, Base64 encoding/decoding library for FoRtran poor men
 
 [![Build Status](https://travis-ci.org/szaghi/BeFoR64.svg?branch=master)](https://travis-ci.org/szaghi/BeFoR64)
+[![GitHub tag](https://img.shields.io/github/tag/szaghi/BeFoR64.svg)]()
+[![GitHub issues](https://img.shields.io/github/issues/szaghi/BeFoR64.svg)]()
 [![Ready in backlog](https://badge.waffle.io/szaghi/BeFoR64.png?label=ready&title=Ready)](https://waffle.io/szaghi/BeFoR64)
 [![In Progress](https://badge.waffle.io/szaghi/BeFoR64.png?label=in%20progress&title=In%20Progress)](https://waffle.io/szaghi/BeFoR64)
 [![Open bugs](https://badge.waffle.io/szaghi/BeFoR64.png?label=bug&title=Open%20Bugs)](https://waffle.io/szaghi/BeFoR64)
@@ -57,7 +59,7 @@ Besides this README file the BeFoR64 documentation is contained into its own [wi
 Let us assume our goal is encoding a binary integer. It is as simple as
 ```fortran
 USE Lib_Base64
-…
+...
 character(len=:), allocatable:: code64 ! base64 encoded string
 ...
 call b64_encode(n=12._R8P,code=code64)
