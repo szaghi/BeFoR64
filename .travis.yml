@@ -9,6 +9,7 @@ before_install:
   - sudo apt-get install gfortran-4.9
   - ln -fs /usr/bin/gfortran-4.9 gfortran
   - pip install FoBiS.py
+  - export PATH=".:$PATH"
 
 before_script:
   - FoBiS.py build -mode test-driver-gnu
