@@ -21,7 +21,7 @@ script:
   - ./Test_Driver/Test_Driver
 
 after_success:
-  - coveralls -b . -e src/Lib_Pack_Data.f90
+  - coveralls -b .
   - git config --global user.name "Stefano Zaghi"
   - git config --global user.email "stefano.zaghi@gmail.com"
   - git clone --quiet --branch=gh-pages https://${GH_TOKEN}@github.com/szaghi/BeFoR64 doc/html
