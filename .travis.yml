@@ -21,10 +21,7 @@ script:
   - ./Test_Driver/Test_Driver
 
 after_success:
-  - rm -f ./Test_Driver/obj/IR_Precision.gc*
-  - rm -f ./Test_Driver/obj/Lib_Pack_Data.gc*
-  - rm -f ./Test_Driver/obj/Test_Driver.gc*
-  - coveralls -b .
+  - coveralls -b . -e src/Lib_Pack_Data.f90
   - git config --global user.name "Stefano Zaghi"
   - git config --global user.email "stefano.zaghi@gmail.com"
   - git clone --quiet --branch=gh-pages https://${GH_TOKEN}@github.com/szaghi/BeFoR64 doc/html
