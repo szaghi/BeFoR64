@@ -21,6 +21,7 @@ script:
   - ./Test_Driver/Test_Driver
 
 after_success:
+  - cd $TRAVIS_BUILD_DIR
   - rm -f ./Test_Driver/obj/IR_Precision.gc*
   - rm -f ./Test_Driver/obj/Lib_Pack_Data.gc*
   - rm -f ./Test_Driver/obj/Test_Driver.gc*
