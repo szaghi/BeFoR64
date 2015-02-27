@@ -11,6 +11,7 @@ before_install:
   - pip install FoBiS.py
   - pip install markdown-checklist
   - pip install ford
+  - pip install cpp-coveralls
   - export PATH=".:$PATH"
 
 before_script:
@@ -20,6 +21,9 @@ script:
   - ./Test_Driver/Test_Driver
 
 after_success:
+  - gcov Test_Driver/obj/Lib_Base64.gcno
+  - coveralls --gcov Lib_Base64.f90.gcov -n
+  - rm -f Lib_Base64.f90.gcov
   - git config --global user.name "Stefano Zaghi"
   - git config --global user.email "stefano.zaghi@gmail.com"
   - git clone --quiet --branch=gh-pages https://${GH_TOKEN}@github.com/szaghi/BeFoR64 doc/html
