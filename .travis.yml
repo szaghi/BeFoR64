@@ -3,15 +3,21 @@ language: python
 python:
   - 2.7
 
+sudo: false
+cache:
+  - apt
+  - pip
+
 before_install:
-  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
-  - sudo apt-get update -qq
-  - sudo apt-get install gfortran-4.9
+  - add-apt-repository ppa:ubuntu-toolchain-r/test -y
+  - apt-get update -qq
+  - apt-get install gfortran-4.9 binutils
   - ln -fs /usr/bin/gfortran-4.9 gfortran
-  - sudo pip install FoBiS.py
-  - sudo pip install markdown-checklist
-  - sudo pip install ford
-  - sudo pip install cpp-coveralls
+  - ln -fs /usr/bin/gcov-4.9 gcov
+  - pip install FoBiS.py
+  - pip install markdown-checklist
+  - pip install ford
+  - pip install cpp-coveralls
   - export PATH=".:$PATH"
 
 before_script:
