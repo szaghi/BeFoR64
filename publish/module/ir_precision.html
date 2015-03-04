@@ -382,6 +382,20 @@
       
       <a class="list-group-item" href="../module/ir_precision.html#proc-str_I1P">str_I1P</a>
       
+      <a class="list-group-item" href="../module/ir_precision.html#proc-str_a_R16P">str_a_R16P</a>
+      
+      <a class="list-group-item" href="../module/ir_precision.html#proc-str_a_R8P">str_a_R8P</a>
+      
+      <a class="list-group-item" href="../module/ir_precision.html#proc-str_a_R4P">str_a_R4P</a>
+      
+      <a class="list-group-item" href="../module/ir_precision.html#proc-str_a_I8P">str_a_I8P</a>
+      
+      <a class="list-group-item" href="../module/ir_precision.html#proc-str_a_I4P">str_a_I4P</a>
+      
+      <a class="list-group-item" href="../module/ir_precision.html#proc-str_a_I2P">str_a_I2P</a>
+      
+      <a class="list-group-item" href="../module/ir_precision.html#proc-str_a_I1P">str_a_I1P</a>
+      
       <a class="list-group-item" href="../module/ir_precision.html#proc-strz_I8P">strz_I8P</a>
       
       <a class="list-group-item" href="../module/ir_precision.html#proc-strz_I4P">strz_I4P</a>
@@ -3600,6 +3614,636 @@ private  function <a href='../proc/str_i1p.html'>str_I1P</a>(no_sign, n)
 
 
        <p>Procedure for converting integer to string. This function achieves casting of integer to string.</p>
+        
+
+    </li>
+  
+    <li class="list-group-item">
+    
+    
+    <h3>
+private pure function <a href='../proc/str_a_r16p.html'>str_a_R16P</a>(no_sign, delimiters, n)
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-no_sign"></a>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>no_sign</strong></td><td><p>Flag for leaving out the sign.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-delimiters"></a>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>delimiters</strong>(1:2)</td><td><p>Eventual delimiters of array values.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>real(kind=R16P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong>(:)</td><td><p>Real array to be converted.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small><a class="anchor" name="var-str"></a>character(len=:),
+  allocatable</small></h4>
+  <p>Returned string containing input number.</p>
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for converting real (array) to string. This function achieves casting of real to string.</p>
+        
+
+    </li>
+  
+    <li class="list-group-item">
+    
+    
+    <h3>
+private pure function <a href='../proc/str_a_r8p.html'>str_a_R8P</a>(no_sign, delimiters, n)
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-no_sign"></a>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>no_sign</strong></td><td><p>Flag for leaving out the sign.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-delimiters"></a>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>delimiters</strong>(1:2)</td><td><p>Eventual delimiters of array values.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>real(kind=R8P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong>(:)</td><td><p>Real array to be converted.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small><a class="anchor" name="var-str"></a>character(len=:),
+  allocatable</small></h4>
+  <p>Returned string containing input number.</p>
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for converting real (array) to string. This function achieves casting of real to string.</p>
+        
+
+    </li>
+  
+    <li class="list-group-item">
+    
+    
+    <h3>
+private pure function <a href='../proc/str_a_r4p.html'>str_a_R4P</a>(no_sign, delimiters, n)
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-no_sign"></a>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>no_sign</strong></td><td><p>Flag for leaving out the sign.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-delimiters"></a>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>delimiters</strong>(1:2)</td><td><p>Eventual delimiters of array values.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>real(kind=R4P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong>(:)</td><td><p>Real array to be converted.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small><a class="anchor" name="var-str"></a>character(len=:),
+  allocatable</small></h4>
+  <p>Returned string containing input number.</p>
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for converting real (array) to string. This function achieves casting of real to string.</p>
+        
+
+    </li>
+  
+    <li class="list-group-item">
+    
+    
+    <h3>
+private pure function <a href='../proc/str_a_i8p.html'>str_a_I8P</a>(no_sign, delimiters, n)
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-no_sign"></a>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>no_sign</strong></td><td><p>Flag for leaving out the sign.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-delimiters"></a>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>delimiters</strong>(1:2)</td><td><p>Eventual delimiters of array values.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>integer(kind=I8P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong>(:)</td><td><p>Integer array to be converted.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small><a class="anchor" name="var-str"></a>character(len=:),
+  allocatable</small></h4>
+  <p>Returned string containing input number.</p>
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for converting integer (array) to string. This function achieves casting of integer to string.</p>
+        
+
+    </li>
+  
+    <li class="list-group-item">
+    
+    
+    <h3>
+private pure function <a href='../proc/str_a_i4p.html'>str_a_I4P</a>(no_sign, delimiters, n)
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-no_sign"></a>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>no_sign</strong></td><td><p>Flag for leaving out the sign.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-delimiters"></a>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>delimiters</strong>(1:2)</td><td><p>Eventual delimiters of array values.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>integer(kind=I4P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong>(:)</td><td><p>Integer array to be converted.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small><a class="anchor" name="var-str"></a>character(len=:),
+  allocatable</small></h4>
+  <p>Returned string containing input number.</p>
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for converting integer (array) to string. This function achieves casting of integer to string.</p>
+        
+
+    </li>
+  
+    <li class="list-group-item">
+    
+    
+    <h3>
+private pure function <a href='../proc/str_a_i2p.html'>str_a_I2P</a>(no_sign, delimiters, n)
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-no_sign"></a>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>no_sign</strong></td><td><p>Flag for leaving out the sign.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-delimiters"></a>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>delimiters</strong>(1:2)</td><td><p>Eventual delimiters of array values.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>integer(kind=I2P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong>(:)</td><td><p>Integer array to be converted.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small><a class="anchor" name="var-str"></a>character(len=:),
+  allocatable</small></h4>
+  <p>Returned string containing input number.</p>
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for converting integer (array) to string. This function achieves casting of integer to string.</p>
+        
+
+    </li>
+  
+    <li class="list-group-item">
+    
+    
+    <h3>
+private pure function <a href='../proc/str_a_i1p.html'>str_a_I1P</a>(no_sign, delimiters, n)
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-no_sign"></a>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>no_sign</strong></td><td><p>Flag for leaving out the sign.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-delimiters"></a>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>delimiters</strong>(1:2)</td><td><p>Eventual delimiters of array values.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>integer(kind=I1P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong>(:)</td><td><p>Integer array to be converted.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small><a class="anchor" name="var-str"></a>character(len=:),
+  allocatable</small></h4>
+  <p>Returned string containing input number.</p>
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for converting integer (array) to string. This function achieves casting of integer to string.</p>
         
 
     </li>
@@ -7550,6 +8194,657 @@ private  function <a href='../proc/str_i1p.html'>str_I1P</a>(no_sign, n)
 
 
        <p>Procedure for converting integer to string. This function achieves casting of integer to string.</p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><a class="anchor" name="proc-str_a_R16P"></a><h3>
+private pure function <a href='../proc/str_a_r16p.html'>str_a_R16P</a>(no_sign, delimiters, n)
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-no_sign"></a>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>no_sign</strong></td><td><p>Flag for leaving out the sign.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-delimiters"></a>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>delimiters</strong>(1:2)</td><td><p>Eventual delimiters of array values.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>real(kind=R16P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong>(:)</td><td><p>Real array to be converted.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small><a class="anchor" name="var-str"></a>character(len=:),
+  allocatable</small></h4>
+  <p>Returned string containing input number.</p>
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for converting real (array) to string. This function achieves casting of real to string.</p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><a class="anchor" name="proc-str_a_R8P"></a><h3>
+private pure function <a href='../proc/str_a_r8p.html'>str_a_R8P</a>(no_sign, delimiters, n)
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-no_sign"></a>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>no_sign</strong></td><td><p>Flag for leaving out the sign.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-delimiters"></a>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>delimiters</strong>(1:2)</td><td><p>Eventual delimiters of array values.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>real(kind=R8P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong>(:)</td><td><p>Real array to be converted.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small><a class="anchor" name="var-str"></a>character(len=:),
+  allocatable</small></h4>
+  <p>Returned string containing input number.</p>
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for converting real (array) to string. This function achieves casting of real to string.</p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><a class="anchor" name="proc-str_a_R4P"></a><h3>
+private pure function <a href='../proc/str_a_r4p.html'>str_a_R4P</a>(no_sign, delimiters, n)
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-no_sign"></a>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>no_sign</strong></td><td><p>Flag for leaving out the sign.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-delimiters"></a>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>delimiters</strong>(1:2)</td><td><p>Eventual delimiters of array values.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>real(kind=R4P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong>(:)</td><td><p>Real array to be converted.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small><a class="anchor" name="var-str"></a>character(len=:),
+  allocatable</small></h4>
+  <p>Returned string containing input number.</p>
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for converting real (array) to string. This function achieves casting of real to string.</p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><a class="anchor" name="proc-str_a_I8P"></a><h3>
+private pure function <a href='../proc/str_a_i8p.html'>str_a_I8P</a>(no_sign, delimiters, n)
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-no_sign"></a>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>no_sign</strong></td><td><p>Flag for leaving out the sign.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-delimiters"></a>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>delimiters</strong>(1:2)</td><td><p>Eventual delimiters of array values.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>integer(kind=I8P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong>(:)</td><td><p>Integer array to be converted.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small><a class="anchor" name="var-str"></a>character(len=:),
+  allocatable</small></h4>
+  <p>Returned string containing input number.</p>
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for converting integer (array) to string. This function achieves casting of integer to string.</p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><a class="anchor" name="proc-str_a_I4P"></a><h3>
+private pure function <a href='../proc/str_a_i4p.html'>str_a_I4P</a>(no_sign, delimiters, n)
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-no_sign"></a>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>no_sign</strong></td><td><p>Flag for leaving out the sign.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-delimiters"></a>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>delimiters</strong>(1:2)</td><td><p>Eventual delimiters of array values.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>integer(kind=I4P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong>(:)</td><td><p>Integer array to be converted.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small><a class="anchor" name="var-str"></a>character(len=:),
+  allocatable</small></h4>
+  <p>Returned string containing input number.</p>
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for converting integer (array) to string. This function achieves casting of integer to string.</p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><a class="anchor" name="proc-str_a_I2P"></a><h3>
+private pure function <a href='../proc/str_a_i2p.html'>str_a_I2P</a>(no_sign, delimiters, n)
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-no_sign"></a>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>no_sign</strong></td><td><p>Flag for leaving out the sign.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-delimiters"></a>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>delimiters</strong>(1:2)</td><td><p>Eventual delimiters of array values.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>integer(kind=I2P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong>(:)</td><td><p>Integer array to be converted.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small><a class="anchor" name="var-str"></a>character(len=:),
+  allocatable</small></h4>
+  <p>Returned string containing input number.</p>
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for converting integer (array) to string. This function achieves casting of integer to string.</p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><a class="anchor" name="proc-str_a_I1P"></a><h3>
+private pure function <a href='../proc/str_a_i1p.html'>str_a_I1P</a>(no_sign, delimiters, n)
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-no_sign"></a>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>no_sign</strong></td><td><p>Flag for leaving out the sign.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-delimiters"></a>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>delimiters</strong>(1:2)</td><td><p>Eventual delimiters of array values.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>integer(kind=I1P),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong>(:)</td><td><p>Integer array to be converted.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small><a class="anchor" name="var-str"></a>character(len=:),
+  allocatable</small></h4>
+  <p>Returned string containing input number.</p>
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for converting integer (array) to string. This function achieves casting of integer to string.</p>
         
 
   </div>
