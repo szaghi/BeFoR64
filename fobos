@@ -205,3 +205,9 @@ rule = rm -rf doc/html/*
 [rule-maketar]
 help = Rule for making tar archive of the project
 rule = tar -czf BeFoR64.tar.gz *
+
+[rule-coverage-report]
+help   = Rule for creating coverage analysis reports in markdown
+rule_1 = gcov -o Test_Driver/obj/ src/*
+rule_2 = FoBiS.py rule -gcov_analyzer wiki/
+rule_3 = rm -f *.gcov
