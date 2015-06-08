@@ -48,7 +48,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+				
+                
             <li><a href="../lists/files.html">Source Files</a></li>
 				
 				
@@ -57,10 +58,10 @@
 				
             <li><a href="../lists/procedures.html">Procedures</a></li>
 				
-				
+								
 				
             <li><a href="../program/test_driver.html">Program</a></li>
-								
+				
           </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
@@ -84,9 +85,9 @@
     </h1>
 	 
 <div class="row">
-<div class="col-lg-7">
+<div class="col-lg-12">
 <div class="well well-sm">
-  <ul class="list-inline" style="margin-bottom:0px">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
      
      
      
@@ -96,10 +97,7 @@
     <li><i class="fa fa-code"></i><a href="../src/IR_Precision.f90"> Source File</a></li>
      
   </ul>
-  </div>
-  </div>
-  <div class="col-lg-5">
-  <ol class="breadcrumb hierarchy text-right">
+  <ol class="breadcrumb in-well text-right">
   
      <li><a href='../sourcefile/ir_precision.f90.html'>IR_Precision.f90</a></li>
   
@@ -115,6 +113,9 @@
   <div class="row">
     <div class="col-lg-3">
     
+  
+  
+  
   
   
   
@@ -405,6 +406,8 @@
       
       <a class="list-group-item" href="../proc/str_a_r8p.html">str_a_R8P</a>
       
+      <a class="list-group-item" href="../proc/str_bol.html">str_bol</a>
+      
       <a class="list-group-item" href="../proc/str_i1p.html">str_I1P</a>
       
       <a class="list-group-item" href="../proc/str_i2p.html">str_I2P</a>
@@ -450,7 +453,7 @@
     </div>
     
     <div class="col-lg-9" id='text'>
-    <h2>public  interface digit</h2>
+    <h2>public interface digit</h2>
 	 <p>Procedure for computing the number of digits in decimal base of the input integer.</p>
     <br>
 	
@@ -464,7 +467,7 @@
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-digit_I8"></a><h3>
-private  function <a href='../proc/digit_i8.html'>digit_I8</a>(n)
+private elemental function <a href='../proc/digit_i8.html'>digit_I8</a>(n)
 </h3></div>
   <div class="panel-body">
        
@@ -527,7 +530,7 @@ private  function <a href='../proc/digit_i8.html'>digit_I8</a>(n)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-digit_I4"></a><h3>
-private  function <a href='../proc/digit_i4.html'>digit_I4</a>(n)
+private elemental function <a href='../proc/digit_i4.html'>digit_I4</a>(n)
 </h3></div>
   <div class="panel-body">
        
@@ -590,7 +593,7 @@ private  function <a href='../proc/digit_i4.html'>digit_I4</a>(n)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-digit_I2"></a><h3>
-private  function <a href='../proc/digit_i2.html'>digit_I2</a>(n)
+private elemental function <a href='../proc/digit_i2.html'>digit_I2</a>(n)
 </h3></div>
   <div class="panel-body">
        
@@ -653,7 +656,7 @@ private  function <a href='../proc/digit_i2.html'>digit_I2</a>(n)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-digit_I1"></a><h3>
-private  function <a href='../proc/digit_i1.html'>digit_I1</a>(n)
+private elemental function <a href='../proc/digit_i1.html'>digit_I1</a>(n)
 </h3></div>
   <div class="panel-body">
        

@@ -48,7 +48,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+				
+                
             <li><a href="../lists/files.html">Source Files</a></li>
 				
 				
@@ -57,10 +58,10 @@
 				
             <li><a href="../lists/procedures.html">Procedures</a></li>
 				
-				
+								
 				
             <li><a href="../program/test_driver.html">Program</a></li>
-								
+				
           </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
@@ -84,9 +85,9 @@
     </h1>
 	 
 <div class="row">
-<div class="col-lg-7">
+<div class="col-lg-12">
 <div class="well well-sm">
-  <ul class="list-inline" style="margin-bottom:0px">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
      
      
      
@@ -96,10 +97,7 @@
     <li><i class="fa fa-code"></i><a href="../src/IR_Precision.f90"> Source File</a></li>
      
   </ul>
-  </div>
-  </div>
-  <div class="col-lg-5">
-  <ol class="breadcrumb hierarchy text-right">
+  <ol class="breadcrumb in-well text-right">
   
      <li><a href='../sourcefile/ir_precision.f90.html'>IR_Precision.f90</a></li>
   
@@ -115,6 +113,9 @@
   <div class="row">
     <div class="col-lg-3">
     
+  
+  
+  
   
   
   
@@ -413,6 +414,8 @@
       
       <a class="list-group-item" href="../proc/str_a_r8p.html">str_a_R8P</a>
       
+      <a class="list-group-item" href="../proc/str_bol.html">str_bol</a>
+      
       <a class="list-group-item" href="../proc/str_i1p.html">str_I1P</a>
       
       <a class="list-group-item" href="../proc/str_i2p.html">str_I2P</a>
@@ -458,7 +461,7 @@
     </div>
     
     <div class="col-lg-9" id='text'>
-    <h2>public  interface byte_size</h2>
+    <h2>public interface byte_size</h2>
 	 <p>Overloading of the <em>byte_size</em> function for computing the number of bytes.</p>
     <br>
 	
@@ -472,7 +475,7 @@
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-byte_size_I8P"></a><h3>
-private  function <a href='../proc/byte_size_i8p.html'>byte_size_I8P</a>(i)
+private elemental function <a href='../proc/byte_size_i8p.html'>byte_size_I8P</a>(i)
 </h3></div>
   <div class="panel-body">
        
@@ -535,7 +538,7 @@ private  function <a href='../proc/byte_size_i8p.html'>byte_size_I8P</a>(i)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-byte_size_I4P"></a><h3>
-private  function <a href='../proc/byte_size_i4p.html'>byte_size_I4P</a>(i)
+private elemental function <a href='../proc/byte_size_i4p.html'>byte_size_I4P</a>(i)
 </h3></div>
   <div class="panel-body">
        
@@ -598,7 +601,7 @@ private  function <a href='../proc/byte_size_i4p.html'>byte_size_I4P</a>(i)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-byte_size_I2P"></a><h3>
-private  function <a href='../proc/byte_size_i2p.html'>byte_size_I2P</a>(i)
+private elemental function <a href='../proc/byte_size_i2p.html'>byte_size_I2P</a>(i)
 </h3></div>
   <div class="panel-body">
        
@@ -661,7 +664,7 @@ private  function <a href='../proc/byte_size_i2p.html'>byte_size_I2P</a>(i)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-byte_size_I1P"></a><h3>
-private  function <a href='../proc/byte_size_i1p.html'>byte_size_I1P</a>(i)
+private elemental function <a href='../proc/byte_size_i1p.html'>byte_size_I1P</a>(i)
 </h3></div>
   <div class="panel-body">
        
@@ -724,7 +727,7 @@ private  function <a href='../proc/byte_size_i1p.html'>byte_size_I1P</a>(i)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-byte_size_R16P"></a><h3>
-private  function <a href='../proc/byte_size_r16p.html'>byte_size_R16P</a>(r)
+private elemental function <a href='../proc/byte_size_r16p.html'>byte_size_R16P</a>(r)
 </h3></div>
   <div class="panel-body">
        
@@ -787,7 +790,7 @@ private  function <a href='../proc/byte_size_r16p.html'>byte_size_R16P</a>(r)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-byte_size_R8P"></a><h3>
-private  function <a href='../proc/byte_size_r8p.html'>byte_size_R8P</a>(r)
+private elemental function <a href='../proc/byte_size_r8p.html'>byte_size_R8P</a>(r)
 </h3></div>
   <div class="panel-body">
        
@@ -850,7 +853,7 @@ private  function <a href='../proc/byte_size_r8p.html'>byte_size_R8P</a>(r)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-byte_size_R4P"></a><h3>
-private  function <a href='../proc/byte_size_r4p.html'>byte_size_R4P</a>(r)
+private elemental function <a href='../proc/byte_size_r4p.html'>byte_size_R4P</a>(r)
 </h3></div>
   <div class="panel-body">
        
@@ -913,7 +916,7 @@ private  function <a href='../proc/byte_size_r4p.html'>byte_size_R4P</a>(r)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-byte_size_chr"></a><h3>
-private  function <a href='../proc/byte_size_chr.html'>byte_size_chr</a>(c)
+private elemental function <a href='../proc/byte_size_chr.html'>byte_size_chr</a>(c)
 </h3></div>
   <div class="panel-body">
        

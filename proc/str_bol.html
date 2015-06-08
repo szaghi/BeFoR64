@@ -10,7 +10,7 @@
     <meta name="author" content="Chris MacMackin" >
     <link rel="icon" href="../favicon.png">
 
-    <title>b64_encode_I1 &ndash; BeFoR64</title>
+    <title>str_bol &ndash; BeFoR64</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
@@ -79,8 +79,8 @@
     
   
   <div class="row">
-    <h1>b64_encode_I1
-    <small>Subroutine</small>
+    <h1>str_bol
+    <small>Function</small>
     
     </h1>
 	 
@@ -94,16 +94,16 @@
      
     
     
-    <li><i class="fa fa-code"></i><a href="../src/Lib_Base64.f90"> Source File</a></li>
+    <li><i class="fa fa-code"></i><a href="../src/IR_Precision.f90"> Source File</a></li>
      
   </ul>
   <ol class="breadcrumb in-well text-right">
   
-     <li><a href='../sourcefile/lib_base64.f90.html'>Lib_Base64.f90</a></li>
+     <li><a href='../sourcefile/ir_precision.f90.html'>IR_Precision.f90</a></li>
   
-     <li><a href='../module/lib_base64.html'>Lib_Base64</a></li>
+     <li><a href='../module/ir_precision.html'>IR_Precision</a></li>
   
-     <li class="active">b64_encode_I1</li>
+     <li class="active">str_bol</li>
   </ol>
   </div>
 </div>
@@ -116,16 +116,6 @@
   
   
   
-  <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title">Variables</h3></div>
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../proc/b64_encode_i1.html#var-nI1P">nI1P</a>
-      
-      <a class="list-group-item" href="../proc/b64_encode_i1.html#var-padd">padd</a>
-      
-    </div>
-  </div>
   
   
   
@@ -137,8 +127,6 @@
   
   
   
-  
-  <hr>
   
   <div class="panel panel-default">
     <div class="panel-heading text-left"><h3 class="panel-title">All Procedures</h3></div>
@@ -450,7 +438,7 @@
     
     <div class="col-lg-9" id='text'>
     <h2>
-private pure subroutine b64_encode_I1(n, code)
+private elemental function str_bol(n)
 </h2>
     
   
@@ -475,27 +463,12 @@ private pure subroutine b64_encode_I1(n, code)
   
 <tr>
   
-  <td><a class="anchor" name="var-n"></a>integer(kind=I1P),</td>
+  <td><a class="anchor" name="var-n"></a>logical,</td>
   <td>intent(in)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>n</strong></td><td><p>Number to be encoded.</p></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><a class="anchor" name="var-code"></a>character(len=:),</td>
-  <td>intent(out),</td>
-  <td></td>
-  
-  <td>allocatable</td><td>::</td>
-  <td><strong>code</strong></td><td><p>Encoded scalar.</p></td>
+  <td><strong>n</strong></td><td><p>Logical to be converted.</p></td>
   
 </tr>
 
@@ -503,57 +476,20 @@ private pure subroutine b64_encode_I1(n, code)
 </table>
 
     
+    
+    
+    
+    
+    
+    
+	 <h3>Return Value <small><a class="anchor" name="var-str"></a>character(len=1)
+    </small></h3>
+    <p>Returned string containing input number plus padding zeros.</p>
     
     
     <h3>Description</h3>
-    <p>Procedure for encoding scalar number to base64 (I1P).</p>
+    <p>Procedure for converting logical to string. This function achieves casting of logical to string.</p>
     
-    <br>
-    
-    <section>
-    <h2>Variables</h2>
-    
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Visibility</th>
-
-<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
-
-
-
-<tbody>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><a class="anchor" name="var-nI1P"></a>integer(kind=I1P),</td>
-  
-  <td>public,</td>
-  <td>allocatable</td><td>::</td>
-  <td><strong>nI1P</strong>(:)</td><td></td><td></td><td><p>One byte integer array containing n.</p></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><a class="anchor" name="var-padd"></a>integer(kind=I4P),</td>
-  
-  <td>public</td>
-  <td></td><td>::</td>
-  <td><strong>padd</strong></td><td></td><td></td><td><p>Number of padding characters ('=').</p></td>
-  
-</tr>
-
-</tbody>
-</table>
-
-    </section>
     <br>
     
     

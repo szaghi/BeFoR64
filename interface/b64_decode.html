@@ -48,7 +48,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+				
+                
             <li><a href="../lists/files.html">Source Files</a></li>
 				
 				
@@ -57,10 +58,10 @@
 				
             <li><a href="../lists/procedures.html">Procedures</a></li>
 				
-				
+								
 				
             <li><a href="../program/test_driver.html">Program</a></li>
-								
+				
           </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
@@ -84,9 +85,9 @@
     </h1>
 	 
 <div class="row">
-<div class="col-lg-7">
+<div class="col-lg-12">
 <div class="well well-sm">
-  <ul class="list-inline" style="margin-bottom:0px">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
      
      
      
@@ -96,10 +97,7 @@
     <li><i class="fa fa-code"></i><a href="../src/Lib_Base64.f90"> Source File</a></li>
      
   </ul>
-  </div>
-  </div>
-  <div class="col-lg-5">
-  <ol class="breadcrumb hierarchy text-right">
+  <ol class="breadcrumb in-well text-right">
   
      <li><a href='../sourcefile/lib_base64.f90.html'>Lib_Base64.f90</a></li>
   
@@ -115,6 +113,9 @@
   <div class="row">
     <div class="col-lg-3">
     
+  
+  
+  
   
   
   
@@ -429,6 +430,8 @@
       
       <a class="list-group-item" href="../proc/str_a_r8p.html">str_a_R8P</a>
       
+      <a class="list-group-item" href="../proc/str_bol.html">str_bol</a>
+      
       <a class="list-group-item" href="../proc/str_i1p.html">str_I1P</a>
       
       <a class="list-group-item" href="../proc/str_i2p.html">str_I2P</a>
@@ -474,7 +477,7 @@
     </div>
     
     <div class="col-lg-9" id='text'>
-    <h2>public  interface b64_decode</h2>
+    <h2>public interface b64_decode</h2>
 	 <p>Procedure for decoding numbers (integer and real) from base64.</p>
 <p>This is an interface for decoding integer and real numbers of any kinds from a base64 string. This interface can decode both
  scalar and array.</p>
@@ -511,7 +514,7 @@
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_R16"></a><h3>
-private  subroutine <a href='../proc/b64_decode_r16.html'>b64_decode_R16</a>(code, n)
+private elemental subroutine <a href='../proc/b64_decode_r16.html'>b64_decode_R16</a>(code, n)
 </h3></div>
   <div class="panel-body">
        
@@ -649,7 +652,7 @@ private pure subroutine <a href='../proc/b64_decode_r16_a.html'>b64_decode_R16_a
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_R8"></a><h3>
-private  subroutine <a href='../proc/b64_decode_r8.html'>b64_decode_R8</a>(code, n)
+private elemental subroutine <a href='../proc/b64_decode_r8.html'>b64_decode_R8</a>(code, n)
 </h3></div>
   <div class="panel-body">
        
@@ -787,7 +790,7 @@ private pure subroutine <a href='../proc/b64_decode_r8_a.html'>b64_decode_R8_a</
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_R4"></a><h3>
-private  subroutine <a href='../proc/b64_decode_r4.html'>b64_decode_R4</a>(code, n)
+private elemental subroutine <a href='../proc/b64_decode_r4.html'>b64_decode_R4</a>(code, n)
 </h3></div>
   <div class="panel-body">
        
@@ -925,7 +928,7 @@ private pure subroutine <a href='../proc/b64_decode_r4_a.html'>b64_decode_R4_a</
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_I8"></a><h3>
-private  subroutine <a href='../proc/b64_decode_i8.html'>b64_decode_I8</a>(code, n)
+private elemental subroutine <a href='../proc/b64_decode_i8.html'>b64_decode_I8</a>(code, n)
 </h3></div>
   <div class="panel-body">
        
@@ -1063,7 +1066,7 @@ private pure subroutine <a href='../proc/b64_decode_i8_a.html'>b64_decode_I8_a</
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_I4"></a><h3>
-private  subroutine <a href='../proc/b64_decode_i4.html'>b64_decode_I4</a>(code, n)
+private elemental subroutine <a href='../proc/b64_decode_i4.html'>b64_decode_I4</a>(code, n)
 </h3></div>
   <div class="panel-body">
        
@@ -1201,7 +1204,7 @@ private pure subroutine <a href='../proc/b64_decode_i4_a.html'>b64_decode_I4_a</
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_I2"></a><h3>
-private  subroutine <a href='../proc/b64_decode_i2.html'>b64_decode_I2</a>(code, n)
+private elemental subroutine <a href='../proc/b64_decode_i2.html'>b64_decode_I2</a>(code, n)
 </h3></div>
   <div class="panel-body">
        
@@ -1339,7 +1342,7 @@ private pure subroutine <a href='../proc/b64_decode_i2_a.html'>b64_decode_I2_a</
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_I1"></a><h3>
-private  subroutine <a href='../proc/b64_decode_i1.html'>b64_decode_I1</a>(code, n)
+private elemental subroutine <a href='../proc/b64_decode_i1.html'>b64_decode_I1</a>(code, n)
 </h3></div>
   <div class="panel-body">
        
@@ -1477,7 +1480,7 @@ private pure subroutine <a href='../proc/b64_decode_i1_a.html'>b64_decode_I1_a</
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-b64_decode_string"></a><h3>
-private  subroutine <a href='../proc/b64_decode_string.html'>b64_decode_string</a>(code, s)
+private elemental subroutine <a href='../proc/b64_decode_string.html'>b64_decode_string</a>(code, s)
 </h3></div>
   <div class="panel-body">
        

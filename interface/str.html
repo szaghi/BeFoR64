@@ -48,7 +48,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+				
+                
             <li><a href="../lists/files.html">Source Files</a></li>
 				
 				
@@ -57,10 +58,10 @@
 				
             <li><a href="../lists/procedures.html">Procedures</a></li>
 				
-				
+								
 				
             <li><a href="../program/test_driver.html">Program</a></li>
-								
+				
           </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
@@ -84,9 +85,9 @@
     </h1>
 	 
 <div class="row">
-<div class="col-lg-7">
+<div class="col-lg-12">
 <div class="well well-sm">
-  <ul class="list-inline" style="margin-bottom:0px">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
      
      
      
@@ -96,10 +97,7 @@
     <li><i class="fa fa-code"></i><a href="../src/IR_Precision.f90"> Source File</a></li>
      
   </ul>
-  </div>
-  </div>
-  <div class="col-lg-5">
-  <ol class="breadcrumb hierarchy text-right">
+  <ol class="breadcrumb in-well text-right">
   
      <li><a href='../sourcefile/ir_precision.f90.html'>IR_Precision.f90</a></li>
   
@@ -115,6 +113,9 @@
   <div class="row">
     <div class="col-lg-3">
     
+  
+  
+  
   
   
   
@@ -157,6 +158,8 @@
       <a class="list-group-item" href="../interface/str.html#proc-strf_I1P">strf_I1P</a>
       
       <a class="list-group-item" href="../interface/str.html#proc-str_I1P">str_I1P</a>
+      
+      <a class="list-group-item" href="../interface/str.html#proc-str_bol">str_bol</a>
       
       <a class="list-group-item" href="../interface/str.html#proc-str_a_R16P">str_a_R16P</a>
       
@@ -439,6 +442,8 @@
       
       <a class="list-group-item" href="../proc/str_a_r8p.html">str_a_R8P</a>
       
+      <a class="list-group-item" href="../proc/str_bol.html">str_bol</a>
+      
       <a class="list-group-item" href="../proc/str_i1p.html">str_I1P</a>
       
       <a class="list-group-item" href="../proc/str_i2p.html">str_I2P</a>
@@ -484,7 +489,7 @@
     </div>
     
     <div class="col-lg-9" id='text'>
-    <h2>public  interface str</h2>
+    <h2>public interface str</h2>
 	 <p>Procedure for converting number, real and integer, to string (number to string type casting).</p>
     <br>
 	
@@ -498,7 +503,7 @@
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-strf_R16P"></a><h3>
-private  function <a href='../proc/strf_r16p.html'>strf_R16P</a>(fm, n)
+private elemental function <a href='../proc/strf_r16p.html'>strf_R16P</a>(fm, n)
 </h3></div>
   <div class="panel-body">
        
@@ -576,7 +581,7 @@ private  function <a href='../proc/strf_r16p.html'>strf_R16P</a>(fm, n)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-str_R16P"></a><h3>
-private  function <a href='../proc/str_r16p.html'>str_R16P</a>(no_sign, n)
+private elemental function <a href='../proc/str_r16p.html'>str_R16P</a>(no_sign, n)
 </h3></div>
   <div class="panel-body">
        
@@ -654,7 +659,7 @@ private  function <a href='../proc/str_r16p.html'>str_R16P</a>(no_sign, n)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-strf_R8P"></a><h3>
-private  function <a href='../proc/strf_r8p.html'>strf_R8P</a>(fm, n)
+private elemental function <a href='../proc/strf_r8p.html'>strf_R8P</a>(fm, n)
 </h3></div>
   <div class="panel-body">
        
@@ -732,7 +737,7 @@ private  function <a href='../proc/strf_r8p.html'>strf_R8P</a>(fm, n)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-str_R8P"></a><h3>
-private  function <a href='../proc/str_r8p.html'>str_R8P</a>(no_sign, n)
+private elemental function <a href='../proc/str_r8p.html'>str_R8P</a>(no_sign, n)
 </h3></div>
   <div class="panel-body">
        
@@ -810,7 +815,7 @@ private  function <a href='../proc/str_r8p.html'>str_R8P</a>(no_sign, n)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-strf_R4P"></a><h3>
-private  function <a href='../proc/strf_r4p.html'>strf_R4P</a>(fm, n)
+private elemental function <a href='../proc/strf_r4p.html'>strf_R4P</a>(fm, n)
 </h3></div>
   <div class="panel-body">
        
@@ -888,7 +893,7 @@ private  function <a href='../proc/strf_r4p.html'>strf_R4P</a>(fm, n)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-str_R4P"></a><h3>
-private  function <a href='../proc/str_r4p.html'>str_R4P</a>(no_sign, n)
+private elemental function <a href='../proc/str_r4p.html'>str_R4P</a>(no_sign, n)
 </h3></div>
   <div class="panel-body">
        
@@ -966,7 +971,7 @@ private  function <a href='../proc/str_r4p.html'>str_R4P</a>(no_sign, n)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-strf_I8P"></a><h3>
-private  function <a href='../proc/strf_i8p.html'>strf_I8P</a>(fm, n)
+private elemental function <a href='../proc/strf_i8p.html'>strf_I8P</a>(fm, n)
 </h3></div>
   <div class="panel-body">
        
@@ -1044,7 +1049,7 @@ private  function <a href='../proc/strf_i8p.html'>strf_I8P</a>(fm, n)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-str_I8P"></a><h3>
-private  function <a href='../proc/str_i8p.html'>str_I8P</a>(no_sign, n)
+private elemental function <a href='../proc/str_i8p.html'>str_I8P</a>(no_sign, n)
 </h3></div>
   <div class="panel-body">
        
@@ -1122,7 +1127,7 @@ private  function <a href='../proc/str_i8p.html'>str_I8P</a>(no_sign, n)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-strf_I4P"></a><h3>
-private  function <a href='../proc/strf_i4p.html'>strf_I4P</a>(fm, n)
+private elemental function <a href='../proc/strf_i4p.html'>strf_I4P</a>(fm, n)
 </h3></div>
   <div class="panel-body">
        
@@ -1200,7 +1205,7 @@ private  function <a href='../proc/strf_i4p.html'>strf_I4P</a>(fm, n)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-str_I4P"></a><h3>
-private  function <a href='../proc/str_i4p.html'>str_I4P</a>(no_sign, n)
+private elemental function <a href='../proc/str_i4p.html'>str_I4P</a>(no_sign, n)
 </h3></div>
   <div class="panel-body">
        
@@ -1278,7 +1283,7 @@ private  function <a href='../proc/str_i4p.html'>str_I4P</a>(no_sign, n)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-strf_I2P"></a><h3>
-private  function <a href='../proc/strf_i2p.html'>strf_I2P</a>(fm, n)
+private elemental function <a href='../proc/strf_i2p.html'>strf_I2P</a>(fm, n)
 </h3></div>
   <div class="panel-body">
        
@@ -1356,7 +1361,7 @@ private  function <a href='../proc/strf_i2p.html'>strf_I2P</a>(fm, n)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-str_I2P"></a><h3>
-private  function <a href='../proc/str_i2p.html'>str_I2P</a>(no_sign, n)
+private elemental function <a href='../proc/str_i2p.html'>str_I2P</a>(no_sign, n)
 </h3></div>
   <div class="panel-body">
        
@@ -1434,7 +1439,7 @@ private  function <a href='../proc/str_i2p.html'>str_I2P</a>(no_sign, n)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-strf_I1P"></a><h3>
-private  function <a href='../proc/strf_i1p.html'>strf_I1P</a>(fm, n)
+private elemental function <a href='../proc/strf_i1p.html'>strf_I1P</a>(fm, n)
 </h3></div>
   <div class="panel-body">
        
@@ -1512,7 +1517,7 @@ private  function <a href='../proc/strf_i1p.html'>strf_I1P</a>(fm, n)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><a class="anchor" name="proc-str_I1P"></a><h3>
-private  function <a href='../proc/str_i1p.html'>str_I1P</a>(no_sign, n)
+private elemental function <a href='../proc/str_i1p.html'>str_I1P</a>(no_sign, n)
 </h3></div>
   <div class="panel-body">
        
@@ -1581,6 +1586,69 @@ private  function <a href='../proc/str_i1p.html'>str_I1P</a>(no_sign, n)
 
 
        <p>Procedure for converting integer to string. This function achieves casting of integer to string.</p>
+        
+
+  </div>
+  </div>
+
+ 	 
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><a class="anchor" name="proc-str_bol"></a><h3>
+private elemental function <a href='../proc/str_bol.html'>str_bol</a>(n)
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><a class="anchor" name="var-n"></a>logical,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong></td><td><p>Logical to be converted.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small><a class="anchor" name="var-str"></a>character(len=1)
+  </small></h4>
+  <p>Returned string containing input number plus padding zeros.</p>
+    
+    
+    <h4>Description</h4>
+       
+
+
+       <p>Procedure for converting logical to string. This function achieves casting of logical to string.</p>
         
 
   </div>
