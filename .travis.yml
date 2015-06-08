@@ -42,3 +42,6 @@ after_success:
   - git add -f --all *
   - git commit -m "Travis CI autocommit from travis build ${TRAVIS_BUILD_NUMBER}"
   - git push -fq origin gh-pages
+env:
+  global:
+    secure: ZfUM5EuWFnPXgyw7M/dz4deW8qmxGsrCZTSeeLUeJj6lQ/zhM9Dn259IL4SuA3Neji6WOLqm6Z7SmXjm7ieFmn2/Fshuz1KWsGe8XdHDm8PUsfj1XVOpZBKqyPLUv2CPxR+V22fDaAUX3UlWdaFhsWYJzVo3GYX2fJtshFjKDJw=
