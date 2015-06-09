@@ -9,7 +9,7 @@
 
 [![Status](https://img.shields.io/badge/status-stable-brightgreen.svg)]()
 [![Build Status](https://travis-ci.org/szaghi/BeFoR64.svg?branch=master)](https://travis-ci.org/szaghi/BeFoR64)
-[![Coverage Status](https://coveralls.io/repos/szaghi/BeFoR64/badge.svg?branch=master)](https://coveralls.io/r/szaghi/BeFoR64?branch=master)
+[![Coverage Status](http://codecov.io/github/szaghi/BeFoR64/coverage.svg?branch=master)](http://codecov.io/github/szaghi/BeFoR64?branch=master)
 
 ### BeFoR64, Base64 encoding/decoding library for FoRtran poor people
 
