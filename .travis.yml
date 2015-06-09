@@ -9,7 +9,7 @@ env:
     - APT_DEPENDS="gfortran-4.9 binutils"
     - PIP_DEPENDS="FoBiS.py markdown-checklist ford"
   matrix:
-    - SCRIPT="FoBiS.py build -ex makecoverage"
+    - SCRIPT="FoBiS.py rule -ex makecoverage"
       ACTION="COVERAGE"
     - SCRIPT="./cloneghpages.sh ; FoBiS.py rule -ex makedoc"
       ACTION="MAKEDOC"
