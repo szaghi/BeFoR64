@@ -11,7 +11,7 @@ env:
   matrix:
     - SCRIPT="FoBiS.py rule -ex makecoverage"
       ACTION="COVERAGE"
-    - SCRIPT="./cloneghpages.sh ; FoBiS.py rule -ex makedoc"
+    - SCRIPT="./makedoc.sh"
       ACTION="MAKEDOC"
 
 before_install:
@@ -31,5 +31,4 @@ script:
 after_success:
   - cd $TRAVIS_BUILD_DIR
   - if [[ $ACTION == COVERAGE ]]; then bash <(curl -s https://codecov.io/bash); fi
-  - if [[ $ACTION == MAKEDOC ]]; then ./deploydoc.sh; fi
 
