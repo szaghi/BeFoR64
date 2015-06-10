@@ -11,7 +11,7 @@ env:
   matrix:
     - SCRIPT="FoBiS.py rule -ex makecoverage"
       ACTION="COVERAGE"
-    - SCRIPT="./makedoc.sh"
+    - SCRIPT="./makedoc.sh BeFoR64"
       ACTION="MAKEDOC"
 
 before_install:
