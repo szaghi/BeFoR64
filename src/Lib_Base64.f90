@@ -3,10 +3,6 @@ module Lib_Base64
 !-----------------------------------------------------------------------------------------------------------------------------------
 !< BeFoR64, Base64 encoding/decoding library for FoRtran poor men
 !<{!README-BeFoR64.md!}
-!<
-!<### ChangeLog
-!<
-!<{!ChangeLog-BeFoR64.md!}
 !-----------------------------------------------------------------------------------------------------------------------------------
 USE IR_Precision  ! Integers and reals precision definition.
 USE Lib_Pack_Data ! Library for packing heterogeneous data into single (homogeneous) packed one.
