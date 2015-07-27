@@ -3,10 +3,6 @@ module IR_Precision
 !-----------------------------------------------------------------------------------------------------------------------------------
 !< Pure Fortran (2003+) library for ensuring codes portability
 !<{!README-IR_Precision.md!}
-!<
-!<### ChangeLog
-!<
-!<{!ChangeLog-IR_Precision.md!}
 !-----------------------------------------------------------------------------------------------------------------------------------
 USE, intrinsic:: ISO_FORTRAN_ENV, only: stdout => OUTPUT_UNIT, stderr => ERROR_UNIT ! Standard output/error logical units.
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -1126,7 +1122,7 @@ contains
   read(str,*,iostat=err) n ! Casting of str to n.
   if (err/=0) then
     prefd = '' ; if (present(pref)) prefd = pref
-    write(stderr,'(A,I1,A)') prefd//' Error: conversion of string "'//str//'" to real failed! integer(',kind(knd),')'
+    write(stderr,'(A,I1,A)') prefd//' Error: conversion of string "'//str//'" to integer failed! integer(',kind(knd),')'
   endif
   if (present(error)) error = err
   return
@@ -1151,7 +1147,7 @@ contains
   read(str,*,iostat=err) n ! Casting of str to n.
   if (err/=0) then
     prefd = '' ; if (present(pref)) prefd = pref
-    write(stderr,'(A,I1,A)') prefd//' Error: conversion of string "'//str//'" to real failed! integer(',kind(knd),')'
+    write(stderr,'(A,I1,A)') prefd//' Error: conversion of string "'//str//'" to integer failed! integer(',kind(knd),')'
   endif
   if (present(error)) error = err
   return
@@ -1176,7 +1172,7 @@ contains
   read(str,*,iostat=err) n ! Casting of str to n.
   if (err/=0) then
     prefd = '' ; if (present(pref)) prefd = pref
-    write(stderr,'(A,I1,A)') prefd//' Error: conversion of string "'//str//'" to real failed! integer(',kind(knd),')'
+    write(stderr,'(A,I1,A)') prefd//' Error: conversion of string "'//str//'" to integer failed! integer(',kind(knd),')'
   endif
   if (present(error)) error = err
   return
@@ -1201,7 +1197,7 @@ contains
   read(str,*,iostat=err) n ! Casting of str to n.
   if (err/=0) then
     prefd = '' ; if (present(pref)) prefd = pref
-    write(stderr,'(A,I1,A)') prefd//' Error: conversion of string "'//str//'" to real failed! integer(',kind(knd),')'
+    write(stderr,'(A,I1,A)') prefd//' Error: conversion of string "'//str//'" to integer failed! integer(',kind(knd),')'
   endif
   if (present(error)) error = err
   return
