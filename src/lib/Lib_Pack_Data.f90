@@ -3,18 +3,18 @@ module Lib_Pack_Data
 !-----------------------------------------------------------------------------------------------------------------------------------
 !< KISS library for packing heterogeneous data into single (homogeneous) packed one
 !-----------------------------------------------------------------------------------------------------------------------------------
-USE IR_Precision ! Integers and reals precision definition.
+use penf ! Portability environment.
 !-----------------------------------------------------------------------------------------------------------------------------------
 
 !-----------------------------------------------------------------------------------------------------------------------------------
 implicit none
 private
-public:: pack_data
+public :: pack_data
 !-----------------------------------------------------------------------------------------------------------------------------------
 
 !-----------------------------------------------------------------------------------------------------------------------------------
 interface pack_data
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !<
   !< This is useful for encoding different (heterogeneous) kinds variables into a single (homogeneous) stream of bits.
   !< @note This procedure exploits the `transfer` builtin function, that from the standard (2003+) is defined as
@@ -71,17 +71,16 @@ interface pack_data
 endinterface
 !-----------------------------------------------------------------------------------------------------------------------------------
 contains
-  pure subroutine pack_data_R8_R4(a1,a2,packed)
+  pure subroutine pack_data_R8_R4(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  real(R8P),                 intent(IN)::    a1(1:)    !< Firs data stream.
-  real(R4P),                 intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  real(R8P),                 intent(in)    :: a1(1:)    !< Firs data stream.
+  real(R4P),                 intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -93,17 +92,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_R8_R4
 
-  pure subroutine pack_data_R8_I8(a1,a2,packed)
+  pure subroutine pack_data_R8_I8(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  real(R8P),                 intent(IN)::    a1(1:)    !< First data stream.
-  integer(I8P),              intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  real(R8P),                 intent(in)    :: a1(1:)    !< First data stream.
+  integer(I8P),              intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -115,17 +113,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_R8_I8
 
-  pure subroutine pack_data_R8_I4(a1,a2,packed)
+  pure subroutine pack_data_R8_I4(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  real(R8P),                 intent(IN)::    a1(1:)    !< First data stream.
-  integer(I4P),              intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  real(R8P),                 intent(in)    :: a1(1:)    !< First data stream.
+  integer(I4P),              intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -137,17 +134,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_R8_I4
 
-  pure subroutine pack_data_R8_I2(a1,a2,packed)
+  pure subroutine pack_data_R8_I2(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  real(R8P),                 intent(IN)::    a1(1:)    !< First data stream.
-  integer(I2P),              intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  real(R8P),                 intent(in)    :: a1(1:)    !< First data stream.
+  integer(I2P),              intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -159,17 +155,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_R8_I2
 
-  pure subroutine pack_data_R8_I1(a1,a2,packed)
+  pure subroutine pack_data_R8_I1(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  real(R8P),                 intent(IN)::    a1(1:)    !< First data stream.
-  integer(I1P),              intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  real(R8P),                 intent(in)    :: a1(1:)    !< First data stream.
+  integer(I1P),              intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -181,17 +176,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_R8_I1
 
-  pure subroutine pack_data_R4_R8(a1,a2,packed)
+  pure subroutine pack_data_R4_R8(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  real(R4P),                 intent(IN)::    a1(1:)    !< Firs data stream.
-  real(R8P),                 intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  real(R4P),                 intent(in)    :: a1(1:)    !< Firs data stream.
+  real(R8P),                 intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -203,17 +197,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_R4_R8
 
-  pure subroutine pack_data_R4_I8(a1,a2,packed)
+  pure subroutine pack_data_R4_I8(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  real(R4P),                 intent(IN)::    a1(1:)    !< First data stream.
-  integer(I8P),              intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  real(R4P),                 intent(in)    :: a1(1:)    !< First data stream.
+  integer(I8P),              intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -225,17 +218,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_R4_I8
 
-  pure subroutine pack_data_R4_I4(a1,a2,packed)
+  pure subroutine pack_data_R4_I4(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  real(R4P),                 intent(IN)::    a1(1:)    !< First data stream.
-  integer(I4P),              intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  real(R4P),                 intent(in)    :: a1(1:)    !< First data stream.
+  integer(I4P),              intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -247,17 +239,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_R4_I4
 
-  pure subroutine pack_data_R4_I2(a1,a2,packed)
+  pure subroutine pack_data_R4_I2(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  real(R4P),                 intent(IN)::    a1(1:)    !< First data stream.
-  integer(I2P),              intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  real(R4P),                 intent(in)    :: a1(1:)    !< First data stream.
+  integer(I2P),              intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -269,17 +260,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_R4_I2
 
-  pure subroutine pack_data_R4_I1(a1,a2,packed)
+  pure subroutine pack_data_R4_I1(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  real(R4P),                 intent(IN)::    a1(1:)    !< First data stream.
-  integer(I1P),              intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  real(R4P),                 intent(in)    :: a1(1:)    !< First data stream.
+  integer(I1P),              intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -291,17 +281,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_R4_I1
 
-  pure subroutine pack_data_I8_R8(a1,a2,packed)
+  pure subroutine pack_data_I8_R8(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  integer(I8P),              intent(IN)::    a1(1:)    !< First data stream.
-  real(R8P),                 intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  integer(I8P),              intent(in)    :: a1(1:)    !< First data stream.
+  real(R8P),                 intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -313,17 +302,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_I8_R8
 
-  pure subroutine pack_data_I8_R4(a1,a2,packed)
+  pure subroutine pack_data_I8_R4(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  integer(I8P),              intent(IN)::    a1(1:)    !< First data stream.
-  real(R4P),                 intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  integer(I8P),              intent(in)    :: a1(1:)    !< First data stream.
+  real(R4P),                 intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -335,17 +323,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_I8_R4
 
-  pure subroutine pack_data_I8_I4(a1,a2,packed)
+  pure subroutine pack_data_I8_I4(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  integer(I8P),              intent(IN)::    a1(1:)    !< First data stream.
-  integer(I4P),              intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  integer(I8P),              intent(in)    :: a1(1:)    !< First data stream.
+  integer(I4P),              intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -357,17 +344,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_I8_I4
 
-  pure subroutine pack_data_I8_I2(a1,a2,packed)
+  pure subroutine pack_data_I8_I2(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  integer(I8P),              intent(IN)::    a1(1:)    !< First data stream.
-  integer(I2P),              intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  integer(I8P),              intent(in)    :: a1(1:)    !< First data stream.
+  integer(I2P),              intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -379,17 +365,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_I8_I2
 
-  pure subroutine pack_data_I8_I1(a1,a2,packed)
+  pure subroutine pack_data_I8_I1(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  integer(I8P),              intent(IN)::    a1(1:)    !< First data stream.
-  integer(I1P),              intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  integer(I8P),              intent(in)    :: a1(1:)    !< First data stream.
+  integer(I1P),              intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -401,17 +386,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_I8_I1
 
-  pure subroutine pack_data_I4_R8(a1,a2,packed)
+  pure subroutine pack_data_I4_R8(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  integer(I4P),              intent(IN)::    a1(1:)    !< First data stream.
-  real(R8P),                 intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  integer(I4P),              intent(in)    :: a1(1:)    !< First data stream.
+  real(R8P),                 intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -423,17 +407,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_I4_R8
 
-  pure subroutine pack_data_I4_R4(a1,a2,packed)
+  pure subroutine pack_data_I4_R4(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  integer(I4P),              intent(IN)::    a1(1:)    !< First data stream.
-  real(R4P),                 intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  integer(I4P),              intent(in)    :: a1(1:)    !< First data stream.
+  real(R4P),                 intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -445,17 +428,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_I4_R4
 
-  pure subroutine pack_data_I4_I8(a1,a2,packed)
+  pure subroutine pack_data_I4_I8(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  integer(I4P),              intent(IN)::    a1(1:)    !< First data stream.
-  integer(I8P),              intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  integer(I4P),              intent(in)    :: a1(1:)    !< First data stream.
+  integer(I8P),              intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -467,17 +449,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_I4_I8
 
-  pure subroutine pack_data_I4_I2(a1,a2,packed)
+  pure subroutine pack_data_I4_I2(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  integer(I4P),              intent(IN)::    a1(1:)    !< First data stream.
-  integer(I2P),              intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  integer(I4P),              intent(in)    :: a1(1:)    !< First data stream.
+  integer(I2P),              intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -489,17 +470,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_I4_I2
 
-  pure subroutine pack_data_I4_I1(a1,a2,packed)
+  pure subroutine pack_data_I4_I1(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  integer(I4P),              intent(IN)::    a1(1:)    !< First data stream.
-  integer(I1P),              intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  integer(I4P),              intent(in)    :: a1(1:)    !< First data stream.
+  integer(I1P),              intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -511,17 +491,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_I4_I1
 
-  pure subroutine pack_data_I2_R8(a1,a2,packed)
+  pure subroutine pack_data_I2_R8(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  integer(I2P),              intent(IN)::    a1(1:)    !< First data stream.
-  real(R8P),                 intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  integer(I2P),              intent(in)    :: a1(1:)    !< First data stream.
+  real(R8P),                 intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -533,17 +512,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_I2_R8
 
-  pure subroutine pack_data_I2_R4(a1,a2,packed)
+  pure subroutine pack_data_I2_R4(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  integer(I2P),              intent(IN)::    a1(1:)    !< First data stream.
-  real(R4P),                 intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  integer(I2P),              intent(in)    :: a1(1:)    !< First data stream.
+  real(R4P),                 intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -555,17 +533,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_I2_R4
 
-  pure subroutine pack_data_I2_I8(a1,a2,packed)
+  pure subroutine pack_data_I2_I8(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  integer(I2P),              intent(IN)::    a1(1:)    !< First data stream.
-  integer(I8P),              intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  integer(I2P),              intent(in)    :: a1(1:)    !< First data stream.
+  integer(I8P),              intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -577,17 +554,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_I2_I8
 
-  pure subroutine pack_data_I2_I4(a1,a2,packed)
+  pure subroutine pack_data_I2_I4(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  integer(I2P),              intent(IN)::    a1(1:)    !< First data stream.
-  integer(I4P),              intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  integer(I2P),              intent(in)    :: a1(1:)    !< First data stream.
+  integer(I4P),              intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -599,17 +575,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_I2_I4
 
-  pure subroutine pack_data_I2_I1(a1,a2,packed)
+  pure subroutine pack_data_I2_I1(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  integer(I2P),              intent(IN)::    a1(1:)    !< First data stream.
-  integer(I1P),              intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  integer(I2P),              intent(in)    :: a1(1:)    !< First data stream.
+  integer(I1P),              intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -621,17 +596,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_I2_I1
 
-  pure subroutine pack_data_I1_R8(a1,a2,packed)
+  pure subroutine pack_data_I1_R8(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  integer(I1P),              intent(IN)::    a1(1:)    !< First data stream.
-  real(R8P),                 intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  integer(I1P),              intent(in)    :: a1(1:)    !< First data stream.
+  real(R8P),                 intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -643,17 +617,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_I1_R8
 
-  pure subroutine pack_data_I1_R4(a1,a2,packed)
+  pure subroutine pack_data_I1_R4(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  integer(I1P),              intent(IN)::    a1(1:)    !< First data stream.
-  real(R4P),                 intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  integer(I1P),              intent(in)    :: a1(1:)    !< First data stream.
+  real(R4P),                 intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -665,17 +638,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_I1_R4
 
-  pure subroutine pack_data_I1_I8(a1,a2,packed)
+  pure subroutine pack_data_I1_I8(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  integer(I1P),              intent(IN)::    a1(1:)    !< First data stream.
-  integer(I8P),              intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  integer(I1P),              intent(in)    :: a1(1:)    !< First data stream.
+  integer(I8P),              intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -687,17 +659,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_I1_I8
 
-  pure subroutine pack_data_I1_I4(a1,a2,packed)
+  pure subroutine pack_data_I1_I4(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  integer(I1P),              intent(IN)::    a1(1:)    !< First data stream.
-  integer(I4P),              intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  integer(I1P),              intent(in)    :: a1(1:)    !< First data stream.
+  integer(I4P),              intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------
@@ -709,18 +680,16 @@ contains
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_I1_I4
 
-  !> @brief Subroutine for packing different kinds of data into single I1P array.
-  pure subroutine pack_data_I1_I2(a1,a2,packed)
+  pure subroutine pack_data_I1_I2(a1, a2, packed)
   !---------------------------------------------------------------------------------------------------------------------------------
-  !< Procedure for packing different kinds of data into single I1P array.
+  !< Pack different kinds of data into single I1P array.
   !---------------------------------------------------------------------------------------------------------------------------------
-  implicit none
-  integer(I1P),              intent(IN)::    a1(1:)    !< First data stream.
-  integer(I2P),              intent(IN)::    a2(1:)    !< Second data stream.
-  integer(I1P), allocatable, intent(INOUT):: packed(:) !< Packed data into I1P array.
-  integer(I1P), allocatable::                p1(:)     !< Temporary packed data of first stream.
-  integer(I1P), allocatable::                p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)::                             np        !< Size of temporary packed data.
+  integer(I1P),              intent(in)    :: a1(1:)    !< First data stream.
+  integer(I2P),              intent(in)    :: a2(1:)    !< Second data stream.
+  integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
+  integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
+  integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+  integer(I4P)                             :: np        !< Size of temporary packed data.
   !---------------------------------------------------------------------------------------------------------------------------------
 
   !---------------------------------------------------------------------------------------------------------------------------------

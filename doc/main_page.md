@@ -2,7 +2,7 @@ project: BeFoR64
 project_dir: ./src/
 output_dir: ./doc/html/publish/
 project_github: https://github.com/szaghi/BeFoR64
-summary: A KISS library for base64 encoding/decoding for modern (2003+) Fortran projects
+summary: Base64 encoding/decoding library for FoRtran poor people
 author: Stefano Zaghi
 github: https://github.com/szaghi
 email: stefano.zaghi@gmail.com
@@ -16,4 +16,4 @@ display: public
          private
 source: true
 
-{!README.md!}
+{!README-BeFoR64.md!}
