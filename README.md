@@ -99,7 +99,7 @@ Besides this README file the BeFoR64 documentation is contained into its own [wi
 ### A Taste of BeFoR64
 Let us assume our goal is encoding a binary integer. It is as simple as
 ```fortran
-USE Lib_Base64
+use befor64
 ...
 character(len=:), allocatable:: code64 ! base64 encoded string
 ...
