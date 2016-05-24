@@ -1,7 +1,7 @@
-!< KISS library for packing heterogeneous data into single (homogeneous) packed one
-module Lib_Pack_Data
+!< KISS library for packing heterogeneous data into single (homogeneous) packed one.
+module befor64_pack_data_m
 !-----------------------------------------------------------------------------------------------------------------------------------
-!< KISS library for packing heterogeneous data into single (homogeneous) packed one
+!< KISS library for packing heterogeneous data into single (homogeneous) packed one.
 !-----------------------------------------------------------------------------------------------------------------------------------
 use penf ! Portability environment.
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -700,4 +700,4 @@ contains
   return
   !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine pack_data_I1_I2
-endmodule Lib_Pack_Data
+endmodule befor64_pack_data_m
