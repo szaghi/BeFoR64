@@ -47,5 +47,6 @@ script:
   - $MAKECOVERAGE
 
 after_success:
+  - find . -name '*.gcno' -print
   - bash <(curl -s https://codecov.io/bash)
   - $MAKEDOC
