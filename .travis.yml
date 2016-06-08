@@ -38,11 +38,11 @@ install:
   - ln -fs /usr/bin/gfortran-6 "$HOME/.local/bin/gfortran" && gfortran --version
   - ls -l /usr/bin/gfortran-6
   - ln -fs /usr/bin/gcov-6 "$HOME/.local/bin/gcov" && gcov --version
-  - pip install -U --upgrade pygooglechart
-  - pip install -U --upgrade graphviz
-  - pip install -U --upgrade FoBiS.py
-  - pip install -U --upgrade markdown-checklist 
-  - pip install -U --upgrade ford
+  - pip install --user --upgrade pygooglechart
+  - pip install --user --upgrade graphviz
+  - pip install --user --upgrade FoBiS.py
+  - pip install --user --upgrade markdown-checklist 
+  - pip install --user --upgrade ford
 
 script:
   - $COVERAGE
