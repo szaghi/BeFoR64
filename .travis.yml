@@ -21,8 +21,7 @@ addons:
 
 env:
   global:
-    - COVERAGE="FoBiS.py rule -ex makecoverage"
-    - CODECOV="bash <(curl -s https://codecov.io/bash)"
+    - MAKECOVERAGE="FoBiS.py rule -ex makecoverage"
     - MAKEDOC="./makedoc.sh szaghi/BeFoR64"
 
 before_install:
@@ -45,9 +44,8 @@ install:
   - pip install --user --upgrade ford
 
 script:
-  - $COVERAGE
+  - $MAKECOVERAGE
 
 after_success:
-  - cd $TRAVIS_BUILD_DIR
-  - $CODECOV
+  - bash <(curl -s https://codecov.io/bash)
   - $MAKEDOC
