@@ -2,7 +2,6 @@
 module befor64
 !-----------------------------------------------------------------------------------------------------------------------------------
 !< BeFoR64, Base64 encoding/decoding library for FoRtran poor people.
-!<{!README-BeFoR64.md!}
 !-----------------------------------------------------------------------------------------------------------------------------------
 use penf                ! Portability environment.
 use befor64_pack_data_m ! Library for packing heterogeneous data into single (homogeneous) packed one.
