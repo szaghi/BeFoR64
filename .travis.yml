@@ -25,7 +25,7 @@ env:
     - MAKEDOC="./makedoc.sh szaghi/BeFoR64"
 
 before_install:
-  - git submodule update --init --recursive
+  - git submodule update --init
 
 install:
   - |
