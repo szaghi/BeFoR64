@@ -2,7 +2,6 @@
 module befor64
 !-----------------------------------------------------------------------------------------------------------------------------------
 !< BeFoR64, Base64 encoding/decoding library for FoRtran poor people.
-!<{!README-BeFoR64.md!}
 !-----------------------------------------------------------------------------------------------------------------------------------
 use penf                ! Portability environment.
 use befor64_pack_data_m ! Library for packing heterogeneous data into single (homogeneous) packed one.
@@ -58,7 +57,7 @@ interface b64_encode
   !<
   !< @warning The encoding of array of strings is admitted only if each string of the array has the same length.
   module procedure &
-#ifdef r16p
+#ifdef _R16P_SUPPORTED
                    b64_encode_R16,   b64_encode_R16_a, &
 #endif
                    b64_encode_R8,    b64_encode_R8_a,  &
@@ -134,7 +133,7 @@ interface b64_decode
   !<
   !< @warning The decoding of array of strings is admitted only if each string of the array has the same length.
   module procedure &
-#ifdef r16p
+#ifdef _R16P_SUPPORTED
                    b64_decode_R16,   b64_decode_R16_a, &
 #endif
                    b64_decode_R8,    b64_decode_R8_a,  &
@@ -174,26 +173,20 @@ interface b64_decode_up
   !< procedure.
   !<
   !< @warning The decoding of array of strings is admitted only if each string of the array has the same length.
-  module procedure b64_decode_up,b64_decode_up_a
+  module procedure b64_decode_up, b64_decode_up_a
 endinterface
-!-----------------------------------------------------------------------------------------------------------------------------------
+
 contains
   subroutine b64_init()
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Initialize the BeFoR64 library.
   !<
   !< @note This procedure **must** be called before encoding/decoding anything!
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   if (.not.is_initialized) call penf_init
   is_b64_initialized = .true.
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_init
 
   pure subroutine encode_bits(bits, padd, code)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Encode a bits stream (must be multiple of 24 bits) into base64 charcaters code (of length multiple of 4).
   !<
   !< The bits stream are encoded in chunks of 24 bits as the following example (in little endian order)
@@ -209,7 +202,6 @@ contains
   !< @note The number of paddings must be computed outside this procedure, into the calling scope.
   !<
   !< @warning This procedure is the backend of encoding, thus it must be never called outside the module.
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I1P), intent(in)  :: bits(1:)  !< Bits to be encoded.
   integer(I4P), intent(in)  :: padd      !< Number of padding characters ('=').
   character(*), intent(out) :: code      !< Characters code.
@@ -217,9 +209,7 @@ contains
   integer(I8P)              :: c         !< Counter.
   integer(I8P)              :: e         !< Counter.
   integer(I8P)              :: Nb        !< Length of bits array.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   Nb=size(bits,dim=1,kind=I8P)
   c = 1_I8P
   do e=1_I8P,Nb,3_I8P ! loop over array elements: 3 bytes (24 bits) scanning
@@ -242,12 +232,9 @@ contains
     c = c + 4_I8P
   enddo
   if (padd>0) code(len(code)-padd+1:)=repeat('=',padd)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine encode_bits
 
   pure subroutine decode_bits(code, bits)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Decode a base64 string into a sequence of bits stream.
   !<
   !< The base64 string must be parsed with a strike of 4 characters and converted into a 3 bytes stream. Considering the base64 code
@@ -266,16 +253,13 @@ contains
   !< @note The bits pattern is returned as a 1-byte element array, the dimension of witch must be computed outside this procedure.
   !<
   !< @warning This procedure is the backend of decoding, thus it must be never called outside the module.
-  !---------------------------------------------------------------------------------------------------------------------------------
   character(*), intent(in)  :: code      !< Characters code.
   integer(I1P), intent(out) :: bits(1:)  !< Bits decoded.
   integer(I1P)              :: sixb(1:4) !< 6 bits slices (stored into 8 bits integer) of 24 bits input.
   integer(I8P)              :: c         !< Counter.
   integer(I8P)              :: e         !< Counter.
   integer(I8P)              :: Nb        !< Length of bits array.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   Nb=size(bits,dim=1,kind=I8P)
   e = 1_I8P
   do c=1_I8P,len(code),4_I8P ! loop over code characters: 3 bytes (24 bits) scanning
@@ -293,19 +277,13 @@ contains
     endif
     e = e + 3_I8P
   enddo
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine decode_bits
 
   subroutine b64_encode_up(up, code)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Encode an unlimited polymorphic scalar to base64.
-  !---------------------------------------------------------------------------------------------------------------------------------
   class(*),                      intent(in)  :: up   !< Unlimited polymorphic variable to be encoded.
   character(len=:), allocatable, intent(out) :: code !< Encoded scalar.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   select type(up)
   type is(real(R8P))
     call b64_encode_R8(n=up,code=code)
@@ -322,19 +300,13 @@ contains
   type is(character(*))
     call b64_encode_string(s=up,code=code)
   endselect
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_up
 
   pure subroutine b64_encode_up_a(up, code)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Encode an unlimited polymorphic array to base64.
-  !---------------------------------------------------------------------------------------------------------------------------------
   class(*),                      intent(in)  :: up(1:) !< Unlimited polymorphic variable to be encoded.
   character(len=:), allocatable, intent(out) :: code   !< Encoded array.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   select type(up)
   type is(real(R8P))
     call b64_encode_R8_a(n=up,code=code)
@@ -351,19 +323,13 @@ contains
   type is(character(*))
     call b64_encode_string_a(s=up,code=code)
   endselect
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_up_a
 
   subroutine b64_decode_up(code, up)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Decode an unlimited polymorphic scalar from base64.
-  !---------------------------------------------------------------------------------------------------------------------------------
   character(*), intent(in)  :: code !< Encoded scalar.
   class(*),     intent(out) :: up   !< Unlimited polymorphic variable to be decoded.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   select type(up)
   type is(real(R8P))
     call b64_decode_R8(code=code,n=up)
@@ -380,19 +346,13 @@ contains
   type is(character(*))
     call b64_decode_string(code=code,s=up)
   endselect
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_decode_up
 
   subroutine b64_decode_up_a(code, up)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Decode an unlimited polymorphic array from base64.
-  !---------------------------------------------------------------------------------------------------------------------------------
   character(*), intent(in)  :: code   !< Encoded array.
   class(*),     intent(out) :: up(1:) !< Unlimited polymorphic variable to be decoded.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   select type(up)
   type is(real(R8P))
     call b64_decode_R8_a(code=code,n=up)
@@ -409,630 +369,434 @@ contains
   type is(character(*))
     call b64_decode_string_a(code=code,s=up)
   endselect
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_decode_up_a
 
   pure subroutine b64_encode_R16(n, code)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Encode scalar number to base64 (R16P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   real(R16P),                    intent(in)  :: n       !< Number to be encoded.
   character(len=:), allocatable, intent(out) :: code    !< Encoded scalar.
   integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
   integer(I4P)                               :: padd    !< Number of padding characters ('=').
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   allocate(nI1P(1:((BYR16P+2)/3)*3)) ; nI1P = 0_I1P
   code = repeat(' ',((BYR16P+2)/3)*4)
   nI1P = transfer(n,nI1P)
   padd = mod((BYR16P),3_I2P) ; if (padd>0_I4P) padd = 3_I4P - padd
   call encode_bits(bits=nI1P,padd=padd,code=code)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_R16
 
   pure subroutine b64_encode_R8(n, code)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Encode scalar number to base64 (R8P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   real(R8P),                     intent(in)  :: n       !< Number to be encoded.
   character(len=:), allocatable, intent(out) :: code    !< Encoded scalar.
   integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
   integer(I4P)                               :: padd    !< Number of padding characters ('=').
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   allocate(nI1P(1:((BYR8P+2)/3)*3)) ; nI1P = 0_I1P
   code = repeat(' ',((BYR8P+2)/3)*4)
   nI1P = transfer(n,nI1P)
   padd = mod((BYR8P),3_I1P) ; if (padd>0_I4P) padd = 3_I4P - padd
   call encode_bits(bits=nI1P,padd=padd,code=code)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_R8
 
   pure subroutine b64_encode_R4(n, code)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Encode scalar number to base64 (R4P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   real(R4P),                     intent(in)  :: n       !< Number to be encoded.
   character(len=:), allocatable, intent(out) :: code    !< Encoded scalar.
   integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
   integer(I4P)                               :: padd    !< Number of padding characters ('=').
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   allocate(nI1P(1:((BYR4P+2)/3)*3)) ; nI1P = 0_I1P
   code = repeat(' ',((BYR4P+2)/3)*4)
   nI1P = transfer(n,nI1P)
   padd = mod((BYR4P),3_I1P) ; if (padd>0_I4P) padd = 3_I4P - padd
   call encode_bits(bits=nI1P,padd=padd,code=code)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_R4
 
   pure subroutine b64_encode_I8(n, code)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Encode scalar number to base64 (I8P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I8P),                  intent(in)  :: n       !< Number to be encoded.
   character(len=:), allocatable, intent(out) :: code    !< Encoded scalar.
   integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
   integer(I4P)                               :: padd    !< Number of padding characters ('=').
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   allocate(nI1P(1:((BYI8P+2)/3)*3)) ; nI1P = 0_I1P
   code = repeat(' ',((BYI8P+2)/3)*4)
   nI1P = transfer(n,nI1P)
   padd = mod((BYI8P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
   call encode_bits(bits=nI1P,padd=padd,code=code)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_I8
 
   pure subroutine b64_encode_I4(n, code)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Encode scalar number to base64 (I4P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I4P),                  intent(in)  :: n       !< Number to be encoded.
   character(len=:), allocatable, intent(out) :: code    !< Encoded scalar.
   integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
   integer(I4P)                               :: padd    !< Number of padding characters ('=').
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   allocate(nI1P(1:((BYI4P+2)/3)*3)) ; nI1P = 0_I1P
   code = repeat(' ',((BYI4P+2)/3)*4)
   nI1P = transfer(n,nI1P)
   padd = mod((BYI4P),3_I4P) ; if (padd>0_I4P) padd = 3_I4P - padd
   call encode_bits(bits=nI1P,padd=padd,code=code)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_I4
 
   pure subroutine b64_encode_I2(n, code)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Encode scalar number to base64 (I2P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I2P),                  intent(in)  :: n       !< Number to be encoded.
   character(len=:), allocatable, intent(out) :: code    !< Encoded scalar.
   integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
   integer(I4P)                               :: padd    !< Number of padding characters ('=').
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   allocate(nI1P(1:((BYI2P+2)/3)*3)) ; nI1P = 0_I1P
   code = repeat(' ',((BYI2P+2)/3)*4)
   nI1P = transfer(n,nI1P)
   padd = mod((BYI2P),3_I2P) ; if (padd>0_I4P) padd = 3_I4P - padd
   call encode_bits(bits=nI1P,padd=padd,code=code)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_I2
 
   pure subroutine b64_encode_I1(n, code)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Encode scalar number to base64 (I1P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I1P),                  intent(in)  :: n       !< Number to be encoded.
   character(len=:), allocatable, intent(out) :: code    !< Encoded scalar.
   integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
   integer(I4P)                               :: padd    !< Number of padding characters ('=').
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   allocate(nI1P(1:((BYI1P+2)/3)*3)) ; nI1P = 0_I1P
   code = repeat(' ',((BYI1P+2)/3)*4)
   nI1P = transfer(n,nI1P)
   padd = mod((BYI1P),3_I1P) ; if (padd>0_I4P) padd = 3_I4P - padd
   call encode_bits(bits=nI1P,padd=padd,code=code)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_I1
 
   pure subroutine b64_encode_string(s, code)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Encode scalar string to base64.
-  !---------------------------------------------------------------------------------------------------------------------------------
   character(*),                  intent(in)  :: s       !< String to be encoded.
   character(len=:), allocatable, intent(out) :: code    !< Encoded scalar.
   integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
   integer(I4P)                               :: padd    !< Number of padding characters ('=').
   integer(I4P)                               :: BYCHS   !< Bytes of character string.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   BYCHS = byte_size(s)
   allocate(nI1P(1:((BYCHS+2)/3)*3)) ; nI1P = 0_I1P
   code = repeat(' ',((BYCHS+2)/3)*4)
   nI1P = transfer(s,nI1P)
   padd = mod((BYCHS),3_I4P) ; if (padd>0_I4P) padd = 3_I4P - padd
   call encode_bits(bits=nI1P,padd=padd,code=code)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_string
 
   pure subroutine b64_encode_R16_a(n, code)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Encode array numbers to base64 (R16P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   real(R16P),                    intent(in)  :: n(1:)   !< Array of numbers to be encoded.
   character(len=:), allocatable, intent(out) :: code    !< Encoded array.
   integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
   integer(I4P)                               :: padd    !< Number of padding characters ('=').
   integer(I8P)                               :: ns      !< Size of n.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   ns = size(n,dim=1)
   allocate(nI1P(1:((ns*BYR16P+2)/3)*3)) ; nI1P = 0_I1P
   code = repeat(' ',((ns*BYR16P+2)/3)*4)
   nI1P = transfer(n,nI1P)
   padd = mod((ns*BYR16P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
   call encode_bits(bits=nI1P,padd=padd,code=code)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_R16_a
 
   pure subroutine b64_encode_R8_a(n, code)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Encode array numbers to base64 (R8P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   real(R8P),                     intent(in)  :: n(1:)   !< Array of numbers to be encoded.
   character(len=:), allocatable, intent(out) :: code    !< Encoded array.
   integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
   integer(I4P)                               :: padd    !< Number of padding characters ('=').
   integer(I8P)                               :: ns      !< Size of n.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   ns = size(n,dim=1)
   allocate(nI1P(1:((ns*BYR8P+2)/3)*3)) ; nI1P = 0_I1P
   code = repeat(' ',((ns*BYR8P+2)/3)*4)
   nI1P = transfer(n,nI1P)
   padd = mod((ns*BYR8P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
   call encode_bits(bits=nI1P,padd=padd,code=code)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_R8_a
 
   pure subroutine b64_encode_R4_a(n, code)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Encode array numbers to base64 (R4P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   real(R4P),                     intent(in)  :: n(1:)   !< Array of numbers to be encoded.
   character(len=:), allocatable, intent(out) :: code    !< Encoded array.
   integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
   integer(I4P)                               :: padd    !< Number of padding characters ('=').
   integer(I8P)                               :: ns      !< Size of n.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   ns = size(n,dim=1)
   allocate(nI1P(1:((ns*BYR4P+2)/3)*3)) ; nI1P = 0_I1P
   code = repeat(' ',((ns*BYR4P+2)/3)*4)
   nI1P = transfer(n,nI1P)
   padd = mod((ns*BYR4P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
   call encode_bits(bits=nI1P,padd=padd,code=code)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_R4_a
 
   pure subroutine b64_encode_I8_a(n, code)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Encode array numbers to base64 (I8P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I8P),                  intent(in)  :: n(1:)   !< Array of numbers to be encoded.
   character(len=:), allocatable, intent(out) :: code    !< Encoded array.
   integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
   integer(I4P)                               :: padd    !< Number of padding characters ('=').
   integer(I8P)                               :: ns      !< Size of n.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   ns = size(n,dim=1)
   allocate(nI1P(1:((ns*BYI8P+2)/3)*3)) ; nI1P = 0_I1P
   code = repeat(' ',((ns*BYI8P+2)/3)*4)
   nI1P = transfer(n,nI1P)
   padd = mod((ns*BYI8P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
   call encode_bits(bits=nI1P,padd=padd,code=code)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_I8_a
 
   pure subroutine b64_encode_I4_a(n, code)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Encode array numbers to base64 (I4P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I4P),                  intent(in)  :: n(1:)   !< Array of numbers to be encoded.
   character(len=:), allocatable, intent(out) :: code    !< Encoded array.
   integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
   integer(I4P)                               :: padd    !< Number of padding characters ('=').
   integer(I8P)                               :: ns      !< Size of n.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   ns = size(n,dim=1)
   allocate(nI1P(1:((ns*BYI4P+2)/3)*3)) ; nI1P = 0_I1P
   code = repeat(' ',((ns*BYI4P+2)/3)*4)
   nI1P = transfer(n,nI1P)
   padd = mod((ns*BYI4P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
   call encode_bits(bits=nI1P,padd=padd,code=code)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_I4_a
 
   pure subroutine b64_encode_I2_a(n, code)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Encode array numbers to base64 (I2P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I2P),                  intent(in)  :: n(1:)   !< Array of numbers to be encoded.
   character(len=:), allocatable, intent(out) :: code    !< Encoded array.
   integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
   integer(I4P)                               :: padd    !< Number of padding characters ('=').
   integer(I8P)                               :: ns      !< Size of n.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   ns = size(n,dim=1)
   allocate(nI1P(1:((ns*BYI2P+2)/3)*3)) ; nI1P = 0_I1P
   code = repeat(' ',((ns*BYI2P+2)/3)*4)
   nI1P = transfer(n,nI1P)
   padd = mod((ns*BYI2P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
   call encode_bits(bits=nI1P,padd=padd,code=code)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_I2_a
 
   pure subroutine b64_encode_I1_a(n, code)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Encode array numbers to base64 (I1P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I1P),                  intent(in)  :: n(1:)   !< Array of numbers to be encoded.
   character(len=:), allocatable, intent(out) :: code    !< Encoded array.
   integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
   integer(I4P)                               :: padd    !< Number of padding characters ('=').
   integer(I8P)                               :: ns      !< Size of n.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   ns = size(n,dim=1)
   allocate(nI1P(1:((ns*BYI1P+2)/3)*3)) ; nI1P = 0_I1P
   code = repeat(' ',((ns*BYI1P+2)/3)*4)
   nI1P = transfer(n,nI1P)
   padd = mod((ns*BYI1P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
   call encode_bits(bits=nI1P,padd=padd,code=code)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_I1_a
 
   pure subroutine b64_encode_string_a(s, code)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Encode array string to base64.
-  !---------------------------------------------------------------------------------------------------------------------------------
   character(*),                  intent(in)  :: s(1:)   !< String to be encoded.
   character(len=:), allocatable, intent(out) :: code    !< Encoded scalar.
   integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
   integer(I4P)                               :: padd    !< Number of padding characters ('=').
   integer(I4P)                               :: BYCHS   !< Bytes of character string.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   BYCHS = byte_size(s(1))*size(s,dim=1)
   allocate(nI1P(1:((BYCHS+2)/3)*3)) ; nI1P = 0_I1P
   code = repeat(' ',((BYCHS+2)/3)*4)
   nI1P = transfer(s,nI1P)
   padd = mod((BYCHS),3_I4P) ; if (padd>0_I4P) padd = 3_I4P - padd
   call encode_bits(bits=nI1P,padd=padd,code=code)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_encode_string_a
 
   elemental subroutine b64_decode_R16(code, n)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Decode a base64 code into a scalar number (R16P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   character(*), intent(in)  :: code    !< Encoded scalar.
   real(R16P),   intent(out) :: n       !< Number to be decoded.
   integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   allocate(nI1P(1:BYR16P)) ; nI1P = 0_I1P
   call decode_bits(code=code,bits=nI1P)
   n = transfer(nI1P,n)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_decode_R16
 
   elemental subroutine b64_decode_R8(code, n)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Decode a base64 code into a scalar number (R8P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   character(*), intent(in)  :: code    !< Encoded scalar.
   real(R8P),    intent(out) :: n       !< Number to be decoded.
   integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   allocate(nI1P(1:BYR8P)) ; nI1P = 0_I1P
   call decode_bits(code=code,bits=nI1P)
   n = transfer(nI1P,n)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_decode_R8
 
   elemental subroutine b64_decode_R4(code, n)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Decode a base64 code into a scalar number (R4P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   character(*), intent(in)  :: code    !< Encoded scalar.
   real(R4P),    intent(out) :: n       !< Number to be decoded.
   integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   allocate(nI1P(1:BYR4P)) ; nI1P = 0_I1P
   call decode_bits(code=code,bits=nI1P)
   n = transfer(nI1P,n)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_decode_R4
 
   elemental subroutine b64_decode_I8(code, n)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Decode a base64 code into a scalar number (I8P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   character(*), intent(in)  :: code    !< Encoded scalar.
   integer(I8P), intent(out) :: n       !< Number to be decoded.
   integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   allocate(nI1P(1:BYI8P)) ; nI1P = 0_I1P
   call decode_bits(code=code,bits=nI1P)
   n = transfer(nI1P,n)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_decode_I8
 
   elemental subroutine b64_decode_I4(code, n)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Decode a base64 code into a scalar number (I4P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   character(*), intent(in)  :: code    !< Encoded scalar.
   integer(I4P), intent(out) :: n       !< Number to be decoded.
   integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   allocate(nI1P(1:BYI4P)) ; nI1P = 0_I1P
   call decode_bits(code=code,bits=nI1P)
   n = transfer(nI1P,n)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_decode_I4
 
   elemental subroutine b64_decode_I2(code, n)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Decode a base64 code into a scalar number (I2P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   character(*), intent(in)  :: code    !< Encoded scalar.
   integer(I2P), intent(out) :: n       !< Number to be decoded.
   integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   allocate(nI1P(1:BYI2P)) ; nI1P = 0_I1P
   call decode_bits(code=code,bits=nI1P)
   n = transfer(nI1P,n)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_decode_I2
 
   elemental subroutine b64_decode_I1(code, n)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Decode a base64 code into a scalar number (I1P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   character(*), intent(in)  :: code    !< Encoded scalar.
   integer(I1P), intent(out) :: n       !< Number to be decoded.
   integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   allocate(nI1P(1:BYI1P)) ; nI1P = 0_I1P
   call decode_bits(code=code,bits=nI1P)
   n = transfer(nI1P,n)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_decode_I1
 
   elemental subroutine b64_decode_string(code, s)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Decode a base64 code into a scalar string.
-  !---------------------------------------------------------------------------------------------------------------------------------
   character(*), intent(in)  :: code    !< Encoded scalar.
   character(*), intent(out) :: s       !< String to be decoded.
   integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   allocate(nI1P(1:byte_size(s))) ; nI1P = 0_I1P
   call decode_bits(code=code,bits=nI1P)
   s = transfer(nI1P,s)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_decode_string
 
   pure subroutine b64_decode_R16_a(code, n)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Decode a base64 code into an array numbers (R16P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   character(*), intent(in)  :: code    !< Encoded array.
   real(R16P),   intent(out) :: n(1:)   !< Array of numbers to be decoded.
   integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   allocate(nI1P(1:size(n,dim=1)*BYR16P)) ; nI1P = 0_I1P
   call decode_bits(code=code,bits=nI1P)
   n = transfer(nI1P,n)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_decode_R16_a
 
   pure subroutine b64_decode_R8_a(code, n)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Decode a base64 code into an array numbers (R8P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   character(*), intent(in)  :: code    !< Encoded array.
   real(R8P),    intent(out) :: n(1:)   !< Array of numbers to be decoded.
   integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   allocate(nI1P(1:size(n,dim=1)*BYR8P)) ; nI1P = 0_I1P
   call decode_bits(code=code,bits=nI1P)
   n = transfer(nI1P,n)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_decode_R8_a
 
   pure subroutine b64_decode_R4_a(code, n)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Decode a base64 code into an array numbers (R4P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   character(*), intent(in)  :: code    !< Encoded array.
   real(R4P),    intent(out) :: n(1:)   !< Array of numbers to be decoded.
   integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   allocate(nI1P(1:size(n,dim=1)*BYR4P)) ; nI1P = 0_I1P
   call decode_bits(code=code,bits=nI1P)
   n = transfer(nI1P,n)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_decode_R4_a
 
   pure subroutine b64_decode_I8_a(code, n)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Decode a base64 code into an array numbers (I8P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   character(*), intent(in)  :: code    !< Encoded array.
   integer(I8P), intent(out) :: n(1:)   !< Array of numbers to be decoded.
   integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   allocate(nI1P(1:size(n,dim=1)*BYI8P)) ; nI1P = 0_I1P
   call decode_bits(code=code,bits=nI1P)
   n = transfer(nI1P,n)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_decode_I8_a
 
   pure subroutine b64_decode_I4_a(code, n)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Decode a base64 code into an array numbers (I4P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   character(*), intent(in)  :: code    !< Encoded array.
   integer(I4P), intent(out) :: n(1:)   !< Array of numbers to be decoded.
   integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   allocate(nI1P(1:size(n,dim=1)*BYI4P)) ; nI1P = 0_I1P
   call decode_bits(code=code,bits=nI1P)
   n = transfer(nI1P,n)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_decode_I4_a
 
   pure subroutine b64_decode_I2_a(code, n)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Decode a base64 code into an array numbers (I2P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   character(*), intent(in)  :: code    !< Encoded array.
   integer(I2P), intent(out) :: n(1:)   !< Array of numbers to be decoded.
   integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   allocate(nI1P(1:size(n,dim=1)*BYI2P)) ; nI1P = 0_I1P
   call decode_bits(code=code,bits=nI1P)
   n = transfer(nI1P,n)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_decode_I2_a
 
   pure subroutine b64_decode_I1_a(code, n)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Decode a base64 code into an array numbers (I1P).
-  !---------------------------------------------------------------------------------------------------------------------------------
   character(*), intent(in)  :: code    !< Encoded array.
   integer(I1P), intent(out) :: n(1:)   !< Array of numbers to be decoded.
   integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   allocate(nI1P(1:size(n,dim=1)*BYI1P)) ; nI1P = 0_I1P
   call decode_bits(code=code,bits=nI1P)
   n = transfer(nI1P,n)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_decode_I1_a
 
   pure subroutine b64_decode_string_a(code, s)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Decode a base64 code into an array of strings.
-  !---------------------------------------------------------------------------------------------------------------------------------
   character(*), intent(in)  :: code    !< Encoded scalar.
   character(*), intent(out) :: s(1:)   !< String to be decoded.
   integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   allocate(nI1P(1:byte_size(s(1))*size(s,dim=1))) ; nI1P = 0_I1P
   call decode_bits(code=code,bits=nI1P)
   s = transfer(nI1P,s)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine b64_decode_string_a
 
   subroutine autotest()
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Procedure for autotesting the library functionalities.
   !<
   !< @note Into the *src* directory there is a small python script (*validation.py*) that can be used to validate the library
   !< correctness by a comparison with other widely used tools such as the python builtin module *struct*.
-  !---------------------------------------------------------------------------------------------------------------------------------
   character(len=:), allocatable :: code64        !< Base64 code.
   logical                       :: ok            !< Flag for checking the result of encoding/decoding.
-#ifdef r16p
+#ifdef _R16P_SUPPORTED
   real(R16P)                    :: scalar_R16    !< Decoded scalar.
 #endif
   real(R8P)                     :: scalar_R8     !< Decoded scalar.
@@ -1048,16 +812,14 @@ contains
   integer(I2P)                  :: array_I2(1:2) !< Decoded array.
   integer(I1P)                  :: array_I1(1:2) !< Decoded array.
   character(5)                  :: array_s(1:2)  !< Decoded array.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
   call b64_Init
 
   print "(A)", 'Encoders'
 
   print "(A)", 'Scalars'
 
-#ifdef r16p
+#ifdef _R16P_SUPPORTED
   call b64_encode(n=134.231_R16P,code=code64)
   ok = code64=='CKwcWmTHYEA='
   print "(A)", '+ Code of '//trim(str(n=134.231_R16P))//': "'//code64//'"'
@@ -1109,7 +871,7 @@ contains
 
   print "(A)", 'Arrays'
 
-#ifdef r16p
+#ifdef _R16P_SUPPORTED
   call b64_encode(n=[121._R16P,2.32_R16P],code=code64)
   ok = code64=='AAAAAABAXkCPwvUoXI8CQA=='
   print "(A)", '+ Code of '//trim(str(n=[121._R16P,2.32_R16P], delimiters=['[',']']))//': "'//code64//'"'
@@ -1252,7 +1014,5 @@ contains
   print "(A)", '+ Decode of '//'aGVsbG93b3JsZA=='//': "'//array_s(1)//array_s(2)//'"'
   print "(A,1X,L1)", '  Expected value: "helloworld", Is it correct?',ok
   if (.not.ok) stop
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
   endsubroutine autotest
 endmodule befor64

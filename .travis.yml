@@ -1,7 +1,4 @@
-language: python
-
-python:
-  - 2.7
+language: generic
 
 sudo: false
 
@@ -12,22 +9,28 @@ cache:
     - $HOME/.cache/pip
     - $HOME/.local
 
+git:
+  submodules: false
+
 addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
     packages:
-      - gfortran-4.9
+      - gfortran-6
       - binutils
       - python-pip
-      - graphviz      
+      - graphviz
 
 env:
   global:
-    - SCRIPT="FoBiS.py rule -ex makecoverage"
+    - MAKECOVERAGE="FoBiS.py rule -ex makecoverage"
+    - MAKEDOC="./scripts/makedoc.sh szaghi/BeFoR64"
+    - CLEAN="FoBiS.py rule -ex clean"
+    - MAKETAR="FoBiS.py rule -ex maketar"
 
 before_install:
-  - git submodule update --init --recursive
+  - git submodule update --init
 
 install:
   - |
@@ -35,20 +38,37 @@ install:
       mkdir "$HOME/.local/bin"
     fi
   - export PATH="$HOME/.local/bin:$PATH"
-  - export FC=/usr/bin/gfortran-4.9
-  - ln -fs /usr/bin/gfortran-4.9 "$HOME/.local/bin/gfortran" && gfortran --version
-  - ls -l /usr/bin/gfortran-4.9
-  - ln -fs /usr/bin/gcov-4.9 "$HOME/.local/bin/gcov" && gcov --version
-  - pip install --upgrade pygooglechart
-  - pip install --upgrade graphviz
-  - pip install --upgrade FoBiS.py
-  - pip install --upgrade markdown-checklist 
-  - pip install --upgrade ford
+  - export FC=/usr/bin/gfortran-6
+  - ln -fs /usr/bin/gfortran-6 "$HOME/.local/bin/gfortran" && gfortran --version
+  - ls -l /usr/bin/gfortran-6
+  - ln -fs /usr/bin/gcov-6 "$HOME/.local/bin/gcov" && gcov --version
+  - pip install --user --upgrade pygooglechart
+  - pip install --user --upgrade graphviz
+  - pip install --user --upgrade FoBiS.py
+  - pip install --user --upgrade markdown-checklist 
+  - pip install --user --upgrade ford
 
 script:
-  - $SCRIPT
+  - $MAKECOVERAGE
 
 after_success:
-  - cd $TRAVIS_BUILD_DIR
+  - find . -name '*.gcno' -print
   - bash <(curl -s https://codecov.io/bash)
-  - ./makedoc.sh szaghi/BeFoR64
+  - $MAKEDOC
+
+# before_deploy:
+#   - $CLEAN
+#   - $MAKETAR
+#   - mv BeFoR64.tar.gz BeFoR64-$TRAVIS_TAG.tar.gz
+
+# deploy:
+#   provider: releases
+#   api_key:
+#     secure: rbEvdtEoWjm+KvCKAPDwgWDpD8MMY3z8XZTfIOqjLN2qXYH+1m0hnDtANegOKLjtg4+tdg143iF5D0FE2skmdgpp0PU9vLo4ivENAvCsP4Mt6dwb5h9AhlWoS1JkkL+5MHVL/MqoX3/IsyKVTjujOwbny2ENCFkd7uiNGiA18+CYDlC0/KxSmwVcOJmVnhjqisf15GXc8+Df+vJcMIYRkDMdAZtkuJ1gXRbajOHF/gmU0E89dqTVqnoJkDSMM7pFPNAiD+lAAmLsPm5AWYispDe5toZ1vVLxobJW+PRO9XLBBc1NV4Uz6GTeauWi1TTzR/Ej5D7TQL3QN4EpaMkPh4kSoVGGo2miBZc0e8B/TYeihdc9z7QCDStoychGrprCrE15aXs6B74qHBqjEa+/MXhEOpXZt7JqW9J8D9AS6VoFQnz8ipsLQ+/7cugYtP4KLwPvk+fW8yNy1UbNCcZQiIUQfrrxdl5EtRxylJcqiriS/UNN1gHA/fRwoif36UsBvlDirPKAHUCRZgEe4sGVCv2KuQRUEImiaLM5B098q7GWx29SyZ4/ocOD8dxrN0xh7LBo69KwOx2mwGkWBbWg0tZ/OG0UvHAN4zdFGOomnb7sLqqVNcEIU5nMuTHJwisI+GKFooJe+x+EgAbW2DLN07sEPucGktiSVlWl9/grkME=
+#   file: 
+#     - BeFoR64-$TRAVIS_TAG.tar.gz
+#     - ./scripts/install.sh
+#   skip_cleanup: true
+#   overwrite: true
+#   on:
+#     tags: true

@@ -1,18 +1,12 @@
 !< KISS library for packing heterogeneous data into single (homogeneous) packed one.
 module befor64_pack_data_m
-!-----------------------------------------------------------------------------------------------------------------------------------
 !< KISS library for packing heterogeneous data into single (homogeneous) packed one.
-!-----------------------------------------------------------------------------------------------------------------------------------
-use penf ! Portability environment.
-!-----------------------------------------------------------------------------------------------------------------------------------
+use penf
 
-!-----------------------------------------------------------------------------------------------------------------------------------
 implicit none
 private
 public :: pack_data
-!-----------------------------------------------------------------------------------------------------------------------------------
 
-!-----------------------------------------------------------------------------------------------------------------------------------
 interface pack_data
   !< Pack different kinds of data into single I1P array.
   !<
@@ -69,635 +63,395 @@ interface pack_data
                    pack_data_I2_R8,pack_data_I2_R4,pack_data_I2_I8,pack_data_I2_I4,pack_data_I2_I1, &
                    pack_data_I1_R8,pack_data_I1_R4,pack_data_I1_I8,pack_data_I1_I4,pack_data_I1_I2
 endinterface
-!-----------------------------------------------------------------------------------------------------------------------------------
+
 contains
   pure subroutine pack_data_R8_R4(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   real(R8P),                 intent(in)    :: a1(1:)    !< Firs data stream.
   real(R4P),                 intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_R8_R4
 
   pure subroutine pack_data_R8_I8(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   real(R8P),                 intent(in)    :: a1(1:)    !< First data stream.
   integer(I8P),              intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_R8_I8
 
   pure subroutine pack_data_R8_I4(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   real(R8P),                 intent(in)    :: a1(1:)    !< First data stream.
   integer(I4P),              intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_R8_I4
 
   pure subroutine pack_data_R8_I2(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   real(R8P),                 intent(in)    :: a1(1:)    !< First data stream.
   integer(I2P),              intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_R8_I2
 
   pure subroutine pack_data_R8_I1(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   real(R8P),                 intent(in)    :: a1(1:)    !< First data stream.
   integer(I1P),              intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_R8_I1
 
   pure subroutine pack_data_R4_R8(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   real(R4P),                 intent(in)    :: a1(1:)    !< Firs data stream.
   real(R8P),                 intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_R4_R8
 
   pure subroutine pack_data_R4_I8(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   real(R4P),                 intent(in)    :: a1(1:)    !< First data stream.
   integer(I8P),              intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_R4_I8
 
   pure subroutine pack_data_R4_I4(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   real(R4P),                 intent(in)    :: a1(1:)    !< First data stream.
   integer(I4P),              intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_R4_I4
 
   pure subroutine pack_data_R4_I2(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   real(R4P),                 intent(in)    :: a1(1:)    !< First data stream.
   integer(I2P),              intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_R4_I2
 
   pure subroutine pack_data_R4_I1(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   real(R4P),                 intent(in)    :: a1(1:)    !< First data stream.
   integer(I1P),              intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_R4_I1
 
   pure subroutine pack_data_I8_R8(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I8P),              intent(in)    :: a1(1:)    !< First data stream.
   real(R8P),                 intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_I8_R8
 
   pure subroutine pack_data_I8_R4(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I8P),              intent(in)    :: a1(1:)    !< First data stream.
   real(R4P),                 intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_I8_R4
 
   pure subroutine pack_data_I8_I4(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I8P),              intent(in)    :: a1(1:)    !< First data stream.
   integer(I4P),              intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_I8_I4
 
   pure subroutine pack_data_I8_I2(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I8P),              intent(in)    :: a1(1:)    !< First data stream.
   integer(I2P),              intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_I8_I2
 
   pure subroutine pack_data_I8_I1(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I8P),              intent(in)    :: a1(1:)    !< First data stream.
   integer(I1P),              intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_I8_I1
 
   pure subroutine pack_data_I4_R8(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I4P),              intent(in)    :: a1(1:)    !< First data stream.
   real(R8P),                 intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_I4_R8
 
   pure subroutine pack_data_I4_R4(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I4P),              intent(in)    :: a1(1:)    !< First data stream.
   real(R4P),                 intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_I4_R4
 
   pure subroutine pack_data_I4_I8(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I4P),              intent(in)    :: a1(1:)    !< First data stream.
   integer(I8P),              intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_I4_I8
 
   pure subroutine pack_data_I4_I2(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I4P),              intent(in)    :: a1(1:)    !< First data stream.
   integer(I2P),              intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_I4_I2
 
   pure subroutine pack_data_I4_I1(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I4P),              intent(in)    :: a1(1:)    !< First data stream.
   integer(I1P),              intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_I4_I1
 
   pure subroutine pack_data_I2_R8(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I2P),              intent(in)    :: a1(1:)    !< First data stream.
   real(R8P),                 intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_I2_R8
 
   pure subroutine pack_data_I2_R4(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I2P),              intent(in)    :: a1(1:)    !< First data stream.
   real(R4P),                 intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_I2_R4
 
   pure subroutine pack_data_I2_I8(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I2P),              intent(in)    :: a1(1:)    !< First data stream.
   integer(I8P),              intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_I2_I8
 
   pure subroutine pack_data_I2_I4(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I2P),              intent(in)    :: a1(1:)    !< First data stream.
   integer(I4P),              intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_I2_I4
 
   pure subroutine pack_data_I2_I1(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I2P),              intent(in)    :: a1(1:)    !< First data stream.
   integer(I1P),              intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_I2_I1
 
   pure subroutine pack_data_I1_R8(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I1P),              intent(in)    :: a1(1:)    !< First data stream.
   real(R8P),                 intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_I1_R8
 
   pure subroutine pack_data_I1_R4(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I1P),              intent(in)    :: a1(1:)    !< First data stream.
   real(R4P),                 intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_I1_R4
 
   pure subroutine pack_data_I1_I8(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I1P),              intent(in)    :: a1(1:)    !< First data stream.
   integer(I8P),              intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_I1_I8
 
   pure subroutine pack_data_I1_I4(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I1P),              intent(in)    :: a1(1:)    !< First data stream.
   integer(I4P),              intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_I1_I4
 
   pure subroutine pack_data_I1_I2(a1, a2, packed)
-  !---------------------------------------------------------------------------------------------------------------------------------
   !< Pack different kinds of data into single I1P array.
-  !---------------------------------------------------------------------------------------------------------------------------------
   integer(I1P),              intent(in)    :: a1(1:)    !< First data stream.
   integer(I2P),              intent(in)    :: a2(1:)    !< Second data stream.
   integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
-  integer(I4P)                             :: np        !< Size of temporary packed data.
-  !---------------------------------------------------------------------------------------------------------------------------------
 
-  !---------------------------------------------------------------------------------------------------------------------------------
-  np = size(transfer(a1,p1)) ; allocate(p1(1:np)) ; p1 = transfer(a1,p1)
-  np = size(transfer(a2,p2)) ; allocate(p2(1:np)) ; p2 = transfer(a2,p2)
-  if (allocated(packed)) deallocate(packed) ; allocate(packed(1:size(p1,dim=1)+size(p2,dim=1))) ; packed = [p1,p2]
-  deallocate(p1,p2)
-  return
-  !---------------------------------------------------------------------------------------------------------------------------------
+  p1 = transfer(a1, [0_I1P])
+  p2 = transfer(a2, [0_I1P])
+  packed = [p1,p2]
   endsubroutine pack_data_I1_I2
 endmodule befor64_pack_data_m
