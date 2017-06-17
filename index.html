@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	 
-	 <meta name="description" content="<p>A KISS library for base64 encoding/decoding for modern (2003+) Fortran projects</p>">
+	 <meta name="description" content="Base64 encoding/decoding library for FoRtran poor people">
     
-    <meta name="author" content="Chris MacMackin" >
+    <meta name="author" content="Stefano Zaghi" >
     <link rel="icon" href="./favicon.png">
 
     <title> BeFoR64 </title>
@@ -25,17 +25,21 @@
     <![endif]-->
     
     <script src="./js/jquery-2.1.3.min.js"></script>
+    <script src="./js/svg-pan-zoom.min.js"></script>
+
+    
     <script src="./tipuesearch/tipuesearch_content.js"></script>
     <link  href="./tipuesearch/tipuesearch.css" rel="stylesheet">
     <script src="./tipuesearch/tipuesearch_set.js"></script>
     <script src="./tipuesearch/tipuesearch.js"></script>
+    
 
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -49,20 +53,44 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
 				
-                
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+		 aria-expanded="false">Contents <span class="caret"></span></a>
+	      <ul class="dropdown-menu">
+              
             <li><a href="./lists/files.html">Source Files</a></li>
 				
 				
             <li><a href="./lists/modules.html">Modules</a></li>
 				
-				
+            
+                                
             <li><a href="./lists/procedures.html">Procedures</a></li>
 				
 								
 				
-            <li><a href="./program/test_driver.html">Program</a></li>
-				
+            <li><a href="./program/befor64_test.html">Program</a></li>
+	    
+            </ul>
+            </li>
+
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/files.html">Source Files</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/procedures.html">Procedures</a></li>
+
+                             
+
+<li class="visible-xs hidden-sm visible-lg"><a href="./program/befor64_test.html">Program</a></li>
+
           </ul>
+        
         <form action="./search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -71,6 +99,7 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
+        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
@@ -79,7 +108,7 @@
     
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <p>A KISS library for base64 encoding/decoding for modern (2003+) Fortran projects</p>
+        <p>Base64 encoding/decoding library for FoRtran poor people</p>
         	 
 	<p> Find us on&hellip;</p>
         <p>
@@ -96,25 +125,25 @@
 
       <div class="row" id='text'>
 		  
-        <div class="col-lg-8">
+        <div class="col-md-8">
 		  
           <h1>BeFoR64</h1>
           <p><a name="top"></a></p>
-<h1>BeFoR64 <a href=""><img alt="GitHub tag" src="https://img.shields.io/github/tag/szaghi/BeFoR64.svg"></a></h1>
+<h1 id="befor64"><a class="toclink" href="#befor64">BeFoR64 <a href=""><img alt="GitHub tag" src="https://img.shields.io/github/tag/szaghi/BeFoR64.svg"></a></a></h1>
 <p><a href=""><img alt="License" src="https://img.shields.io/badge/license-GNU%20GeneraL%20Public%20License%20v3,%20GPLv3-blue.svg"></a>
 <a href=""><img alt="License" src="https://img.shields.io/badge/license-BSD2-red.svg"></a>
 <a href=""><img alt="License" src="https://img.shields.io/badge/license-BSD3-red.svg"></a>
 <a href=""><img alt="License" src="https://img.shields.io/badge/license-MIT-red.svg"></a></p>
 <p><a href=""><img alt="Status" src="https://img.shields.io/badge/status-stable-brightgreen.svg"></a>
 <a href="https://travis-ci.org/szaghi/BeFoR64"><img alt="Build Status" src="https://travis-ci.org/szaghi/BeFoR64.svg?branch=master"></a>
-<a href="https://img.shields.io/codecov/c/github/szaghi/BeFoR64.svg"><img alt="Coverage Status" src="https://img.shields.io/codecov/c/github/szaghi/BeFoR64.svg"></a></p>
-<h3>BeFoR64, Base64 encoding/decoding library for FoRtran poor people</h3>
+<a href="https://codecov.io/gh/szaghi/BeFoR64"><img alt="Coverage Status" src="https://codecov.io/gh/szaghi/BeFoR64/branch/master/graph/badge.svg"></a></p>
+<h3 id="befor64-base64-encodingdecoding-library-for-fortran-poor-people"><a class="toclink" href="#befor64-base64-encodingdecoding-library-for-fortran-poor-people">BeFoR64, Base64 encoding/decoding library for FoRtran poor people</a></h3>
 <ul>
 <li>BeFoR64 is a pure Fortran (KISS) library for base64 encoding/decoding for modern (2003+) Fortran projects;</li>
 <li>BeFoR64 is Fortran 2003+ standard compliant;</li>
 <li>BeFoR64 is a Free, Open Source Project.</li>
 </ul>
-<h4>Table of Contents</h4>
+<h4 id="table-of-contents"><a class="toclink" href="#table-of-contents">Table of Contents</a></h4>
 <ul>
 <li><a href="#what-is-befor64">What is BeFoR64?</a></li>
 <li><a href="#main-features">Main features</a></li>
@@ -122,22 +151,22 @@
 <li><a href="#documentation">Documentation</a></li>
 <li><a href="#a-taste-of-befor64">A Taste of BeFoR64</a></li>
 </ul>
-<h4>Issues</h4>
+<h4 id="issues"><a class="toclink" href="#issues">Issues</a></h4>
 <p><a href=""><img alt="GitHub issues" src="https://img.shields.io/github/issues/szaghi/BeFoR64.svg"></a>
 <a href="https://waffle.io/szaghi/BeFoR64"><img alt="Ready in backlog" src="https://badge.waffle.io/szaghi/BeFoR64.png?label=ready&amp;title=Ready"></a>
 <a href="https://waffle.io/szaghi/BeFoR64"><img alt="In Progress" src="https://badge.waffle.io/szaghi/BeFoR64.png?label=in%20progress&amp;title=In%20Progress"></a>
 <a href="https://waffle.io/szaghi/BeFoR64"><img alt="Open bugs" src="https://badge.waffle.io/szaghi/BeFoR64.png?label=bug&amp;title=Open%20Bugs"></a></p>
-<h4>Compiler Support</h4>
+<h4 id="compiler-support"><a class="toclink" href="#compiler-support">Compiler Support</a></h4>
 <p><a href=""><img alt="Compiler" src="https://img.shields.io/badge/GNU-pass%20(v4.9.2+">-brightgreen.svg)</a>
 <a href=""><img alt="Compiler" src="https://img.shields.io/badge/Intel-pass%20(v12.x+">-brightgreen.svg)</a>
 <a href=""><img alt="Compiler" src="https://img.shields.io/badge/IBM%20XL-not%20tested-yellow.svg"></a>
 <a href=""><img alt="Compiler" src="https://img.shields.io/badge/g95-not%20tested-yellow.svg"></a>
 <a href=""><img alt="Compiler" src="https://img.shields.io/badge/NAG-not%20tested-yellow.svg"></a>
 <a href=""><img alt="Compiler" src="https://img.shields.io/badge/PGI-not%20tested-yellow.svg"></a></p>
-<h2>What is BeFoR64?</h2>
+<h2 id="what-is-befor64"><a class="toclink" href="#what-is-befor64">What is BeFoR64?</a></h2>
 <p>Modern Fortran standards (2003+) have introduced better support for strings manipulations. Exploiting such new Fortran capabilities, BeFoR64 provides an easy to use module library for encoding and decoding Fortran types (binary internal representation) in ascii-<a href="http://en.wikipedia.org/wiki/Base64">base64</a>-encoded string.</p>
 <p>Go to <a href="#top">Top</a></p>
-<h2>Main features</h2>
+<h2 id="main-features"><a class="toclink" href="#main-features">Main features</a></h2>
 <ul class="checklist">
 <li><input type="checkbox" disabled checked> User-friendly methods for encoding/decoding in base64:<ul class="checklist">
 <li><input type="checkbox" disabled checked> encode real/integer scalar variables;</li>
@@ -167,7 +196,7 @@
 </ul>
 <p>Any feature request is welcome.</p>
 <p>Go to <a href="#top">Top</a></p>
-<h2>Copyrights</h2>
+<h2 id="copyrights"><a class="toclink" href="#copyrights">Copyrights</a></h2>
 <p>BeFoR64 is an open source project, it is distributed under a multi-licensing system:</p>
 <ul>
 <li>for FOSS projects:</li>
@@ -180,11 +209,11 @@
 <p>Anyone is interest to use, to develop or to contribute to BeFoR64 is welcome, feel free to select the license that best matches your soul!</p>
 <p>More details can be found on <a href="https://github.com/szaghi/BeFoR64/wiki/Copyrights">wiki</a>.</p>
 <p>Go to <a href="#top">Top</a></p>
-<h2>Documentation</h2>
+<h2 id="documentation"><a class="toclink" href="#documentation">Documentation</a></h2>
 <p>Besides this README file the BeFoR64 documentation is contained into its own <a href="https://github.com/szaghi/BeFoR64/wiki">wiki</a>. Detailed documentation of the API is contained into the <a href="http://szaghi.github.io/BeFoR64/index.html">GitHub Pages</a> that can also be created locally by means of <a href="https://github.com/cmacmackin/ford">ford tool</a>.</p>
-<h3>A Taste of BeFoR64</h3>
+<h3 id="a-taste-of-befor64"><a class="toclink" href="#a-taste-of-befor64">A Taste of BeFoR64</a></h3>
 <p>Let us assume our goal is encoding a binary integer. It is as simple as</p>
-<div class="codehilite"><pre><span class="k">USE </span><span class="n">Lib_Base64</span>
+<div class="codehilite"><pre><span></span><span class="k">use </span><span class="n">befor64</span>
 <span class="p">...</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span><span class="kd">::</span> <span class="n">code64</span> <span class="c">! base64 encoded string</span>
 <span class="p">...</span>
@@ -194,49 +223,10 @@
 
 
 <p>But you are not limited to a simple integer scalar, you can encode real, integer, characters scalar or arrays, and by means of the auxiliary <code>Lib_Pack</code> library also mixed types. See the <a href="https://github.com/szaghi/BeFoR64/wiki">wiki</a>.</p>
-<p>Go to <a href="#top">Top</a></p>
-<h3>ChangeLog</h3>
-<h1>Change Log</h1>
-<h2><a href="https://github.com/szaghi/BeFoR64/tree/HEAD">Unreleased</a></h2>
-<p><a href="https://github.com/szaghi/BeFoR64/compare/v1.0.3...HEAD">Full Changelog</a></p>
-<p><strong>Closed issues:</strong></p>
-<ul>
-<li>Pure/Elemental with unlimited polymorphic <a href="https://github.com/szaghi/BeFoR64/issues/8">#8</a></li>
-</ul>
-<h2><a href="https://github.com/szaghi/BeFoR64/tree/v1.0.3">v1.0.3</a> (2015-06-08)</h2>
-<p><a href="https://github.com/szaghi/BeFoR64/compare/v1.0.2...v1.0.3">Full Changelog</a></p>
-<p><strong>Closed issues:</strong></p>
-<ul>
-<li>
-<p>Unlimited polymorphic encoding/decoding <a href="https://github.com/szaghi/BeFoR64/issues/5">#5</a></p>
-</li>
-<li>
-<p>Characters encoding/decoding <a href="https://github.com/szaghi/BeFoR64/issues/4">#4</a></p>
-</li>
-<li>
-<p>Wiki Exploiting <a href="https://github.com/szaghi/BeFoR64/issues/3">#3</a></p>
-</li>
-<li>
-<p>Documentation improvement <a href="https://github.com/szaghi/BeFoR64/issues/2">#2</a></p>
-</li>
-</ul>
-<h2><a href="https://github.com/szaghi/BeFoR64/tree/v1.0.2">v1.0.2</a> (2015-02-12)</h2>
-<p><a href="https://github.com/szaghi/BeFoR64/compare/v1.0.1...v1.0.2">Full Changelog</a></p>
-<h2><a href="https://github.com/szaghi/BeFoR64/tree/v1.0.1">v1.0.1</a> (2015-02-03)</h2>
-<p><a href="https://github.com/szaghi/BeFoR64/compare/v1.0.0...v1.0.1">Full Changelog</a></p>
-<p><strong>Closed issues:</strong></p>
-<ul>
-<li>Decoders implementing <a href="https://github.com/szaghi/BeFoR64/issues/1">#1</a></li>
-</ul>
-<h2><a href="https://github.com/szaghi/BeFoR64/tree/v1.0.0">v1.0.0</a> (2015-02-02)</h2>
-<p><a href="https://github.com/szaghi/BeFoR64/compare/v0.1.1...v1.0.0">Full Changelog</a></p>
-<h2><a href="https://github.com/szaghi/BeFoR64/tree/v0.1.1">v0.1.1</a> (2015-01-29)</h2>
-<p><a href="https://github.com/szaghi/BeFoR64/compare/v0.0.1...v0.1.1">Full Changelog</a></p>
-<h2><a href="https://github.com/szaghi/BeFoR64/tree/v0.0.1">v0.0.1</a> (2015-01-27)</h2>
-<p>* *This Change Log was automatically generated by <a href="https://github.com/skywinder/Github-Changelog-Generator">github_changelog_generator</a></p>
+<h2 id="go-to-top"><a class="toclink" href="#go-to-top">Go to <a href="#top">Top</a></a></h2>
         </div>
 		  
-        <div class="col-lg-4">
+        <div class="col-md-4">
 	  <div class="well">
           <h2>Developer Info</h2>
           <h4>Stefano Zaghi</h4>
@@ -268,50 +258,42 @@
       
 		
       <div class="row">
-          <div class="col-lg-4">
+        <div class="col-xs-6 col-sm-4">
               <h3>Source Files</h3>
               <ul>
                 
                   
-                    <li><a href='./sourcefile/ir_precision.f90.html'>IR_Precision.f90</a></li>
+                    <li><a href='./sourcefile/befor64.f90.html'>befor64.F90</a></li>
                   
                 
                   
-                    <li><a href='./sourcefile/lib_base64.f90.html'>Lib_Base64.f90</a></li>
+                    <li><a href='./sourcefile/befor64_pack_data_m.f90.html'>befor64_pack_data_m.F90</a></li>
                   
                 
                   
-                    <li><a href='./sourcefile/lib_pack_data.f90.html'>Lib_Pack_Data.f90</a></li>
-                  
-                
-                  
-                    <li><a href='./sourcefile/test_driver.f90.html'>Test_Driver.f90</a></li>
+                    <li><a href='./sourcefile/befor64_test.f90.html'>befor64_test.f90</a></li>
                   
                 
               </ul>
           </div>
           
-          <div class="col-lg-4">
+		  <div class="col-xs-6 col-sm-4">
               <h3>Modules</h3>
               <ul>
                 
                   
-                    <li><a href='./module/ir_precision.html'>IR_Precision</a></li>
+                    <li><a href='./module/befor64.html'>befor64</a></li>
                   
                 
                   
-                    <li><a href='./module/lib_base64.html'>Lib_Base64</a></li>
-                  
-                
-                  
-                    <li><a href='./module/lib_pack_data.html'>Lib_Pack_Data</a></li>
+                    <li><a href='./module/befor64_pack_data_m.html'>befor64_pack_data_m</a></li>
                   
                 
               </ul>
           </div>
           
           
-          <div class="col-lg-4">
+		  <div class="col-xs-6 col-sm-4">
               <h3>Procedures</h3>
               <ul>
                 
@@ -487,170 +469,30 @@
                 
                   
                 
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
               </ul>
           </div>
           
           
       </div>
 
-    <hr>
-    <footer>
-        <div class="row">
-        <div class="col-md-6">&copy; 2015 BeFoR64 was written by Stefano Zaghi. </div>
-        <div class="col-md-6"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a>.</span></div>
-        </div>
-        <br>
-    </footer>
+    <hr>    
     </div> <!-- /container -->
-
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2017 </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+             on 2017-06-17 10:23  
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> BeFoR64 was developed by Stefano Zaghi</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -675,6 +517,6 @@
         }
       });
     </script>
-    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   </body>
 </html>
