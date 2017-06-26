@@ -23,6 +23,8 @@ env:
   global:
     - MAKECOVERAGE="FoBiS.py rule -ex makecoverage"
     - MAKEDOC="./makedoc.sh szaghi/BeFoR64"
+    - CLEAN="FoBiS.py rule -ex clean"
+    - MAKETAR="FoBiS.py rule -ex maketar"
 
 before_install:
   - git submodule update --init
@@ -50,3 +52,20 @@ after_success:
   - find . -name '*.gcno' -print
   - bash <(curl -s https://codecov.io/bash)
   - $MAKEDOC
+
+before_deploy:
+  - $CLEAN
+  - $MAKETAR
+  - mv BeFoR64.tar.gz BeFoR64-$TRAVIS_TAG.tar.gz
+
+deploy:
+  provider: releases
+  api_key:
+    secure: U6+/43KlK8DdWD5pTg91WIRR6rP0gxtrlRb53vq+gIe4I5udY77eZ4ULT5bpR4MXQlOmiMBWVo3kRClJwWdFOr/3Q3nkyQTzNsTjXS7wYmYyavdgLDwVuNhg5AkhZTI28XqB6KMBtHfSxpHnALm1MS2qzUfFP0nrY/nYk814OeM=
+  file: 
+    - BeFoR64-$TRAVIS_TAG.tar.gz
+    - ./scripts/install.sh
+  skip_cleanup: true
+  overwrite: true
+  on:
+    tags: true
