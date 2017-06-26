@@ -71,8 +71,8 @@
 				
 								
 				
-            <li><a href="../program/befor64_test.html">Program</a></li>
-	    
+            <li><a href="../lists/programs.html">Programs</a></li>
+				
             </ul>
             </li>
 
@@ -87,7 +87,7 @@
 
                              
 
-<li class="visible-xs hidden-sm visible-lg"><a href="../program/befor64_test.html">Program</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/programs.html">Programs</a></li>
 
           </ul>
         
@@ -126,7 +126,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
 	  data-placement="bottom" data-html="true"
-	  title=" 0.9% of total for procedures.">9 statements</a>
+	  title=" 1.1% of total for procedures.">9 statements</a>
      </li> 
      
      
@@ -192,8 +192,6 @@
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allprocs-0">All Procedures</a></h3></div>
   <div id="allprocs-0" class="panel-collapse collapse">
     <div class="list-group">
-      
-      <a class="list-group-item" href="../proc/autotest.html">autotest</a>
       
       <a class="list-group-item" href="../interface/b64_decode.html">b64_decode</a>
       
@@ -365,6 +363,12 @@ private pure subroutine b64_decode_R16_a(code, n)
 
     
     <p>Decode a base64 code into an array numbers (R16P).</p>
+<div class="codehilite"><pre><span></span> <span class="k">use </span><span class="n">befor64</span>
+ <span class="k">use </span><span class="n">penf</span>
+ <span class="kt">real</span><span class="p">(</span><span class="n">R16P</span><span class="p">)</span> <span class="kd">::</span> <span class="n">array_R16</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">)</span>
+ <span class="k">call </span><span class="n">b64_decode</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s1">&#39;AAAAAABAXkCPwvUoXI8CQA==&#39;</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="n">array_R16</span><span class="p">)</span>
+ <span class="k">print</span> <span class="s2">&quot;(L1)&quot;</span><span class="p">,</span> <span class="n">str</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">array_R16</span><span class="p">)</span><span class="o">==</span><span class="n">str</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="mf">1._R16P</span><span class="p">,</span><span class="mf">2.32_R16P</span><span class="p">])</span>
+</pre></div>
     
 
     <h3>Arguments</h3>
@@ -572,16 +576,25 @@ private pure subroutine b64_decode_R16_a(code, n)
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>  <span class="k">pure subroutine </span><span class="n">b64_decode_R16_a</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-  <span class="c">!&lt; Decode a base64 code into an array numbers (R16P).</span>
-  <span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">code</span>    <span class="c">!&lt; Encoded array.</span>
-  <span class="kt">real</span><span class="p">(</span><span class="n">R16P</span><span class="p">),</span>   <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">n</span><span class="p">(</span><span class="mi">1</span><span class="p">:)</span>   <span class="c">!&lt; Array of numbers to be decoded.</span>
-  <span class="kt">integer</span><span class="p">(</span><span class="n">I1P</span><span class="p">),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">nI1P</span><span class="p">(:)</span> <span class="c">!&lt; One byte integer array containing n.</span>
+    <div class="highlight"><pre><span></span>   <span class="k">pure subroutine </span><span class="n">b64_decode_R16_a</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+   <span class="c">!&lt; Decode a base64 code into an array numbers (R16P).</span>
+   <span class="c">!&lt;</span>
+   <span class="c">!&lt;```fortran</span>
+   <span class="c">!&lt; use befor64</span>
+   <span class="c">!&lt; use penf</span>
+   <span class="c">!&lt; real(R16P) :: array_R16(1:2)</span>
+   <span class="c">!&lt; call b64_decode(code=&#39;AAAAAABAXkCPwvUoXI8CQA==&#39;,n=array_R16)</span>
+   <span class="c">!&lt; print &quot;(L1)&quot;, str(n=array_R16)==str(n=[121._R16P,2.32_R16P])</span>
+   <span class="c">!&lt;```</span>
+   <span class="c">!=&gt; T &lt;&lt;&lt;</span>
+   <span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">code</span>    <span class="c">!&lt; Encoded array.</span>
+   <span class="kt">real</span><span class="p">(</span><span class="n">R16P</span><span class="p">),</span>   <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">n</span><span class="p">(</span><span class="mi">1</span><span class="p">:)</span>   <span class="c">!&lt; Array of numbers to be decoded.</span>
+   <span class="kt">integer</span><span class="p">(</span><span class="n">I1P</span><span class="p">),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">nI1P</span><span class="p">(:)</span> <span class="c">!&lt; One byte integer array containing n.</span>
 
-  <span class="k">allocate</span><span class="p">(</span><span class="n">nI1P</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">size</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="nb">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">BYR16P</span><span class="p">))</span> <span class="p">;</span> <span class="n">nI1P</span> <span class="o">=</span> <span class="mi">0_I1P</span>
-  <span class="k">call </span><span class="n">decode_bits</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="n">code</span><span class="p">,</span><span class="n">bits</span><span class="o">=</span><span class="n">nI1P</span><span class="p">)</span>
-  <span class="n">n</span> <span class="o">=</span> <span class="nb">transfer</span><span class="p">(</span><span class="n">nI1P</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
-  <span class="n">endsubroutine</span> <span class="n">b64_decode_R16_a</span>
+   <span class="k">allocate</span><span class="p">(</span><span class="n">nI1P</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">size</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="nb">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">BYR16P</span><span class="p">))</span> <span class="p">;</span> <span class="n">nI1P</span> <span class="o">=</span> <span class="mi">0_I1P</span>
+   <span class="k">call </span><span class="n">decode_bits</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="n">code</span><span class="p">,</span><span class="n">bits</span><span class="o">=</span><span class="n">nI1P</span><span class="p">)</span>
+   <span class="n">n</span> <span class="o">=</span> <span class="nb">transfer</span><span class="p">(</span><span class="n">nI1P</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+   <span class="n">endsubroutine</span> <span class="n">b64_decode_R16_a</span>
 </pre></div>
 
     </section>
@@ -599,8 +612,6 @@ private pure subroutine b64_decode_R16_a(code, n)
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allprocs-1">All Procedures</a></h3></div>
   <div id="allprocs-1" class="panel-collapse collapse">
     <div class="list-group">
-      
-      <a class="list-group-item" href="../proc/autotest.html">autotest</a>
       
       <a class="list-group-item" href="../interface/b64_decode.html">b64_decode</a>
       
@@ -767,7 +778,7 @@ private pure subroutine b64_decode_R16_a(code, n)
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2017-06-17 10:24  
+             on 2017-06-26 16:20  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> BeFoR64 was developed by Stefano Zaghi</p></div>

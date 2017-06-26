@@ -71,8 +71,8 @@
 				
 								
 				
-            <li><a href="../program/befor64_test.html">Program</a></li>
-	    
+            <li><a href="../lists/programs.html">Programs</a></li>
+				
             </ul>
             </li>
 
@@ -87,7 +87,7 @@
 
                              
 
-<li class="visible-xs hidden-sm visible-lg"><a href="../program/befor64_test.html">Program</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/programs.html">Programs</a></li>
 
           </ul>
         
@@ -126,7 +126,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
 	  data-placement="bottom" data-html="true"
-	  title=" 2.0% of total for procedures.">20 statements</a>
+	  title=" 2.4% of total for procedures.">20 statements</a>
      </li> 
      
      
@@ -192,8 +192,6 @@
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allprocs-0">All Procedures</a></h3></div>
   <div id="allprocs-0" class="panel-collapse collapse">
     <div class="list-group">
-      
-      <a class="list-group-item" href="../proc/autotest.html">autotest</a>
       
       <a class="list-group-item" href="../interface/b64_decode.html">b64_decode</a>
       
@@ -365,6 +363,12 @@ public subroutine b64_encode_up(up, code)
 
     
     <p>Encode an unlimited polymorphic scalar to base64.</p>
+<div class="codehilite"><pre><span></span> <span class="k">use </span><span class="n">befor64</span>
+ <span class="k">use </span><span class="n">penf</span>
+ <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">code64</span>
+ <span class="k">call </span><span class="n">b64_encode_up</span><span class="p">(</span><span class="n">up</span><span class="o">=</span><span class="mf">1._R8P</span><span class="p">,</span> <span class="n">code</span><span class="o">=</span><span class="n">code64</span><span class="p">)</span>
+ <span class="k">print</span> <span class="s2">&quot;(A)&quot;</span><span class="p">,</span> <span class="n">code64</span>
+</pre></div>
     
 
     <h3>Arguments</h3>
@@ -433,15 +437,15 @@ public subroutine b64_encode_up(up, code)
 <polygon fill="none" stroke="black" points="90,-158 4.26326e-14,-158 0,-132 90,-132 90,-158"/>
 <text text-anchor="middle" x="45" y="-142.55" font-family="Helvetica,sans-Serif" font-size="10.50">b64_encode_up</text>
 </g>
-<!-- proc~b64_encode_i2 -->
-<g id="node2" class="node"><title>proc~b64_encode_i2</title>
-<a xlink:href="../proc/b64_encode_i2.html" xlink:title="b64_encode_I2">
-<polygon fill="#d9534f" stroke="#d9534f" points="221,-290 135,-290 135,-264 221,-264 221,-290"/>
-<text text-anchor="middle" x="178" y="-274.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">b64_encode_I2</text>
+<!-- proc~b64_encode_r4 -->
+<g id="node2" class="node"><title>proc~b64_encode_r4</title>
+<a xlink:href="../proc/b64_encode_r4.html" xlink:title="b64_encode_R4">
+<polygon fill="#d9534f" stroke="#d9534f" points="223,-290 133,-290 133,-264 223,-264 223,-290"/>
+<text text-anchor="middle" x="178" y="-274.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">b64_encode_R4</text>
 </a>
 </g>
-<!-- proc~b64_encode_up&#45;&gt;proc~b64_encode_i2 -->
-<g id="edge18" class="edge"><title>proc~b64_encode_up&#45;&gt;proc~b64_encode_i2</title>
+<!-- proc~b64_encode_up&#45;&gt;proc~b64_encode_r4 -->
+<g id="edge18" class="edge"><title>proc~b64_encode_up&#45;&gt;proc~b64_encode_r4</title>
 <path fill="none" stroke="#000000" d="M51.701,-158.314C63.7231,-181.001 91.0013,-227.377 126,-255 127.751,-256.382 129.601,-257.691 131.519,-258.931"/>
 <polygon fill="#000000" stroke="#000000" points="129.846,-262.007 140.266,-263.925 133.317,-255.928 129.846,-262.007"/>
 </g>
@@ -457,15 +461,15 @@ public subroutine b64_encode_up(up, code)
 <path fill="none" stroke="#000000" d="M58.7087,-158.237C74.1217,-172.606 100.359,-195.561 126,-211 128.603,-212.567 131.339,-214.078 134.136,-215.522"/>
 <polygon fill="#000000" stroke="#000000" points="132.668,-218.7 143.195,-219.898 135.713,-212.397 132.668,-218.7"/>
 </g>
-<!-- proc~b64_encode_i8 -->
-<g id="node4" class="node"><title>proc~b64_encode_i8</title>
-<a xlink:href="../proc/b64_encode_i8.html" xlink:title="b64_encode_I8">
+<!-- proc~b64_encode_i2 -->
+<g id="node4" class="node"><title>proc~b64_encode_i2</title>
+<a xlink:href="../proc/b64_encode_i2.html" xlink:title="b64_encode_I2">
 <polygon fill="#d9534f" stroke="#d9534f" points="221,-202 135,-202 135,-176 221,-176 221,-202"/>
-<text text-anchor="middle" x="178" y="-186.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">b64_encode_I8</text>
+<text text-anchor="middle" x="178" y="-186.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">b64_encode_I2</text>
 </a>
 </g>
-<!-- proc~b64_encode_up&#45;&gt;proc~b64_encode_i8 -->
-<g id="edge22" class="edge"><title>proc~b64_encode_up&#45;&gt;proc~b64_encode_i8</title>
+<!-- proc~b64_encode_up&#45;&gt;proc~b64_encode_i2 -->
+<g id="edge22" class="edge"><title>proc~b64_encode_up&#45;&gt;proc~b64_encode_i2</title>
 <path fill="none" stroke="#000000" d="M84.5443,-158.082C98.3559,-162.652 114.035,-167.839 128.551,-172.641"/>
 <polygon fill="#000000" stroke="#000000" points="127.785,-176.074 138.378,-175.892 129.984,-169.428 127.785,-176.074"/>
 </g>
@@ -481,29 +485,29 @@ public subroutine b64_encode_up(up, code)
 <path fill="none" stroke="#000000" d="M90.0277,-145C100.307,-145 111.354,-145 122.029,-145"/>
 <polygon fill="#000000" stroke="#000000" points="122.113,-148.5 132.113,-145 122.113,-141.5 122.113,-148.5"/>
 </g>
-<!-- proc~b64_encode_r4 -->
-<g id="node6" class="node"><title>proc~b64_encode_r4</title>
-<a xlink:href="../proc/b64_encode_r4.html" xlink:title="b64_encode_R4">
-<polygon fill="#d9534f" stroke="#d9534f" points="223,-114 133,-114 133,-88 223,-88 223,-114"/>
-<text text-anchor="middle" x="178" y="-98.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">b64_encode_R4</text>
-</a>
-</g>
-<!-- proc~b64_encode_up&#45;&gt;proc~b64_encode_r4 -->
-<g id="edge26" class="edge"><title>proc~b64_encode_up&#45;&gt;proc~b64_encode_r4</title>
-<path fill="none" stroke="#000000" d="M84.5443,-131.918C98.3559,-127.348 114.035,-122.161 128.551,-117.359"/>
-<polygon fill="#000000" stroke="#000000" points="129.984,-120.572 138.378,-114.108 127.785,-113.926 129.984,-120.572"/>
-</g>
 <!-- proc~b64_encode_string -->
-<g id="node7" class="node"><title>proc~b64_encode_string</title>
+<g id="node6" class="node"><title>proc~b64_encode_string</title>
 <a xlink:href="../proc/b64_encode_string.html" xlink:title="b64_encode_string">
 <polygon fill="#d9534f" stroke="#d9534f" points="230,-26 126,-26 126,-1.24345e-14 230,-3.55271e-15 230,-26"/>
 <text text-anchor="middle" x="178" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">b64_encode_string</text>
 </a>
 </g>
 <!-- proc~b64_encode_up&#45;&gt;proc~b64_encode_string -->
-<g id="edge28" class="edge"><title>proc~b64_encode_up&#45;&gt;proc~b64_encode_string</title>
+<g id="edge26" class="edge"><title>proc~b64_encode_up&#45;&gt;proc~b64_encode_string</title>
 <path fill="none" stroke="#000000" d="M51.701,-131.686C63.7231,-108.999 91.0013,-62.6232 126,-35 127.751,-33.6184 129.601,-32.3086 131.519,-31.0687"/>
 <polygon fill="#000000" stroke="#000000" points="133.317,-34.0724 140.266,-26.0751 129.846,-27.9932 133.317,-34.0724"/>
+</g>
+<!-- proc~b64_encode_i8 -->
+<g id="node7" class="node"><title>proc~b64_encode_i8</title>
+<a xlink:href="../proc/b64_encode_i8.html" xlink:title="b64_encode_I8">
+<polygon fill="#d9534f" stroke="#d9534f" points="221,-114 135,-114 135,-88 221,-88 221,-114"/>
+<text text-anchor="middle" x="178" y="-98.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">b64_encode_I8</text>
+</a>
+</g>
+<!-- proc~b64_encode_up&#45;&gt;proc~b64_encode_i8 -->
+<g id="edge28" class="edge"><title>proc~b64_encode_up&#45;&gt;proc~b64_encode_i8</title>
+<path fill="none" stroke="#000000" d="M84.5443,-131.918C98.3559,-127.348 114.035,-122.161 128.551,-117.359"/>
+<polygon fill="#000000" stroke="#000000" points="129.984,-120.572 138.378,-114.108 127.785,-113.926 129.984,-120.572"/>
 </g>
 <!-- proc~b64_encode_i4 -->
 <g id="node8" class="node"><title>proc~b64_encode_i4</title>
@@ -524,8 +528,8 @@ public subroutine b64_encode_up(up, code)
 <text text-anchor="middle" x="301" y="-142.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">encode_bits</text>
 </a>
 </g>
-<!-- proc~b64_encode_i2&#45;&gt;proc~encode_bits -->
-<g id="edge2" class="edge"><title>proc~b64_encode_i2&#45;&gt;proc~encode_bits</title>
+<!-- proc~b64_encode_r4&#45;&gt;proc~encode_bits -->
+<g id="edge2" class="edge"><title>proc~b64_encode_r4&#45;&gt;proc~encode_bits</title>
 <path fill="none" stroke="#000000" d="M216.466,-263.885C221.291,-261.354 225.948,-258.406 230,-255 258.751,-230.836 279.966,-192.039 291.396,-167.565"/>
 <polygon fill="#000000" stroke="#000000" points="294.635,-168.896 295.557,-158.341 288.255,-166.017 294.635,-168.896"/>
 </g>
@@ -534,8 +538,8 @@ public subroutine b64_encode_up(up, code)
 <path fill="none" stroke="#000000" d="M213.538,-219.937C219.218,-217.297 224.898,-214.303 230,-211 249.787,-198.189 269.175,-179.64 282.678,-165.466"/>
 <polygon fill="#000000" stroke="#000000" points="285.281,-167.808 289.54,-158.107 280.16,-163.034 285.281,-167.808"/>
 </g>
-<!-- proc~b64_encode_i8&#45;&gt;proc~encode_bits -->
-<g id="edge6" class="edge"><title>proc~b64_encode_i8&#45;&gt;proc~encode_bits</title>
+<!-- proc~b64_encode_i2&#45;&gt;proc~encode_bits -->
+<g id="edge6" class="edge"><title>proc~b64_encode_i2&#45;&gt;proc~encode_bits</title>
 <path fill="none" stroke="#000000" d="M214.571,-175.918C227.563,-171.27 242.342,-165.983 255.959,-161.112"/>
 <polygon fill="#000000" stroke="#000000" points="257.39,-164.318 265.627,-157.654 255.032,-157.727 257.39,-164.318"/>
 </g>
@@ -544,25 +548,25 @@ public subroutine b64_encode_up(up, code)
 <path fill="none" stroke="#000000" d="M223.801,-145C234.251,-145 245.349,-145 255.775,-145"/>
 <polygon fill="#000000" stroke="#000000" points="255.928,-148.5 265.928,-145 255.928,-141.5 255.928,-148.5"/>
 </g>
-<!-- proc~b64_encode_r4&#45;&gt;proc~encode_bits -->
-<g id="edge10" class="edge"><title>proc~b64_encode_r4&#45;&gt;proc~encode_bits</title>
-<path fill="none" stroke="#000000" d="M214.571,-114.082C227.563,-118.73 242.342,-124.017 255.959,-128.888"/>
-<polygon fill="#000000" stroke="#000000" points="255.032,-132.273 265.627,-132.346 257.39,-125.682 255.032,-132.273"/>
-</g>
 <!-- proc~b64_encode_string&#45;&gt;proc~encode_bits -->
-<g id="edge14" class="edge"><title>proc~b64_encode_string&#45;&gt;proc~encode_bits</title>
+<g id="edge12" class="edge"><title>proc~b64_encode_string&#45;&gt;proc~encode_bits</title>
 <path fill="none" stroke="#000000" d="M216.466,-26.1149C221.291,-28.6464 225.948,-31.5943 230,-35 258.751,-59.1645 279.966,-97.9614 291.396,-122.435"/>
 <polygon fill="#000000" stroke="#000000" points="288.255,-123.983 295.557,-131.659 294.635,-121.104 288.255,-123.983"/>
 </g>
 <!-- byte_size -->
-<g id="node15" class="node"><title>byte_size</title>
+<g id="node14" class="node"><title>byte_size</title>
 <polygon fill="#777777" stroke="#777777" points="330,-26 272,-26 272,-1.24345e-14 330,-3.55271e-15 330,-26"/>
 <text text-anchor="middle" x="301" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">byte_size</text>
 </g>
 <!-- proc~b64_encode_string&#45;&gt;byte_size -->
-<g id="edge12" class="edge"><title>proc~b64_encode_string&#45;&gt;byte_size</title>
+<g id="edge10" class="edge"><title>proc~b64_encode_string&#45;&gt;byte_size</title>
 <path fill="none" stroke="#000000" d="M230.163,-13C240.757,-13 251.729,-13 261.783,-13"/>
 <polygon fill="#000000" stroke="#000000" points="261.873,-16.5001 271.873,-13 261.873,-9.5001 261.873,-16.5001"/>
+</g>
+<!-- proc~b64_encode_i8&#45;&gt;proc~encode_bits -->
+<g id="edge14" class="edge"><title>proc~b64_encode_i8&#45;&gt;proc~encode_bits</title>
+<path fill="none" stroke="#000000" d="M214.571,-114.082C227.563,-118.73 242.342,-124.017 255.959,-128.888"/>
+<polygon fill="#000000" stroke="#000000" points="255.032,-132.273 265.627,-132.346 257.39,-125.682 255.032,-132.273"/>
 </g>
 <!-- proc~b64_encode_i4&#45;&gt;proc~encode_bits -->
 <g id="edge16" class="edge"><title>proc~b64_encode_i4&#45;&gt;proc~encode_bits</title>
@@ -696,28 +700,37 @@ public subroutine b64_encode_up(up, code)
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>  <span class="k">subroutine </span><span class="n">b64_encode_up</span><span class="p">(</span><span class="n">up</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span>
-  <span class="c">!&lt; Encode an unlimited polymorphic scalar to base64.</span>
-  <span class="k">class</span><span class="p">(</span><span class="o">*</span><span class="p">),</span>                      <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">up</span>   <span class="c">!&lt; Unlimited polymorphic variable to be encoded.</span>
-  <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">code</span> <span class="c">!&lt; Encoded scalar.</span>
+    <div class="highlight"><pre><span></span>   <span class="k">subroutine </span><span class="n">b64_encode_up</span><span class="p">(</span><span class="n">up</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span>
+   <span class="c">!&lt; Encode an unlimited polymorphic scalar to base64.</span>
+   <span class="c">!&lt;</span>
+   <span class="c">!&lt;```fortran</span>
+   <span class="c">!&lt; use befor64</span>
+   <span class="c">!&lt; use penf</span>
+   <span class="c">!&lt; character(len=:), allocatable :: code64</span>
+   <span class="c">!&lt; call b64_encode_up(up=1._R8P, code=code64)</span>
+   <span class="c">!&lt; print &quot;(A)&quot;, code64</span>
+   <span class="c">!&lt;```</span>
+   <span class="c">!=&gt; AAAAAAAA8D8= &lt;&lt;&lt;</span>
+   <span class="k">class</span><span class="p">(</span><span class="o">*</span><span class="p">),</span>                      <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">up</span>   <span class="c">!&lt; Unlimited polymorphic variable to be encoded.</span>
+   <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">code</span> <span class="c">!&lt; Encoded scalar.</span>
 
-  <span class="k">select type</span><span class="p">(</span><span class="n">up</span><span class="p">)</span>
-  <span class="k">type is</span><span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="n">R8P</span><span class="p">))</span>
-    <span class="k">call </span><span class="n">b64_encode_R8</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">up</span><span class="p">,</span><span class="n">code</span><span class="o">=</span><span class="n">code</span><span class="p">)</span>
-  <span class="k">type is</span><span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="n">R4P</span><span class="p">))</span>
-    <span class="k">call </span><span class="n">b64_encode_R4</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">up</span><span class="p">,</span><span class="n">code</span><span class="o">=</span><span class="n">code</span><span class="p">)</span>
-  <span class="k">type is</span><span class="p">(</span><span class="kt">integer</span><span class="p">(</span><span class="n">I8P</span><span class="p">))</span>
-    <span class="k">call </span><span class="n">b64_encode_I8</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">up</span><span class="p">,</span><span class="n">code</span><span class="o">=</span><span class="n">code</span><span class="p">)</span>
-  <span class="k">type is</span><span class="p">(</span><span class="kt">integer</span><span class="p">(</span><span class="n">I4P</span><span class="p">))</span>
-    <span class="k">call </span><span class="n">b64_encode_I4</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">up</span><span class="p">,</span><span class="n">code</span><span class="o">=</span><span class="n">code</span><span class="p">)</span>
-  <span class="k">type is</span><span class="p">(</span><span class="kt">integer</span><span class="p">(</span><span class="n">I2P</span><span class="p">))</span>
-    <span class="k">call </span><span class="n">b64_encode_I2</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">up</span><span class="p">,</span><span class="n">code</span><span class="o">=</span><span class="n">code</span><span class="p">)</span>
-  <span class="k">type is</span><span class="p">(</span><span class="kt">integer</span><span class="p">(</span><span class="n">I1P</span><span class="p">))</span>
-    <span class="k">call </span><span class="n">b64_encode_I1</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">up</span><span class="p">,</span><span class="n">code</span><span class="o">=</span><span class="n">code</span><span class="p">)</span>
-  <span class="k">type is</span><span class="p">(</span><span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">))</span>
-    <span class="k">call </span><span class="n">b64_encode_string</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="n">up</span><span class="p">,</span><span class="n">code</span><span class="o">=</span><span class="n">code</span><span class="p">)</span>
-  <span class="n">endselect</span>
-  <span class="n">endsubroutine</span> <span class="n">b64_encode_up</span>
+   <span class="k">select type</span><span class="p">(</span><span class="n">up</span><span class="p">)</span>
+   <span class="k">type is</span><span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="n">R8P</span><span class="p">))</span>
+      <span class="k">call </span><span class="n">b64_encode_R8</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">up</span><span class="p">,</span><span class="n">code</span><span class="o">=</span><span class="n">code</span><span class="p">)</span>
+   <span class="k">type is</span><span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="n">R4P</span><span class="p">))</span>
+      <span class="k">call </span><span class="n">b64_encode_R4</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">up</span><span class="p">,</span><span class="n">code</span><span class="o">=</span><span class="n">code</span><span class="p">)</span>
+   <span class="k">type is</span><span class="p">(</span><span class="kt">integer</span><span class="p">(</span><span class="n">I8P</span><span class="p">))</span>
+      <span class="k">call </span><span class="n">b64_encode_I8</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">up</span><span class="p">,</span><span class="n">code</span><span class="o">=</span><span class="n">code</span><span class="p">)</span>
+   <span class="k">type is</span><span class="p">(</span><span class="kt">integer</span><span class="p">(</span><span class="n">I4P</span><span class="p">))</span>
+      <span class="k">call </span><span class="n">b64_encode_I4</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">up</span><span class="p">,</span><span class="n">code</span><span class="o">=</span><span class="n">code</span><span class="p">)</span>
+   <span class="k">type is</span><span class="p">(</span><span class="kt">integer</span><span class="p">(</span><span class="n">I2P</span><span class="p">))</span>
+      <span class="k">call </span><span class="n">b64_encode_I2</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">up</span><span class="p">,</span><span class="n">code</span><span class="o">=</span><span class="n">code</span><span class="p">)</span>
+   <span class="k">type is</span><span class="p">(</span><span class="kt">integer</span><span class="p">(</span><span class="n">I1P</span><span class="p">))</span>
+      <span class="k">call </span><span class="n">b64_encode_I1</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">up</span><span class="p">,</span><span class="n">code</span><span class="o">=</span><span class="n">code</span><span class="p">)</span>
+   <span class="k">type is</span><span class="p">(</span><span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">))</span>
+      <span class="k">call </span><span class="n">b64_encode_string</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="n">up</span><span class="p">,</span><span class="n">code</span><span class="o">=</span><span class="n">code</span><span class="p">)</span>
+   <span class="n">endselect</span>
+   <span class="n">endsubroutine</span> <span class="n">b64_encode_up</span>
 </pre></div>
 
     </section>
@@ -735,8 +748,6 @@ public subroutine b64_encode_up(up, code)
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allprocs-1">All Procedures</a></h3></div>
   <div id="allprocs-1" class="panel-collapse collapse">
     <div class="list-group">
-      
-      <a class="list-group-item" href="../proc/autotest.html">autotest</a>
       
       <a class="list-group-item" href="../interface/b64_decode.html">b64_decode</a>
       
@@ -903,7 +914,7 @@ public subroutine b64_encode_up(up, code)
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2017-06-17 10:24  
+             on 2017-06-26 16:20  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> BeFoR64 was developed by Stefano Zaghi</p></div>
