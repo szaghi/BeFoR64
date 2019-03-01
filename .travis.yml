@@ -22,7 +22,7 @@ addons:
 env:
   global:
     - MAKECOVERAGE="FoBiS.py rule -ex makecoverage"
-    - MAKEDOC="./makedoc.sh szaghi/BeFoR64"
+    - MAKEDOC="./scripts/makedoc.sh szaghi/BeFoR64"
     - CLEAN="FoBiS.py rule -ex clean"
     - MAKETAR="FoBiS.py rule -ex maketar"
 
