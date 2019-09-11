@@ -49,9 +49,7 @@ interface b64_encode
   !<
   !< @warning The encoding of array of strings is admitted only if each string of the array has the same length.
   module procedure &
-#ifdef _R16P_SUPPORTED
                    b64_encode_R16,    b64_encode_R16_a, &
-#endif
                    b64_encode_R8,     b64_encode_R8_a,  &
                    b64_encode_R4,     b64_encode_R4_a,  &
                    b64_encode_I8,     b64_encode_I8_a,  &
@@ -127,9 +125,7 @@ interface b64_decode
   !<
   !< @warning The decoding of array of strings is admitted only if each string of the array has the same length.
   module procedure &
-#ifdef _R16P_SUPPORTED
                    b64_decode_R16,    b64_decode_R16_a, &
-#endif
                    b64_decode_R8,     b64_decode_R8_a,  &
                    b64_decode_R4,     b64_decode_R4_a,  &
                    b64_decode_I8,     b64_decode_I8_a,  &
