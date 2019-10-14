@@ -28,6 +28,7 @@
 doc/html/
 exe/
 wiki/
-
+.idea/
+cmake-build-*/
 # special files
 get_automatic_changelog.sh
