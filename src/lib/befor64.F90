@@ -49,7 +49,9 @@ interface b64_encode
   !<
   !< @warning The encoding of array of strings is admitted only if each string of the array has the same length.
   module procedure &
+#if defined _R16P
                    b64_encode_R16,    b64_encode_R16_a, &
+#endif
                    b64_encode_R8,     b64_encode_R8_a,  &
                    b64_encode_R4,     b64_encode_R4_a,  &
                    b64_encode_I8,     b64_encode_I8_a,  &
@@ -125,7 +127,9 @@ interface b64_decode
   !<
   !< @warning The decoding of array of strings is admitted only if each string of the array has the same length.
   module procedure &
+#if defined _R16P
                    b64_decode_R16,    b64_decode_R16_a, &
+#endif
                    b64_decode_R8,     b64_decode_R8_a,  &
                    b64_decode_R4,     b64_decode_R4_a,  &
                    b64_decode_I8,     b64_decode_I8_a,  &
@@ -424,7 +428,11 @@ contains
    allocate(nI1P(1:((BYR16P+2)/3)*3)) ; nI1P = 0_I1P
    code = repeat(' ',((BYR16P+2)/3)*4)
    nI1P = transfer(n,nI1P)
+#if defined _R16P
    padd = mod((BYR16P),3_I2P) ; if (padd>0_I4P) padd = 3_I4P - padd
+#else
+   padd = mod((BYR16P),3_I1P) ; if (padd>0_I4P) padd = 3_I4P - padd
+#endif
    call encode_bits(bits=nI1P,padd=padd,code=code)
    endsubroutine b64_encode_R16
 
