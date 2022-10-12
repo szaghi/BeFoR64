@@ -1,0 +1,19 @@
+name = "BeFoR64"
+version = "1.1.3"
+author = "Stefano Zaghi"
+copyright = "Copyright © 2015, Stefano Zaghi"
+license = "Multiple licenses"
+description = "Base64 encoding/decoding library for FoRtran poor men"
+maintainer = "Stefano Zaghi"
+homepage = "https://github.com/szaghi/BeFoR64"
+
+[library]
+source-dir = "src/lib"
+
+[install]
+library = true
+
+[dependencies]
+[dependencies.PENF]
+git = "https://github.com/szaghi/PENF"
+rev = "65061235982495b158412b70c05b228af4320d94"
