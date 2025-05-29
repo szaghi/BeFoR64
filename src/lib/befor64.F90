@@ -233,7 +233,7 @@ contains
       code(c+3:c+3) = base64(sixb(4):sixb(4))
       c = c + 4_I8P
    enddo
-   if (padd>0) code(len(code)-padd+1:)=repeat('=',padd)
+   if (padd>0) code(len(code,I8P)-padd+1:)=repeat('=',padd)
    endsubroutine encode_bits
 
    pure subroutine decode_bits(code, bits)
@@ -264,7 +264,7 @@ contains
 
    Nb=size(bits,dim=1,kind=I8P)
    e = 1_I8P
-   do c=1_I8P,len(code),4_I8P ! loop over code characters: 3 bytes (24 bits) scanning
+   do c=1_I8P,len(code,I8P),4_I8P ! loop over code characters: 3 bytes (24 bits) scanning
       sixb = 0_I1P
       sixb(1) = index(base64,code(c  :c  )) - 1
       sixb(2) = index(base64,code(c+1:c+1)) - 1
