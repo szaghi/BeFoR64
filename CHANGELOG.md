@@ -1,8 +1,14 @@
+## [1.1.7] - 2026-02-18
+
+### 🐛 Bug Fixes
+
+- *(docs)* Use absolute path for contributing link in landing page
 ## [1.1.6] - 2026-02-18
 
 ### ⚙️ Miscellaneous Tasks
 
 - Add GitHub Actions workflows and refactor README
+- *(release)* V1.1.6
 ## [1.1.5] - 2026-02-18
 
 ### 🐛 Bug Fixes
