@@ -1,8 +1,17 @@
+## [1.1.8] - 2026-02-18
+
+### ⚙️ Miscellaneous Tasks
+
+- *(docs)* Remove legacy ford main_page.md
 ## [1.1.7] - 2026-02-18
 
 ### 🐛 Bug Fixes
 
 - *(docs)* Use absolute path for contributing link in landing page
+
+### ⚙️ Miscellaneous Tasks
+
+- *(release)* V1.1.7
 ## [1.1.6] - 2026-02-18
 
 ### ⚙️ Miscellaneous Tasks
