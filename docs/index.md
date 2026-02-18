@@ -57,7 +57,7 @@ call b64_decode(code='AAAAAAAA8D8=', n=val)
 
 - Stefano Zaghi — [@szaghi](https://github.com/szaghi)
 
-Contributions are welcome — see the [Contributing](contributing) page.
+Contributions are welcome — see the [Contributing](/guide/contributing) page.
 
 ## Copyrights
 
