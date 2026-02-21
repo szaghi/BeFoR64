@@ -42,7 +42,7 @@ interface pack_data
   !<### Examples of usage
   !<
   !<#### Packing two real arrays, one with kind R8P and one with R4P
-  !<```ortran
+  !<```fortran
   !<real(R8P)::                 array_r8(1:12)
   !<real(R4P)::                 array_r4(-1:5)
   !<integer(I1P), allocatable:: rpack
@@ -50,7 +50,7 @@ interface pack_data
   !<call pack_data(a1=array_r8,a2=array_r4,packed=rpack)
   !<```
   !<#### Packing two arrays, one real with kind R4P and one integer with I4P
-  !<```ortran
+  !<```fortran
   !<real(R4P)::                 array_r4(2)
   !<integer(I4P)::              array_i4(0:2)
   !<integer(I1P), allocatable:: rpack
