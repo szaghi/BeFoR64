@@ -1,8 +1,17 @@
+## [1.1.10] - 2026-02-21
+
+### 📚 Documentation
+
+- *(befor64)* Fix typo in fortran code fence markers
 ## [1.1.9] - 2026-02-21
 
 ### 📚 Documentation
 
 - *(pack_data)* Fix typo in fortran code fence markers
+
+### ⚙️ Miscellaneous Tasks
+
+- *(release)* V1.1.9
 ## [1.1.8] - 2026-02-18
 
 ### ⚙️ Miscellaneous Tasks
