@@ -1,8 +1,14 @@
+## [1.1.9] - 2026-02-21
+
+### 📚 Documentation
+
+- *(pack_data)* Fix typo in fortran code fence markers
 ## [1.1.8] - 2026-02-18
 
 ### ⚙️ Miscellaneous Tasks
 
 - *(docs)* Remove legacy ford main_page.md
+- *(release)* V1.1.8
 ## [1.1.7] - 2026-02-18
 
 ### 🐛 Bug Fixes
