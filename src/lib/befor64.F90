@@ -31,14 +31,14 @@ interface b64_encode
   !< For a practical example see the `autotest` procedure.
   !<
   !<#### Scalar encoding
-  !<```fortran
+  !<```
   !<character(len=:), allocatable:: code64 ! base64 encoded string
   !<...
   !<call b64_encode(n=12._R8P,code=code64)
   !<```
   !<
   !<#### Array encoding
-  !<```fortran
+  !<```
   !<character(len=:), allocatable:: code64 ! base64 encoded string
   !<...
   !<call b64_encode(n=[12_I4P,1_I4P],code=code64)
@@ -76,14 +76,14 @@ interface b64_encode_up
   !< For a practical example see the `autotest` procedure.
   !<
   !<#### Scalar encoding
-  !<```fortran
+  !<```
   !<character(len=:), allocatable:: code64 ! base64 encoded string
   !<...
   !<call b64_encode_up(up=12._R8P,code=code64)
   !<```
   !<
   !<#### Array encoding
-  !<```fortran
+  !<```
   !<character(len=:), allocatable:: code64 ! base64 encoded string
   !<...
   !<call b64_encode_up(up=[12_I4P,1_I4P],code=code64)
@@ -109,14 +109,14 @@ interface b64_decode
   !< For a practical example see the `autotest` procedure.
   !<
   !<#### Scalar decoding
-  !<```fortran
+  !<```
   !<real(R8P):: decoded ! scalar to be decoded
   !<...
   !<call b64_decode(code='AAAAAAAA8D8=',n=decoded)
   !<```
   !<
   !<#### Array decoding
-  !<```fortran
+  !<```
   !<integer(I8P):: decoded(1:4) ! array to be decoded
   !<...
   !<call b64_decode(code='FwAAAAAAAABEAQAAAAAAABBwhAEAAAAAAgAAAAAAAAA=',n=decoded)
@@ -151,14 +151,14 @@ interface b64_decode_up
   !< For a practical example see the `autotest` procedure.
   !<
   !<#### Scalar decoding
-  !<```fortran
+  !<```
   !<real(R8P):: decoded ! scalar to be decoded
   !<...
   !<call b64_decode_up(code='AAAAAAAA8D8=',up=decoded)
   !<```
   !<
   !<#### Array decoding
-  !<```fortran
+  !<```
   !<integer(I8P):: decoded(1:4) ! array to be decoded
   !<...
   !<call b64_decode_up(code='FwAAAAAAAABEAQAAAAAAABBwhAEAAAAAAgAAAAAAAAA=',up=decoded)

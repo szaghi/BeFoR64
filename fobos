@@ -224,12 +224,9 @@ help   = Rule for performing coverage analysis
 rule_1 = FoBiS.py doctests -mode tests-gnu-debug -coverage --exclude_from_doctests penf.F90 penf_b_size.F90 penf_stringify.F90
 rule_2 = rm -f exe/obj/penf*
 rule_3 = gcov -o exe/obj/ src/lib/befor64*
-rule_4 = rm -f *.gcov
 
-[rule-coverage-analysis]
+[rule-makecoverage-analysis]
 help   = Rule for performing coverage analysis and saving reports in markdown
-rule_1 = FoBiS.py doctests -mode tests-gnu-debug -coverage --exclude_from_doctests penf.F90 penf_b_size.F90 penf_stringify.F90
-rule_2 = rm -f exe/obj/penf*
-rule_3 = gcov -o exe/obj/ src/lib/befor64*
-rule_4 = FoBiS.py rule -gcov_analyzer wiki/ Coverage-Analysis
-rule_5 = rm -f *.gcov
+rule_1 = FoBiS.py rule -ex makecoverage
+rule_2 = FoBiS.py rule -gcov_analyzer docs/guide/ coverage-analysis
+rule_3 = rm -f *.gcov

@@ -88,14 +88,14 @@ Encode numbers (integer and real) to base64.
  For a practical example see the `autotest` procedure.
 
 #### Scalar encoding
-```ortran
+```
 character(len=:), allocatable:: code64 ! base64 encoded string
 ...
 call b64_encode(n=12._R8P,code=code64)
 ```
 
 #### Array encoding
-```ortran
+```
 character(len=:), allocatable:: code64 ! base64 encoded string
 ...
 call b64_encode(n=[12_I4P,1_I4P],code=code64)
@@ -124,14 +124,14 @@ Encode unlimited polymorphic variable to base64.
  For a practical example see the `autotest` procedure.
 
 #### Scalar encoding
-```ortran
+```
 character(len=:), allocatable:: code64 ! base64 encoded string
 ...
 call b64_encode_up(up=12._R8P,code=code64)
 ```
 
 #### Array encoding
-```ortran
+```
 character(len=:), allocatable:: code64 ! base64 encoded string
 ...
 call b64_encode_up(up=[12_I4P,1_I4P],code=code64)
@@ -158,14 +158,14 @@ Decode numbers (integer and real) from base64.
  For a practical example see the `autotest` procedure.
 
 #### Scalar decoding
-```ortran
+```
 real(R8P):: decoded ! scalar to be decoded
 ...
 call b64_decode(code='AAAAAAAA8D8=',n=decoded)
 ```
 
 #### Array decoding
-```ortran
+```
 integer(I8P):: decoded(1:4) ! array to be decoded
 ...
 call b64_decode(code='FwAAAAAAAABEAQAAAAAAABBwhAEAAAAAAgAAAAAAAAA=',n=decoded)
@@ -191,14 +191,14 @@ Decode unlimited polymorphic variable from base64.
  For a practical example see the `autotest` procedure.
 
 #### Scalar decoding
-```ortran
+```
 real(R8P):: decoded ! scalar to be decoded
 ...
 call b64_decode_up(code='AAAAAAAA8D8=',up=decoded)
 ```
 
 #### Array decoding
-```ortran
+```
 integer(I8P):: decoded(1:4) ! array to be decoded
 ...
 call b64_decode_up(code='FwAAAAAAAABEAQAAAAAAABBwhAEAAAAAAgAAAAAAAAA=',up=decoded)

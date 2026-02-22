@@ -27,6 +27,7 @@ export default withMermaid({
           { text: 'Installation', link: '/guide/install' },
           { text: 'Usage', link: '/guide/usage' },
           { text: 'Contributing', link: '/guide/contributing' },
+          { text: 'Coverage Analysis', link: '/guide/coverage-analysis' },
           { text: 'Changelog', link: '/guide/changelog' },
         ],
       },
@@ -52,6 +53,7 @@ export default withMermaid({
           text: 'Project',
           items: [
             { text: 'Contributing', link: '/guide/contributing' },
+            { text: 'Coverage Analysis', link: '/guide/coverage-analysis' },
             { text: 'Changelog', link: '/guide/changelog' },
           ],
         },
@@ -71,4 +73,9 @@ export default withMermaid({
     },
   },
   mermaid: {},
+  vite: {
+    optimizeDeps: {
+      include: ['mermaid'],
+    },
+  },
 })
