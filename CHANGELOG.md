@@ -1,8 +1,17 @@
+## [1.1.11] - 2026-02-22
+
+### 📚 Documentation
+
+- *(guide)* Add coverage analysis page to Project section
 ## [1.1.10] - 2026-02-21
 
 ### 📚 Documentation
 
 - *(befor64)* Fix typo in fortran code fence markers
+
+### ⚙️ Miscellaneous Tasks
+
+- *(release)* V1.1.10
 ## [1.1.9] - 2026-02-21
 
 ### 📚 Documentation
