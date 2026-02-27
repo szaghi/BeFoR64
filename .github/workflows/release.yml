@@ -14,8 +14,6 @@ jobs:
 
     - name: Checkout repository
       uses: actions/checkout@v4
-      with:
-        submodules: 'true'
 
     - name: Setup build environment
       uses: ./.github/actions/setup-build-env
@@ -34,12 +32,31 @@ jobs:
     - name: Run tests with coverage
       run: FoBiS.py rule -ex makecoverage
 
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v4
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
+    - name: Extract coverage
+      id: cov
+      run: |
+        PCT=$(gcov -o exe/obj/ src/lib/befor64* 2>/dev/null | \
+          awk '/^Lines executed:/{
+            match($0, /([0-9.]+)% of ([0-9]+)/, a)
+            total += a[2]; covered += a[1]/100 * a[2]
+          } END { if (total>0) printf "%.1f", covered/total*100; else print "0.0" }')
+        echo "pct=${PCT}" >> "$GITHUB_OUTPUT"
+        echo "## Test coverage: ${PCT}%" >> "$GITHUB_STEP_SUMMARY"
 
     # ── Documentation ────────────────────────────────────────────────────────
+    - name: Write coverage badge JSON
+      env:
+        PCT: ${{ steps.cov.outputs.pct }}
+      run: |
+        if awk "BEGIN{exit !($PCT >= 90)}"; then C=brightgreen
+        elif awk "BEGIN{exit !($PCT >= 80)}"; then C=green
+        elif awk "BEGIN{exit !($PCT >= 70)}"; then C=yellowgreen
+        elif awk "BEGIN{exit !($PCT >= 60)}"; then C=yellow
+        else C=red; fi
+        mkdir -p docs/public
+        printf '{"schemaVersion":1,"label":"coverage","message":"%s%%","color":"%s"}\n' \
+          "$PCT" "$C" > docs/public/coverage.json
+
     - name: Build documentation
       run: |
         formal generate --mirror-sources --diagrams --project docs/ford.md --output docs/api

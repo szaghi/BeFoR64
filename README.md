@@ -1,12 +1,19 @@
 # BeFoR64 — Base64 encoding/decoding library for Fortran
 
-A KISS pure Fortran library for encoding and decoding any intrinsic type — integers, reals, characters, and unlimited polymorphic variables — to and from Base64 strings.
+[![GitHub tag](https://img.shields.io/github/v/tag/szaghi/BeFoR64)](https://github.com/szaghi/BeFoR64/tags)
+[![GitHub issues](https://img.shields.io/github/issues/szaghi/BeFoR64)](https://github.com/szaghi/BeFoR64/issues)
+[![CI](https://github.com/szaghi/BeFoR64/actions/workflows/ci.yml/badge.svg)](https://github.com/szaghi/BeFoR64/actions/workflows/ci.yml)
+[![coverage](https://img.shields.io/endpoint?url=https://szaghi.github.io/BeFoR64/coverage.json)](https://github.com/szaghi/BeFoR64/actions/workflows/ci.yml)
 
-- Pure Fortran (KISS), Fortran 2003+ standard compliant;
-- Encodes/decodes scalars and arrays of any numeric or character kind;
-- Free and Open Source, multi-licensed.
+> A KISS pure Fortran 2003+ library for encoding and decoding any intrinsic type — integers, reals, characters, and unlimited polymorphic variables — to and from Base64 strings.
 
-**[Documentation](https://szaghi.github.io/BeFoR64/)** | **[API Reference](https://szaghi.github.io/BeFoR64/api/)**
+| 🔢 **Integers**<br>`I1P` through `I8P`, scalars & arrays | 🔬 **Reals**<br>`R4P`, `R8P`, opt. `R16P` | 🔤 **Characters**<br>ASCII character encoding | 🧬 **Polymorphic**<br>Unlimited polymorphic `_up` variants |
+|:---:|:---:|:---:|:---:|
+| 📐 **Scalars & Arrays**<br>Scalar and rank-1 array support | 🔗 **Pack Mixed Data**<br>Heterogeneous arrays via `pack_data` | 🔄 **Bidirectional**<br>Symmetric encode and decode | 🎯 **KISS API**<br>`b64_init`, encode, decode — that's it |
+| ⚡ **Pure Fortran 2003+**<br>No C, no external dependencies | 🛡️ **Standard Compliant**<br>Tested with gfortran and ifort | 🔓 **Multi-licensed**<br>GPL v3 · BSD 2/3-Clause · MIT | 🌐 **Open Source**<br>Contributions welcome |
+| 📦 **fpm**<br>`fpm build && fpm test` | 🔧 **FoBiS.py**<br>Static, shared, and test modes | 📖 **Documented**<br>API reference + usage guide | 🧪 **Tested**<br>Doctests for all type variants |
+
+For full documentations (guide, tutorial, examples, etc...) see the [BeFoR64 website](https://szaghi.github.io/BeFoR64/).
 
 ---
 
@@ -88,7 +95,6 @@ BeFoR64 = { git = "https://github.com/szaghi/BeFoR64" }
 ```bash
 pip install FoBiS.py
 git clone https://github.com/szaghi/BeFoR64 && cd BeFoR64
-git submodule update --init
 FoBiS.py build -mode static-gnu   # or shared-gnu, tests-gnu, …
 bash scripts/run_tests.sh
 ```
