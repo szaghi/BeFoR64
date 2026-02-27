@@ -1,8 +1,17 @@
+## [1.1.12] - 2026-02-27
+
+### ⚙️ Miscellaneous Tasks
+
+- Replace Codecov with self-hosted coverage badge via GitHub Pages
 ## [1.1.11] - 2026-02-22
 
 ### 📚 Documentation
 
 - *(guide)* Add coverage analysis page to Project section
+
+### ⚙️ Miscellaneous Tasks
+
+- *(release)* V1.1.11
 ## [1.1.10] - 2026-02-21
 
 ### 📚 Documentation
