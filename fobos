@@ -1,3 +1,15 @@
+[project]
+name       = BeFoR64
+version    = VERSION
+summary    = Base64 encoding/decoding library for FoRtran poor men
+repository = https://github.com/szaghi/BeFoR64
+website    = https://szaghi.github.io/BeFoR64
+email      = stefano.zaghi@gmail.it
+authors    = Stefano Zaghi
+
+[dependencies]
+PENF = https://github.com/szaghi/PENF
+
 [modes]
 modes = shared-gnu static-gnu tests-gnu
         shared-gnu-debug static-gnu-debug tests-gnu-debug
