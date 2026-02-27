@@ -29,6 +29,9 @@ jobs:
         node-version: '20'
 
     # ── Tests & coverage ────────────────────────────────────────────────────
+    - name: Fetch dependencies
+      run: FoBiS.py fetch
+
     - name: Run tests with coverage
       run: FoBiS.py rule -ex makecoverage
 

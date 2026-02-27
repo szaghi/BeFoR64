@@ -8,8 +8,8 @@ title: Installation
 
 A modern Fortran compiler with Fortran 2003+ support.
 
-In `src/third_party` there are dependencies sources, they are managed
-managed automatically by both build paths below.
+Dependencies live in `src/third_party/` and are fetched automatically
+by each build path below.
 
 ## Option 1 — fpm (recommended)
 
@@ -39,7 +39,7 @@ pip install FoBiS.py
 
 git clone https://github.com/szaghi/BeFoR64
 cd BeFoR64
-git submodule update --init
+FoBiS.py fetch
 ```
 
 ### Building the library

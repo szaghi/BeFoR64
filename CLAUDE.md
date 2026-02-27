@@ -13,8 +13,8 @@ The project supports two build systems:
 ### FoBiS.py (primary, via `fobos` config file)
 
 ```bash
-# Initialize submodules first
-git submodule update --init
+# Fetch dependencies first
+FoBiS.py fetch
 
 # Build static library (GNU)
 FoBiS.py build -mode static-gnu
