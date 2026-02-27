@@ -1,4 +1,15 @@
 # Changelog
+## [v1.1.14](https://github.com/szaghi/PENF/tree/v1.1.14) (2026-02-27)
+[Full Changelog](https://github.com/szaghi/PENF/compare/v1.1.13...v1.1.14)
+### Bug fixes
+- Correct FoBiS dependency config key from dependon to src ([`33d6189`](https://github.com/szaghi/PENF/commit/33d618944a0fda90b37b174fc6d2def16cd3ca8e))
+
+### CI/CD
+- Extract coverage into composite action and guard fetch on deps file ([`da65cb6`](https://github.com/szaghi/PENF/commit/da65cb68aaf3cc53a91bbb6e181077b2c8827b64))
+
+### Documentation
+- Overhaul hero table and install section ([`4352f66`](https://github.com/szaghi/PENF/commit/4352f66c443c5fe4870f54e2cc42271187fc0596))
+
 ## [v1.1.13](https://github.com/szaghi/PENF/tree/v1.1.13) (2026-02-27)
 [Full Changelog](https://github.com/szaghi/PENF/compare/v1.1.12...v1.1.13)
 ### CI/CD
