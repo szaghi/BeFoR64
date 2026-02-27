@@ -1,4 +1,9 @@
 # Changelog
+## [v1.1.15](https://github.com/szaghi/PENF/tree/v1.1.15) (2026-02-27)
+[Full Changelog](https://github.com/szaghi/PENF/compare/v1.1.14...v1.1.15)
+### CI/CD
+- Move dep fetch after build env setup ([`0b6786f`](https://github.com/szaghi/PENF/commit/0b6786f4f162997eec69c460f79e6bf945b1c32d))
+
 ## [v1.1.14](https://github.com/szaghi/PENF/tree/v1.1.14) (2026-02-27)
 [Full Changelog](https://github.com/szaghi/PENF/compare/v1.1.13...v1.1.14)
 ### Bug fixes
