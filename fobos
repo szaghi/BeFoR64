@@ -234,7 +234,7 @@ rule = tar --xform="s%^%BeFoR64/%" -czf BeFoR64.tar.gz *
 
 [rule-makecoverage]
 help   = Rule for performing coverage analysis
-rule_1 = FoBiS.py doctests -mode tests-gnu-debug -coverage --exclude_from_doctests penf.F90 penf_b_size.F90 penf_stringify.F90
+rule_1 = FoBiS.py doctests -mode tests-gnu-debug -coverage --exclude_from_doctests penf.F90 --exclude_from_doctests penf_b_size.F90 --exclude_from_doctests penf_stringify.F90
 rule_2 = rm -f exe/obj/penf*
 rule_3 = gcov -o exe/obj/ src/lib/befor64*
 rule_4 = ./scripts/compute-coverage.sh
