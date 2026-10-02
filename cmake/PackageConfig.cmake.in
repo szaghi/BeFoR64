@@ -1,4 +1,9 @@
 @PACKAGE_INIT@
 
+# the target BeFoR64 links to. PENF used to install its configuration as PENF-config.cmake, that CMake does not
+# search for: it is named explicitly, for the installations made before PENF adopted the standard name
+include(CMakeFindDependencyMacro)
+find_dependency(PENF CONFIGS PENFConfig.cmake penf-config.cmake PENF-config.cmake)
+
 include("${CMAKE_CURRENT_LIST_DIR}/@TARGETS_EXPORT_NAME@.cmake")
 check_required_components("@PROJECT_NAME@")

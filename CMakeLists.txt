@@ -9,7 +9,10 @@
 # the config file is generatet in the build and install directories
 
 cmake_minimum_required(VERSION 3.10...3.13)
-project(BeFoR64 VERSION 1.1.3 LANGUAGES Fortran)
+# the version is read from the VERSION file (vX.Y.Z), updated by scripts/release.sh
+file(STRINGS "${CMAKE_CURRENT_LIST_DIR}/VERSION" befor64_version LIMIT_COUNT 1)
+string(REGEX REPLACE "^v" "" befor64_version "${befor64_version}")
+project(BeFoR64 VERSION ${befor64_version} LANGUAGES Fortran)
 
 # seach path for additional cmake modules
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/cmake/Modules)
@@ -85,4 +88,14 @@ install(FILES ${cmake_files_dir}/${project_config}
 configure_package_config_file(cmake/PackageConfig.cmake.in ${config_build_dir}/${project_config}
     INSTALL_DESTINATION ${config_build_dir}
     INSTALL_PREFIX ${CMAKE_CURRENT_BINARY_DIR}
+)
+
+# create package version file, for find_package(BeFoR64 <version>): written into the build tree and installed
+set(project_config_version "${PROJECT_NAME}ConfigVersion.cmake")
+write_basic_package_version_file(${config_build_dir}/${project_config_version}
+    VERSION ${PROJECT_VERSION}
+    COMPATIBILITY SameMajorVersion
+)
+install(FILES ${config_build_dir}/${project_config_version}
+    DESTINATION ${config_install_dir}
 )
