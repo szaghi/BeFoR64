@@ -82,7 +82,7 @@ Compiled output goes to `./static/`, `./shared/`, `./exe/`, `./mod/`, `./obj/` d
 **Initialization**: `b64_init` must be called before any encode/decode operations. `is_b64_initialized` (module-level logical) tracks this.
 
 **Preprocessing flags** (used via `-cpp` or `-D` options):
-- `_R16P`: Enable 128-bit real (quad precision) support — conditionally compiles `b64_encode_R16` / `b64_decode_R16` variants.
+- `PENF_R16P`: Enable 128-bit real (quad precision) support — conditionally compiles `b64_encode_R16` / `b64_decode_R16` variants.
 - `_ASCII_SUPPORTED`, `_UCS4_SUPPORTED`: Enable character kind variants in PENF.
 
 ## Key API Patterns
