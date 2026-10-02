@@ -4,6 +4,11 @@ All notable changes to this project are documented here.
 Versions follow [Semantic Versioning](https://semver.org/).
 Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.2.1] — 2026-10-02
+### Fixed
+- **cmake**: Load PENF from the package config and fix the version
+
+
 ## [1.2.0] — 2026-10-02
 ### Fixed
 - **fobos**: Repeat --exclude_from_doctests flag for each excluded file
