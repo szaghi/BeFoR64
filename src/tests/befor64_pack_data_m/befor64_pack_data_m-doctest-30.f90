@@ -2,8 +2,8 @@ program volatile_doctest
 use befor64_pack_data_m
  use befor64
  use penf
- integer(I1P)              :: a1(1)
- integer(I2P)              :: a2(1)
+ integer(I1P) :: a1(1)
+ integer(I2P) :: a2(1)
  integer(I1P), allocatable :: pack(:)
  a1(1) = 0
  a2(1) = 1

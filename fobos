@@ -224,8 +224,8 @@ rule = rm -rf exe/
 
 [rule-clean]
 help = Clean the project tree
-rule_1 = FoBiS.py rule -ex deldoc
-rule_2 = FoBiS.py rule -ex delexe
+rule_1 = fobis rule --ex deldoc
+rule_2 = fobis rule --ex delexe
 rule_3 = rm -f *.gcov
 
 [rule-maketar]
@@ -234,12 +234,12 @@ rule = tar --xform="s%^%BeFoR64/%" -czf BeFoR64.tar.gz *
 
 [rule-makecoverage]
 help   = Rule for performing coverage analysis
-rule_1 = FoBiS.py doctests -mode tests-gnu-debug -coverage --exclude_from_doctests penf.F90 --exclude_from_doctests penf_b_size.F90 --exclude_from_doctests penf_stringify.F90
+rule_1 = fobis doctests --mode tests-gnu-debug --coverage --preproc " -DPENF_R16P" --exclude-from-doctests penf.F90 --exclude-from-doctests penf_b_size.F90 --exclude-from-doctests penf_stringify.F90 --exclude-from-doctests penf_allocatable_memory.F90
 rule_2 = rm -f exe/obj/penf*
 rule_3 = ./scripts/compute-coverage.sh
 
 [rule-makecoverage-analysis]
 help   = Rule for performing coverage analysis and saving reports in markdown
-rule_1 = FoBiS.py rule -ex makecoverage
-rule_2 = FoBiS.py rule --gcov-analyzer docs/guide/ --gcov-analyzer coverage-analysis
+rule_1 = fobis rule --ex makecoverage
+rule_2 = fobis rule --gcov-analyzer docs/guide/ --gcov-analyzer coverage-analysis
 rule_3 = rm -f *.gcov
