@@ -16,4 +16,3 @@ library = true
 [dependencies]
 [dependencies.PENF]
 git = "https://github.com/szaghi/PENF"
-rev = "4cb9d326c08f109ed5126d83c27e8e70c98b7eaa"
