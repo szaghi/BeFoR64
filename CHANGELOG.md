@@ -4,6 +4,17 @@ All notable changes to this project are documented here.
 Versions follow [Semantic Versioning](https://semver.org/).
 Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.2.2] — 2026-10-04
+### Fixed
+- **tests**: Make the R16P doctests hold with quadruple precision
+
+- **build**: Sync fpm.toml version and guard tracked doctests in CI
+
+- **build**: Track PENF default branch in fpm manifest
+
+- **scripts**: Check doctest output against expected results
+
+
 ## [1.2.1] — 2026-10-02
 ### Fixed
 - **cmake**: Load PENF from the package config and fix the version
