@@ -625,11 +625,15 @@ contains
    integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
    integer(I4P)                               :: padd    !< Number of padding characters ('=').
    integer(I8P)                               :: ns      !< Size of n.
+   integer(I8P)                               :: i       !< Counter.
 
-   ns = size(n,dim=1)
+   ns = size(n,dim=1,kind=I8P)
    allocate(nI1P(1:((ns*BYR16P+2)/3)*3)) ; nI1P = 0_I1P
-   code = repeat(' ',((ns*BYR16P+2)/3)*4)
-   nI1P = transfer(n,nI1P)
+   allocate(character(len=((ns*BYR16P+2)/3)*4) :: code)
+   ! element-wise transfer: whole-array transfer and repeat results can be placed on the stack (e.g. ifx)
+   do i=1_I8P, ns
+      nI1P((i-1_I8P)*BYR16P+1_I8P:i*BYR16P) = transfer(n(i), nI1P)
+   enddo
    padd = mod((ns*BYR16P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
    call encode_bits(bits=nI1P,padd=padd,code=code)
    endsubroutine b64_encode_R16_a
@@ -650,11 +654,15 @@ contains
    integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
    integer(I4P)                               :: padd    !< Number of padding characters ('=').
    integer(I8P)                               :: ns      !< Size of n.
+   integer(I8P)                               :: i       !< Counter.
 
-   ns = size(n,dim=1)
+   ns = size(n,dim=1,kind=I8P)
    allocate(nI1P(1:((ns*BYR8P+2)/3)*3)) ; nI1P = 0_I1P
-   code = repeat(' ',((ns*BYR8P+2)/3)*4)
-   nI1P = transfer(n,nI1P)
+   allocate(character(len=((ns*BYR8P+2)/3)*4) :: code)
+   ! element-wise transfer: whole-array transfer and repeat results can be placed on the stack (e.g. ifx)
+   do i=1_I8P, ns
+      nI1P((i-1_I8P)*BYR8P+1_I8P:i*BYR8P) = transfer(n(i), nI1P)
+   enddo
    padd = mod((ns*BYR8P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
    call encode_bits(bits=nI1P,padd=padd,code=code)
    endsubroutine b64_encode_R8_a
@@ -675,11 +683,15 @@ contains
    integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
    integer(I4P)                               :: padd    !< Number of padding characters ('=').
    integer(I8P)                               :: ns      !< Size of n.
+   integer(I8P)                               :: i       !< Counter.
 
-   ns = size(n,dim=1)
+   ns = size(n,dim=1,kind=I8P)
    allocate(nI1P(1:((ns*BYR4P+2)/3)*3)) ; nI1P = 0_I1P
-   code = repeat(' ',((ns*BYR4P+2)/3)*4)
-   nI1P = transfer(n,nI1P)
+   allocate(character(len=((ns*BYR4P+2)/3)*4) :: code)
+   ! element-wise transfer: whole-array transfer and repeat results can be placed on the stack (e.g. ifx)
+   do i=1_I8P, ns
+      nI1P((i-1_I8P)*BYR4P+1_I8P:i*BYR4P) = transfer(n(i), nI1P)
+   enddo
    padd = mod((ns*BYR4P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
    call encode_bits(bits=nI1P,padd=padd,code=code)
    endsubroutine b64_encode_R4_a
@@ -700,11 +712,15 @@ contains
    integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
    integer(I4P)                               :: padd    !< Number of padding characters ('=').
    integer(I8P)                               :: ns      !< Size of n.
+   integer(I8P)                               :: i       !< Counter.
 
-   ns = size(n,dim=1)
+   ns = size(n,dim=1,kind=I8P)
    allocate(nI1P(1:((ns*BYI8P+2)/3)*3)) ; nI1P = 0_I1P
-   code = repeat(' ',((ns*BYI8P+2)/3)*4)
-   nI1P = transfer(n,nI1P)
+   allocate(character(len=((ns*BYI8P+2)/3)*4) :: code)
+   ! element-wise transfer: whole-array transfer and repeat results can be placed on the stack (e.g. ifx)
+   do i=1_I8P, ns
+      nI1P((i-1_I8P)*BYI8P+1_I8P:i*BYI8P) = transfer(n(i), nI1P)
+   enddo
    padd = mod((ns*BYI8P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
    call encode_bits(bits=nI1P,padd=padd,code=code)
    endsubroutine b64_encode_I8_a
@@ -725,11 +741,15 @@ contains
    integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
    integer(I4P)                               :: padd    !< Number of padding characters ('=').
    integer(I8P)                               :: ns      !< Size of n.
+   integer(I8P)                               :: i       !< Counter.
 
-   ns = size(n,dim=1)
+   ns = size(n,dim=1,kind=I8P)
    allocate(nI1P(1:((ns*BYI4P+2)/3)*3)) ; nI1P = 0_I1P
-   code = repeat(' ',((ns*BYI4P+2)/3)*4)
-   nI1P = transfer(n,nI1P)
+   allocate(character(len=((ns*BYI4P+2)/3)*4) :: code)
+   ! element-wise transfer: whole-array transfer and repeat results can be placed on the stack (e.g. ifx)
+   do i=1_I8P, ns
+      nI1P((i-1_I8P)*BYI4P+1_I8P:i*BYI4P) = transfer(n(i), nI1P)
+   enddo
    padd = mod((ns*BYI4P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
    call encode_bits(bits=nI1P,padd=padd,code=code)
    endsubroutine b64_encode_I4_a
@@ -750,11 +770,15 @@ contains
    integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
    integer(I4P)                               :: padd    !< Number of padding characters ('=').
    integer(I8P)                               :: ns      !< Size of n.
+   integer(I8P)                               :: i       !< Counter.
 
-   ns = size(n,dim=1)
+   ns = size(n,dim=1,kind=I8P)
    allocate(nI1P(1:((ns*BYI2P+2)/3)*3)) ; nI1P = 0_I1P
-   code = repeat(' ',((ns*BYI2P+2)/3)*4)
-   nI1P = transfer(n,nI1P)
+   allocate(character(len=((ns*BYI2P+2)/3)*4) :: code)
+   ! element-wise transfer: whole-array transfer and repeat results can be placed on the stack (e.g. ifx)
+   do i=1_I8P, ns
+      nI1P((i-1_I8P)*BYI2P+1_I8P:i*BYI2P) = transfer(n(i), nI1P)
+   enddo
    padd = mod((ns*BYI2P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
    call encode_bits(bits=nI1P,padd=padd,code=code)
    endsubroutine b64_encode_I2_a
@@ -775,11 +799,15 @@ contains
    integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
    integer(I4P)                               :: padd    !< Number of padding characters ('=').
    integer(I8P)                               :: ns      !< Size of n.
+   integer(I8P)                               :: i       !< Counter.
 
-   ns = size(n,dim=1)
+   ns = size(n,dim=1,kind=I8P)
    allocate(nI1P(1:((ns*BYI1P+2)/3)*3)) ; nI1P = 0_I1P
-   code = repeat(' ',((ns*BYI1P+2)/3)*4)
-   nI1P = transfer(n,nI1P)
+   allocate(character(len=((ns*BYI1P+2)/3)*4) :: code)
+   ! element-wise transfer: whole-array transfer and repeat results can be placed on the stack (e.g. ifx)
+   do i=1_I8P, ns
+      nI1P((i-1_I8P)*BYI1P+1_I8P:i*BYI1P) = transfer(n(i), nI1P)
+   enddo
    padd = mod((ns*BYI1P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
    call encode_bits(bits=nI1P,padd=padd,code=code)
    endsubroutine b64_encode_I1_a
@@ -800,11 +828,17 @@ contains
    integer(I1P),     allocatable              :: nI1P(:) !< One byte integer array containing n.
    integer(I4P)                               :: padd    !< Number of padding characters ('=').
    integer(I4P)                               :: BYCHS   !< Bytes of character string.
+   integer(I4P)                               :: bs      !< Bytes of each string element.
+   integer(I4P)                               :: i       !< Counter.
 
    BYCHS = byte_size(s(1))*size(s,dim=1)
    allocate(nI1P(1:((BYCHS+2)/3)*3)) ; nI1P = 0_I1P
-   code = repeat(' ',((BYCHS+2)/3)*4)
-   nI1P = transfer(s,nI1P)
+   allocate(character(len=((BYCHS+2)/3)*4) :: code)
+   ! element-wise transfer: whole-array transfer and repeat results can be placed on the stack (e.g. ifx)
+   bs = byte_size(s(1))
+   do i=1, size(s,dim=1)
+      nI1P((i-1)*bs+1:i*bs) = transfer(s(i), nI1P)
+   enddo
    padd = mod((BYCHS),3_I4P) ; if (padd>0_I4P) padd = 3_I4P - padd
    call encode_bits(bits=nI1P,padd=padd,code=code)
    endsubroutine b64_encode_string_a

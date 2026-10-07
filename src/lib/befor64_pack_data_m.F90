@@ -84,12 +84,19 @@ contains
    real(R8P),                 intent(in)    :: a1(1:)    !< Firs data stream.
    real(R4P),                 intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYR8P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYR4P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYR8P+1_I8P:i*BYR8P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYR4P+1_I8P:n1+i*BYR4P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_R8_R4
 
    pure subroutine pack_data_R8_I8(a1, a2, packed)
@@ -110,12 +117,19 @@ contains
    real(R8P),                 intent(in)    :: a1(1:)    !< First data stream.
    integer(I8P),              intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYR8P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYI8P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYR8P+1_I8P:i*BYR8P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYI8P+1_I8P:n1+i*BYI8P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_R8_I8
 
    pure subroutine pack_data_R8_I4(a1, a2, packed)
@@ -136,12 +150,19 @@ contains
    real(R8P),                 intent(in)    :: a1(1:)    !< First data stream.
    integer(I4P),              intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYR8P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYI4P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYR8P+1_I8P:i*BYR8P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYI4P+1_I8P:n1+i*BYI4P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_R8_I4
 
    pure subroutine pack_data_R8_I2(a1, a2, packed)
@@ -162,12 +183,19 @@ contains
    real(R8P),                 intent(in)    :: a1(1:)    !< First data stream.
    integer(I2P),              intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYR8P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYI2P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYR8P+1_I8P:i*BYR8P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYI2P+1_I8P:n1+i*BYI2P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_R8_I2
 
    pure subroutine pack_data_R8_I1(a1, a2, packed)
@@ -188,12 +216,19 @@ contains
    real(R8P),                 intent(in)    :: a1(1:)    !< First data stream.
    integer(I1P),              intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYR8P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYI1P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYR8P+1_I8P:i*BYR8P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYI1P+1_I8P:n1+i*BYI1P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_R8_I1
 
    pure subroutine pack_data_R4_R8(a1, a2, packed)
@@ -214,12 +249,19 @@ contains
    real(R4P),                 intent(in)    :: a1(1:)    !< Firs data stream.
    real(R8P),                 intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYR4P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYR8P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYR4P+1_I8P:i*BYR4P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYR8P+1_I8P:n1+i*BYR8P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_R4_R8
 
    pure subroutine pack_data_R4_I8(a1, a2, packed)
@@ -240,12 +282,19 @@ contains
    real(R4P),                 intent(in)    :: a1(1:)    !< First data stream.
    integer(I8P),              intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYR4P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYI8P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYR4P+1_I8P:i*BYR4P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYI8P+1_I8P:n1+i*BYI8P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_R4_I8
 
    pure subroutine pack_data_R4_I4(a1, a2, packed)
@@ -266,12 +315,19 @@ contains
    real(R4P),                 intent(in)    :: a1(1:)    !< First data stream.
    integer(I4P),              intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYR4P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYI4P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYR4P+1_I8P:i*BYR4P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYI4P+1_I8P:n1+i*BYI4P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_R4_I4
 
    pure subroutine pack_data_R4_I2(a1, a2, packed)
@@ -292,12 +348,19 @@ contains
    real(R4P),                 intent(in)    :: a1(1:)    !< First data stream.
    integer(I2P),              intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYR4P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYI2P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYR4P+1_I8P:i*BYR4P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYI2P+1_I8P:n1+i*BYI2P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_R4_I2
 
    pure subroutine pack_data_R4_I1(a1, a2, packed)
@@ -318,12 +381,19 @@ contains
    real(R4P),                 intent(in)    :: a1(1:)    !< First data stream.
    integer(I1P),              intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYR4P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYI1P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYR4P+1_I8P:i*BYR4P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYI1P+1_I8P:n1+i*BYI1P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_R4_I1
 
    pure subroutine pack_data_I8_R8(a1, a2, packed)
@@ -344,12 +414,19 @@ contains
    integer(I8P),              intent(in)    :: a1(1:)    !< First data stream.
    real(R8P),                 intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYI8P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYR8P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYI8P+1_I8P:i*BYI8P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYR8P+1_I8P:n1+i*BYR8P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_I8_R8
 
    pure subroutine pack_data_I8_R4(a1, a2, packed)
@@ -370,12 +447,19 @@ contains
    integer(I8P),              intent(in)    :: a1(1:)    !< First data stream.
    real(R4P),                 intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYI8P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYR4P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYI8P+1_I8P:i*BYI8P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYR4P+1_I8P:n1+i*BYR4P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_I8_R4
 
    pure subroutine pack_data_I8_I4(a1, a2, packed)
@@ -396,12 +480,19 @@ contains
    integer(I8P),              intent(in)    :: a1(1:)    !< First data stream.
    integer(I4P),              intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYI8P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYI4P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYI8P+1_I8P:i*BYI8P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYI4P+1_I8P:n1+i*BYI4P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_I8_I4
 
    pure subroutine pack_data_I8_I2(a1, a2, packed)
@@ -422,12 +513,19 @@ contains
    integer(I8P),              intent(in)    :: a1(1:)    !< First data stream.
    integer(I2P),              intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYI8P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYI2P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYI8P+1_I8P:i*BYI8P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYI2P+1_I8P:n1+i*BYI2P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_I8_I2
 
    pure subroutine pack_data_I8_I1(a1, a2, packed)
@@ -448,12 +546,19 @@ contains
    integer(I8P),              intent(in)    :: a1(1:)    !< First data stream.
    integer(I1P),              intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYI8P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYI1P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYI8P+1_I8P:i*BYI8P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYI1P+1_I8P:n1+i*BYI1P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_I8_I1
 
    pure subroutine pack_data_I4_R8(a1, a2, packed)
@@ -474,12 +579,19 @@ contains
    integer(I4P),              intent(in)    :: a1(1:)    !< First data stream.
    real(R8P),                 intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYI4P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYR8P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYI4P+1_I8P:i*BYI4P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYR8P+1_I8P:n1+i*BYR8P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_I4_R8
 
    pure subroutine pack_data_I4_R4(a1, a2, packed)
@@ -500,12 +612,19 @@ contains
    integer(I4P),              intent(in)    :: a1(1:)    !< First data stream.
    real(R4P),                 intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYI4P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYR4P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYI4P+1_I8P:i*BYI4P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYR4P+1_I8P:n1+i*BYR4P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_I4_R4
 
    pure subroutine pack_data_I4_I8(a1, a2, packed)
@@ -526,12 +645,19 @@ contains
    integer(I4P),              intent(in)    :: a1(1:)    !< First data stream.
    integer(I8P),              intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYI4P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYI8P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYI4P+1_I8P:i*BYI4P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYI8P+1_I8P:n1+i*BYI8P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_I4_I8
 
    pure subroutine pack_data_I4_I2(a1, a2, packed)
@@ -552,12 +678,19 @@ contains
    integer(I4P),              intent(in)    :: a1(1:)    !< First data stream.
    integer(I2P),              intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYI4P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYI2P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYI4P+1_I8P:i*BYI4P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYI2P+1_I8P:n1+i*BYI2P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_I4_I2
 
    pure subroutine pack_data_I4_I1(a1, a2, packed)
@@ -578,12 +711,19 @@ contains
    integer(I4P),              intent(in)    :: a1(1:)    !< First data stream.
    integer(I1P),              intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYI4P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYI1P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYI4P+1_I8P:i*BYI4P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYI1P+1_I8P:n1+i*BYI1P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_I4_I1
 
    pure subroutine pack_data_I2_R8(a1, a2, packed)
@@ -604,12 +744,19 @@ contains
    integer(I2P),              intent(in)    :: a1(1:)    !< First data stream.
    real(R8P),                 intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYI2P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYR8P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYI2P+1_I8P:i*BYI2P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYR8P+1_I8P:n1+i*BYR8P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_I2_R8
 
    pure subroutine pack_data_I2_R4(a1, a2, packed)
@@ -630,12 +777,19 @@ contains
    integer(I2P),              intent(in)    :: a1(1:)    !< First data stream.
    real(R4P),                 intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYI2P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYR4P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYI2P+1_I8P:i*BYI2P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYR4P+1_I8P:n1+i*BYR4P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_I2_R4
 
    pure subroutine pack_data_I2_I8(a1, a2, packed)
@@ -656,12 +810,19 @@ contains
    integer(I2P),              intent(in)    :: a1(1:)    !< First data stream.
    integer(I8P),              intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYI2P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYI8P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYI2P+1_I8P:i*BYI2P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYI8P+1_I8P:n1+i*BYI8P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_I2_I8
 
    pure subroutine pack_data_I2_I4(a1, a2, packed)
@@ -682,12 +843,19 @@ contains
    integer(I2P),              intent(in)    :: a1(1:)    !< First data stream.
    integer(I4P),              intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYI2P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYI4P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYI2P+1_I8P:i*BYI2P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYI4P+1_I8P:n1+i*BYI4P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_I2_I4
 
    pure subroutine pack_data_I2_I1(a1, a2, packed)
@@ -708,12 +876,19 @@ contains
    integer(I2P),              intent(in)    :: a1(1:)    !< First data stream.
    integer(I1P),              intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYI2P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYI1P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYI2P+1_I8P:i*BYI2P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYI1P+1_I8P:n1+i*BYI1P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_I2_I1
 
    pure subroutine pack_data_I1_R8(a1, a2, packed)
@@ -734,12 +909,19 @@ contains
    integer(I1P),              intent(in)    :: a1(1:)    !< First data stream.
    real(R8P),                 intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYI1P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYR8P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYI1P+1_I8P:i*BYI1P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYR8P+1_I8P:n1+i*BYR8P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_I1_R8
 
    pure subroutine pack_data_I1_R4(a1, a2, packed)
@@ -760,12 +942,19 @@ contains
    integer(I1P),              intent(in)    :: a1(1:)    !< First data stream.
    real(R4P),                 intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYI1P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYR4P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYI1P+1_I8P:i*BYI1P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYR4P+1_I8P:n1+i*BYR4P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_I1_R4
 
    pure subroutine pack_data_I1_I8(a1, a2, packed)
@@ -786,12 +975,19 @@ contains
    integer(I1P),              intent(in)    :: a1(1:)    !< First data stream.
    integer(I8P),              intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYI1P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYI8P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYI1P+1_I8P:i*BYI1P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYI8P+1_I8P:n1+i*BYI8P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_I1_I8
 
    pure subroutine pack_data_I1_I4(a1, a2, packed)
@@ -812,12 +1008,19 @@ contains
    integer(I1P),              intent(in)    :: a1(1:)    !< First data stream.
    integer(I4P),              intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYI1P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYI4P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYI1P+1_I8P:i*BYI1P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYI4P+1_I8P:n1+i*BYI4P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_I1_I4
 
    pure subroutine pack_data_I1_I2(a1, a2, packed)
@@ -838,11 +1041,18 @@ contains
    integer(I1P),              intent(in)    :: a1(1:)    !< First data stream.
    integer(I2P),              intent(in)    :: a2(1:)    !< Second data stream.
    integer(I1P), allocatable, intent(inout) :: packed(:) !< Packed data into I1P array.
-   integer(I1P), allocatable                :: p1(:)     !< Temporary packed data of first stream.
-   integer(I1P), allocatable                :: p2(:)     !< Temporary packed data of second stream.
+   integer(I8P)                             :: n1        !< Number of bytes of first stream.
+   integer(I8P)                             :: i         !< Counter.
 
-   p1 = transfer(a1,p1)
-   p2 = transfer(a2,p2)
-   packed = [p1,p2]
+   ! element-wise transfer: whole-array transfer and array constructor results can be placed on the stack (e.g. ifx)
+   n1 = size(a1, dim=1, kind=I8P)*BYI1P
+   if (allocated(packed)) deallocate(packed)
+   allocate(packed(1:n1 + size(a2, dim=1, kind=I8P)*BYI2P))
+   do i=1_I8P, size(a1, dim=1, kind=I8P)
+      packed((i-1_I8P)*BYI1P+1_I8P:i*BYI1P) = transfer(a1(i), packed)
+   enddo
+   do i=1_I8P, size(a2, dim=1, kind=I8P)
+      packed(n1+(i-1_I8P)*BYI2P+1_I8P:n1+i*BYI2P) = transfer(a2(i), packed)
+   enddo
    endsubroutine pack_data_I1_I2
 endmodule befor64_pack_data_m
