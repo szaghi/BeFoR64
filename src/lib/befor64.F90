@@ -265,6 +265,7 @@ contains
    Nb=size(bits,dim=1,kind=I8P)
    e = 1_I8P
    do c=1_I8P,len(code,I8P),4_I8P ! loop over code characters: 3 bytes (24 bits) scanning
+      if (e>Nb) exit
       sixb = 0_I1P
       sixb(1) = index(base64,code(c  :c  )) - 1
       sixb(2) = index(base64,code(c+1:c+1)) - 1
@@ -1032,10 +1033,16 @@ contains
    character(*), intent(in)  :: code    !< Encoded array.
    real(R16P),   intent(out) :: n(1:)   !< Array of numbers to be decoded.
    integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
+   integer(I8P)              :: ns      !< Size of n.
+   integer(I8P)              :: i       !< Counter.
 
-   allocate(nI1P(1:size(n,dim=1)*BYR16P)) ; nI1P = 0_I1P
+   ns = size(n,dim=1,kind=I8P)
+   allocate(nI1P(1:ns*BYR16P)) ; nI1P = 0_I1P
    call decode_bits(code=code,bits=nI1P)
-   n = transfer(nI1P,n)
+   ! element-wise transfer: whole-array transfer results can be placed on the stack (e.g. ifx)
+   do i=1_I8P, ns
+      n(i) = transfer(nI1P((i-1_I8P)*BYR16P+1_I8P:i*BYR16P), n(i))
+   enddo
    endsubroutine b64_decode_R16_a
 
    pure subroutine b64_decode_R8_a(code, n)
@@ -1052,10 +1059,16 @@ contains
    character(*), intent(in)  :: code    !< Encoded array.
    real(R8P),    intent(out) :: n(1:)   !< Array of numbers to be decoded.
    integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
+   integer(I8P)              :: ns      !< Size of n.
+   integer(I8P)              :: i       !< Counter.
 
-   allocate(nI1P(1:size(n,dim=1)*BYR8P)) ; nI1P = 0_I1P
+   ns = size(n,dim=1,kind=I8P)
+   allocate(nI1P(1:ns*BYR8P)) ; nI1P = 0_I1P
    call decode_bits(code=code,bits=nI1P)
-   n = transfer(nI1P,n)
+   ! element-wise transfer: whole-array transfer results can be placed on the stack (e.g. ifx)
+   do i=1_I8P, ns
+      n(i) = transfer(nI1P((i-1_I8P)*BYR8P+1_I8P:i*BYR8P), n(i))
+   enddo
    endsubroutine b64_decode_R8_a
 
    pure subroutine b64_decode_R4_a(code, n)
@@ -1072,10 +1085,16 @@ contains
    character(*), intent(in)  :: code    !< Encoded array.
    real(R4P),    intent(out) :: n(1:)   !< Array of numbers to be decoded.
    integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
+   integer(I8P)              :: ns      !< Size of n.
+   integer(I8P)              :: i       !< Counter.
 
-   allocate(nI1P(1:size(n,dim=1)*BYR4P)) ; nI1P = 0_I1P
+   ns = size(n,dim=1,kind=I8P)
+   allocate(nI1P(1:ns*BYR4P)) ; nI1P = 0_I1P
    call decode_bits(code=code,bits=nI1P)
-   n = transfer(nI1P,n)
+   ! element-wise transfer: whole-array transfer results can be placed on the stack (e.g. ifx)
+   do i=1_I8P, ns
+      n(i) = transfer(nI1P((i-1_I8P)*BYR4P+1_I8P:i*BYR4P), n(i))
+   enddo
    endsubroutine b64_decode_R4_a
 
    pure subroutine b64_decode_I8_a(code, n)
@@ -1092,10 +1111,16 @@ contains
    character(*), intent(in)  :: code    !< Encoded array.
    integer(I8P), intent(out) :: n(1:)   !< Array of numbers to be decoded.
    integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
+   integer(I8P)              :: ns      !< Size of n.
+   integer(I8P)              :: i       !< Counter.
 
-   allocate(nI1P(1:size(n,dim=1)*BYI8P)) ; nI1P = 0_I1P
+   ns = size(n,dim=1,kind=I8P)
+   allocate(nI1P(1:ns*BYI8P)) ; nI1P = 0_I1P
    call decode_bits(code=code,bits=nI1P)
-   n = transfer(nI1P,n)
+   ! element-wise transfer: whole-array transfer results can be placed on the stack (e.g. ifx)
+   do i=1_I8P, ns
+      n(i) = transfer(nI1P((i-1_I8P)*BYI8P+1_I8P:i*BYI8P), n(i))
+   enddo
    endsubroutine b64_decode_I8_a
 
    pure subroutine b64_decode_I4_a(code, n)
@@ -1112,10 +1137,16 @@ contains
    character(*), intent(in)  :: code    !< Encoded array.
    integer(I4P), intent(out) :: n(1:)   !< Array of numbers to be decoded.
    integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
+   integer(I8P)              :: ns      !< Size of n.
+   integer(I8P)              :: i       !< Counter.
 
-   allocate(nI1P(1:size(n,dim=1)*BYI4P)) ; nI1P = 0_I1P
+   ns = size(n,dim=1,kind=I8P)
+   allocate(nI1P(1:ns*BYI4P)) ; nI1P = 0_I1P
    call decode_bits(code=code,bits=nI1P)
-   n = transfer(nI1P,n)
+   ! element-wise transfer: whole-array transfer results can be placed on the stack (e.g. ifx)
+   do i=1_I8P, ns
+      n(i) = transfer(nI1P((i-1_I8P)*BYI4P+1_I8P:i*BYI4P), n(i))
+   enddo
    endsubroutine b64_decode_I4_a
 
    pure subroutine b64_decode_I2_a(code, n)
@@ -1132,10 +1163,16 @@ contains
    character(*), intent(in)  :: code    !< Encoded array.
    integer(I2P), intent(out) :: n(1:)   !< Array of numbers to be decoded.
    integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
+   integer(I8P)              :: ns      !< Size of n.
+   integer(I8P)              :: i       !< Counter.
 
-   allocate(nI1P(1:size(n,dim=1)*BYI2P)) ; nI1P = 0_I1P
+   ns = size(n,dim=1,kind=I8P)
+   allocate(nI1P(1:ns*BYI2P)) ; nI1P = 0_I1P
    call decode_bits(code=code,bits=nI1P)
-   n = transfer(nI1P,n)
+   ! element-wise transfer: whole-array transfer results can be placed on the stack (e.g. ifx)
+   do i=1_I8P, ns
+      n(i) = transfer(nI1P((i-1_I8P)*BYI2P+1_I8P:i*BYI2P), n(i))
+   enddo
    endsubroutine b64_decode_I2_a
 
    pure subroutine b64_decode_I1_a(code, n)
@@ -1151,11 +1188,9 @@ contains
    !=> T <<<
    character(*), intent(in)  :: code    !< Encoded array.
    integer(I1P), intent(out) :: n(1:)   !< Array of numbers to be decoded.
-   integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
 
-   allocate(nI1P(1:size(n,dim=1)*BYI1P)) ; nI1P = 0_I1P
-   call decode_bits(code=code,bits=nI1P)
-   n = transfer(nI1P,n)
+   n = 0_I1P
+   call decode_bits(code=code,bits=n)
    endsubroutine b64_decode_I1_a
 
    pure subroutine b64_decode_string_a(code, s)
@@ -1172,9 +1207,15 @@ contains
    character(*), intent(in)  :: code    !< Encoded scalar.
    character(*), intent(out) :: s(1:)   !< String to be decoded.
    integer(I1P), allocatable :: nI1P(:) !< One byte integer array containing n.
+   integer(I8P)              :: bs      !< Bytes of each string element.
+   integer(I8P)              :: i       !< Counter.
 
-   allocate(nI1P(1:byte_size(s(1))*size(s,dim=1))) ; nI1P = 0_I1P
+   bs = byte_size(s(1))
+   allocate(nI1P(1:bs*size(s,dim=1,kind=I8P))) ; nI1P = 0_I1P
    call decode_bits(code=code,bits=nI1P)
-   s = transfer(nI1P,s)
+   ! element-wise transfer: whole-array transfer results can be placed on the stack (e.g. ifx)
+   do i=1_I8P, size(s,dim=1,kind=I8P)
+      s(i) = transfer(nI1P((i-1_I8P)*bs+1_I8P:i*bs), s(i))
+   enddo
    endsubroutine b64_decode_string_a
 endmodule befor64
