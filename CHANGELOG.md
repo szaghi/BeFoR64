@@ -4,6 +4,11 @@ All notable changes to this project are documented here.
 Versions follow [Semantic Versioning](https://semver.org/).
 Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.2.4] — 2026-10-07
+### Fixed
+- **befor64**: Avoid stack temporaries when decoding arrays
+
+
 ## [1.2.3] — 2026-10-07
 ### Fixed
 - **befor64**: Avoid stack temporaries when encoding and packing arrays
