@@ -104,6 +104,13 @@ call pack_data(a1=real_array, a2=int_array, packed=i1_array)
 call b64_encode(n=i1_array, code=code64)
 ```
 
+## CI
+
+`ci.yml` (tests, coverage) and the build job of `docs.yml` run in the container
+`ghcr.io/szaghi/fortran-toolchains:gnu-16.2` (repo `~/fortran/fortran-toolchains`: gfortran 16.2, Open MPI 5.0.11,
+FoBiS, formal), set by `[scaffold] toolchain_image` in `fobos` and synced with `fobis scaffold sync`. On the bare runner:
+`doctests-sync.yml` (project-owned, gfortran 14 via `setup-build-env`), `install.yml`, `release.yml`.
+
 ## Documentation
 
 Built with Ford:
