@@ -4,6 +4,15 @@ import apiSidebar from '../api/_sidebar.json'
 export default withMermaid({
   title: 'BeFoR64',
   base: '/BeFoR64/',
+  head: [
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/BeFoR64/favicon.svg', media: '(prefers-color-scheme: light)' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/BeFoR64/favicon-dark.svg', media: '(prefers-color-scheme: dark)' }],
+    ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/BeFoR64/favicon-32.png' }],
+    ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/BeFoR64/favicon-16.png' }],
+    ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/BeFoR64/apple-touch-icon.png' }],
+    ['meta', { name: 'theme-color', content: '#f3ede1', media: '(prefers-color-scheme: light)' }],
+    ['meta', { name: 'theme-color', content: '#0e1116', media: '(prefers-color-scheme: dark)' }],
+  ],
   markdown: {
     math: true,
     languages: ['fortran-free-form', 'fortran-fixed-form'],
@@ -17,6 +26,8 @@ export default withMermaid({
     },
   },
   themeConfig: {
+    logo: { light: '/logo-nav.svg', dark: '/logo-nav-dark.svg', alt: 'BeFoR64' },
+    siteTitle: 'BeFoR64',
     nav: [
       { text: 'Home', link: '/' },
       {

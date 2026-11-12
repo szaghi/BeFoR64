@@ -5,6 +5,10 @@ hero:
   name: BeFoR64
   text: Base64 for Fortran
   tagline: Pure Fortran 2003+ library for base64 encoding and decoding of intrinsic types
+  image:
+    light: /logo.svg
+    dark: /logo-dark.svg
+    alt: BeFoR64, a cocoon reeled off into one thread and wound on a reel
   actions:
     - theme: brand
       text: Guide
@@ -17,16 +21,32 @@ hero:
       link: https://github.com/szaghi/BeFoR64
 
 features:
-  - icon: 🔢
+  - icon:
+      light: /icons/types.svg
+      dark: /icons/types-dark.svg
+      width: 44
+      height: 44
     title: All intrinsic types
     details: Encode and decode real, integer, and character variables — both scalar and array — of any kind. Unlimited polymorphic variables supported too.
-  - icon: 📄
+  - icon:
+      light: /icons/pack.svg
+      dark: /icons/pack-dark.svg
+      width: 44
+      height: 44
     title: Heterogeneous data
     details: Pack two arrays of different numeric kinds (real/real, real/integer, integer/integer) into a single byte stream before encoding, via the pack_data helper.
-  - icon: 🧩
+  - icon:
+      light: /icons/encode.svg
+      dark: /icons/encode-dark.svg
+      width: 44
+      height: 44
     title: Fortran 2003+ Compliant
     details: Fully standard-compliant library. Tested with GNU (≥ 4.9.2) and Intel (≥ 12.x) compilers.
-  - icon: 🆓
+  - icon:
+      light: /icons/foss.svg
+      dark: /icons/foss-dark.svg
+      width: 44
+      height: 44
     title: Free & Open Source
     details: Multi-licensed — GPLv3 for FOSS projects, BSD 2/3-Clause or MIT for commercial use. Any contributor is welcome.
 ---
